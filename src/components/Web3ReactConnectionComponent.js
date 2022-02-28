@@ -1,5 +1,5 @@
 import { useWeb3React } from '@web3-react/core';
-import { injected, walletconnect, resetWalletConnector, walletlink } from './Helpers/connectors';
+import { injected, walletconnect, resetWalletConnector, walletlink } from '../Helpers/connectors';
 import React from 'react';
 
 const Web3ReactConnectionComponent = () => {

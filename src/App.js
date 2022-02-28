@@ -1,9 +1,9 @@
 import { Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
-import Web3ReactConnectionComponent from './Web3ReactConnectionComponent';
-window.onload = function() {
-	localStorage.clear();
-};
+import ConnectWallet from './components/ConnectWallet'
+import Main from './components/main/Main'
+import Map from './components/map/Map'
+
 
 function App() {
 	const getLibrary = (provider) => {
@@ -15,7 +15,9 @@ function App() {
 	return (
 		<Web3ReactProvider getLibrary={getLibrary}>
 			<div className="flex space-x-3">
-				<Web3ReactConnectionComponent />
+				<ConnectWallet />
+				<Main />
+				<Map />
 			</div>
 		</Web3ReactProvider>
 	);
