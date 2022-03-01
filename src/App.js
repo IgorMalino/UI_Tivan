@@ -3,6 +3,7 @@ import { Web3Provider } from '@ethersproject/providers';
 import ConnectWallet from './components/ConnectWallet'
 import Main from './components/main/Main'
 import Map from './components/map/Map'
+import Navbar from './components/navbar/Navbar'
 
 
 function App() {
@@ -14,11 +15,8 @@ function App() {
 
 	return (
 		<Web3ReactProvider getLibrary={getLibrary}>
-			<div className="flex space-x-3">
-				<ConnectWallet />
-				<Main />
-				<Map />
-			</div>
+				<Navbar />
+				<Map className="sone"/>
 		</Web3ReactProvider>
 	);
 }

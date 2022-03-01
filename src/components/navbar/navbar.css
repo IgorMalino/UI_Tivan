@@ -1,0 +1,20 @@
+.navbar {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.right-side {
+    display: flex;
+    align-items: center;
+}
+
+.right-side div {
+    margin-right: 10px;
+}

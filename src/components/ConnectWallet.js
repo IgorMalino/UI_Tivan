@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Web3ReactConnectionComponent from './Web3ReactConnectionComponent'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faPlug } from "@fortawesome/free-solid-svg-icons"
 
 const style = {
   position: 'absolute',
@@ -29,7 +31,7 @@ function ConnectWallet() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>Connect</Button>
+      <Button onClick={handleOpen}><FontAwesomeIcon style={{marginRight: "5px"}} icon={faPlug} />Connect</Button>
       <Modal
         hideBackdrop
         open={open}
