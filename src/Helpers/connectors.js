@@ -1,11 +1,17 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
+import { BscConnector } from '@binance-chain/bsc-connector'
 
 const RPC_URLS = {
 	1: 'https://mainnet.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4',
 	4: 'https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4'
 };
+
+
+export const bsc = new BscConnector({
+  supportedChainIds: [56, 97] // later on 1 ethereum mainnet and 3 ethereum ropsten will be supported
+}) 
 
 //metamask
 export const injected = new InjectedConnector({

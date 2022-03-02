@@ -1,5 +1,8 @@
 import React from 'react';
 import ConnectWallet from '../ConnectWallet';
+import {Link} from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fatwitter } from "@fortawesome/free-solid-svg-icons"
 import './navbar.css'
 
 const Navbar = () => {
@@ -10,7 +13,7 @@ const Navbar = () => {
          </div>
          <div className='right-side'>
             <ConnectWallet />
-            <div>Twitter</div>
+            <Link to="https://twitter.com/Tivan_art">Twitter</Link>
             <div>Telegram</div>
          </div>
      </div>

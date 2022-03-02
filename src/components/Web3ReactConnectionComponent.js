@@ -1,5 +1,5 @@
 import { useWeb3React } from '@web3-react/core';
-import { injected, walletconnect, resetWalletConnector, walletlink } from '../Helpers/connectors';
+import { injected, walletconnect, resetWalletConnector, walletlink, bsc } from '../Helpers/connectors';
 import React from 'react';
 
 const Web3ReactConnectionComponent = () => {
@@ -7,6 +7,13 @@ const Web3ReactConnectionComponent = () => {
 	const web3reactContext = useWeb3React(); 
 	//web3react
 	
+	const connectBinanceWallet = async() => {
+		try {
+			await web3reactContext.activate(bsc);
+		} catch (ex) {
+			console.log(ex);
+		}
+	}
 
 	const disconnectMetamaskSimple = () => {
 		try {
@@ -89,6 +96,13 @@ const Web3ReactConnectionComponent = () => {
 					onClick={connectCoinbaseSimple}
 				>
 					Connect coinbase Via Web3-React
+				</button>
+			</div>
+			<div>
+				<button
+					onClick={connectBinanceWallet}
+				>
+					Connect Connect Binance Wallet Via Web3-React
 				</button>
 			</div>
 		</div>

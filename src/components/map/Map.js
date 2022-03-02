@@ -23,7 +23,7 @@ return (
                 <Globe width={width} height={height} 
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
                 hexPolygonsData={countries.features}
-                hexPolygonResolution={3}
+                hexPolygonResolution={2}
                 hexPolygonMargin={0.3}
                 hexPolygonColor={() => `white`}
         />
