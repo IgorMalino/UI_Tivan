@@ -10,6 +10,13 @@
     padding: 20px;
 }
 
+
+
+.left-side {
+    color: #0082a2;
+    padding: 6px 8px
+}
+
 .right-side {
     display: flex;
     align-items: center;
@@ -17,4 +24,12 @@
 
 .right-side div {
     margin-right: 10px;
+}
+
+.right-side-element {
+    position: relative;
+    padding-right: 10px;
+    font-family: "Blender Pro";
+    color: #00CCFF;
+    text-decoration: none;
 }

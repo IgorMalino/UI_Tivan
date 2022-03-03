@@ -31,7 +31,7 @@ function ConnectWallet() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}><FontAwesomeIcon style={{marginRight: "5px"}} icon={faPlug} />Connect</Button>
+      <Button style={{color: "#00CCFF"}} onClick={handleOpen}><FontAwesomeIcon style={{marginRight: "5px", color: "#00CCFF"}} icon={faPlug} />Connect</Button>
       <Modal
         hideBackdrop
         open={open}

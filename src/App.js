@@ -4,6 +4,9 @@ import ConnectWallet from './components/ConnectWallet'
 import Main from './components/main/Main'
 import Map from './components/map/Map'
 import Navbar from './components/navbar/Navbar'
+import Innernav from './components/InnerNav/InnerNav'
+import HeaderLogo from './components/headerLogo/HeaderLogo'
+import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom'
 
 
 function App() {
@@ -15,8 +18,12 @@ function App() {
 
 	return (
 		<Web3ReactProvider getLibrary={getLibrary}>
+			<Router>
+				<HeaderLogo />
 				<Navbar />
-				<Map className="sone"/>
+				<Map/>
+				<Innernav />
+			</Router>
 		</Web3ReactProvider>
 	);
 }
