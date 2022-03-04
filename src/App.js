@@ -5,6 +5,7 @@ import Main from './components/main/Main'
 import Map from './components/map/Map'
 import Navbar from './components/navbar/Navbar'
 import Innernav from './components/InnerNav/InnerNav'
+import MinimapMenu from './components/minimapMenu/MinimapMenu';
 import HeaderLogo from './components/headerLogo/HeaderLogo'
 import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom'
 
@@ -23,6 +24,7 @@ function App() {
 				<Navbar />
 				<Map/>
 				<Innernav />
+				<MinimapMenu />
 			</Router>
 		</Web3ReactProvider>
 	);

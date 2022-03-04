@@ -1,0 +1,205 @@
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Medium.eot');
+	src: local('Blender Pro Medium'), local('BlenderPro-Medium'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+.minimap-block {
+    position: absolute;
+    bottom: 0;
+}
+
+.minimap-menu {
+    
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+#minimap svg {
+    width: 200px;
+    height: 100px;
+}
+
+.minimap-left, .minimap-right {
+    align-self: center;
+}
+
+.minimap-right-header p {
+    text-align: left;
+}
+
+.minimap-left-header p {
+    text-align: right;
+}
+
+.minimap-right-header p, .minimap-left-header p{
+    margin: 0;
+    font-family: 'Blender Pro';
+    color: #0082a2;
+    display: block;
+    font-family: 'Blender Pro';
+    font-weight: 900;
+    font-size: 18px;
+    text-shadow: 0px 0px 10px rgb(0 0 0 / 80%);
+}
+
+.minimap-right-links a, .minimap-left-links a {
+    color: #00CCFF;
+    padding: 0px 3px;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-size: 15px;
+    transition: color 0.5s ease, background-color 0.5s ease;
+    margin: 0 1px 0 1px;
+    display: inline-block;
+    border: #00CCFF solid 1px;
+    border-color: rgba(0, 204, 255, .15);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.minimap-right-links a:hover, .minimap-left-links a:hover{
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+.minimapBackground {
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    height: 270px;
+    display: flex;
+    align-items: end;
+    width: 100vw;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.minimapBackground img {
+    width: 800px;
+    height: 250px;
+    margin-bottom: -25px;
+}
+
+.sound-part {
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#soundButton {
+    height: 10px;
+    width: 15px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+#soundButton .bar:nth-child(1) {
+    height: 80%;
+    animation: soundAnimation;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+    animation-duration: 1.1s;
+}
+
+#soundButton .bar:nth-child(2) {
+    height: 60%;
+    animation: soundAnimation;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+    animation-duration: 1.2s;
+}
+
+#soundButton .bar:nth-child(3) {
+    height: 10%;
+    animation: soundAnimation;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+    animation-duration: 1.05s;
+}
+
+#soundButton .bar:nth-child(4) {
+    height: 20%;
+    animation: soundAnimation;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+    animation-duration: 1.11s;
+}
+
+#soundButton .bar:nth-child(5) {
+    height: 90%;
+    animation: soundAnimation;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+    animation-duration: 1s;
+}
+#soundButton .bar {
+    align-self: flex-end;
+    width: 1px;
+    background: #00CCFF;;
+    animation-duration: 1s;
+}
+
+@keyframes soundAnimation {
+    0% {
+        height: 100%;
+    }
+    100% {
+        height: 20%;
+    }
+}
+
+.sound-part-dots {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.sound-part-dots .dot {
+    height: 5px;
+    width: 5px;
+    margin: 0 0 0 5px;
+}
+
+.sound-part-dots .dot:nth-child(1) {
+    background: #FF1313;
+}
+.sound-part-dots .dot:nth-child(2) {
+    background: #081f26;
+}
+.sound-part-dots .dot:nth-child(3) {
+    background: #0d3340;
+}
+.sound-part-dots .dot:nth-child(4) {
+    background: #1a6680;
+}
+.sound-part-dots .dot:nth-child(5) {
+    background: #33CCFF;
+}
+
+.zoom-out p {
+    color: #33CCFF;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+
+
+ 
