@@ -61,6 +61,8 @@ const Web3ReactConnectionComponent = () => {
 		}
 	};
 
+	console.log(web3reactContext.account, "account")
+
 	return (
 		<div>
 			<h2>Tivan Connect</h2>

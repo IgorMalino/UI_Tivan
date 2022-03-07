@@ -15,7 +15,7 @@ export const bsc = new BscConnector({
 
 //metamask
 export const injected = new InjectedConnector({
-	supportedChainIds: [ 1, 3, 4, 5, 42 ]
+	supportedChainIds: [ 1, 3, 4, 5, 42, 56 ]
 });
 
 
