@@ -7,6 +7,7 @@ import Navbar from './components/navbar/Navbar'
 import Innernav from './components/InnerNav/InnerNav'
 import MinimapMenu from './components/minimapMenu/MinimapMenu';
 import HeaderLogo from './components/headerLogo/HeaderLogo'
+import Hexagon from './components/hex/Hexagon';
 import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom'
 
 
@@ -20,11 +21,12 @@ function App() {
 	return (
 		<Web3ReactProvider getLibrary={getLibrary}>
 			<Router>
-				<HeaderLogo />
+				{/* <HeaderLogo />
 				<Navbar />
 				<Map/>
 				<Innernav />
-				<MinimapMenu />
+				<MinimapMenu /> */}
+				<Hexagon />
 			</Router>
 		</Web3ReactProvider>
 	);

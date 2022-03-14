@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/standalone": "^7.17.6",
     "@binance-chain/bsc-connector": "^1.0.0",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
@@ -27,7 +28,7 @@
     "react": "^17.0.2",
     "react-country-flag": "^3.0.2",
     "react-dom": "^17.0.2",
-    "react-globe.gl": "^2.21.3",
+    "react-globe.gl": "^2.22.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "4.0.3",
     "react-sizeme": "^3.0.2",
