@@ -38,7 +38,7 @@ const Hexagon = () => {
 
 
         mesh.rotation.z = Math.PI /2
-            
+        const some = new THREE.getWorldPosition(cube)
         cube.add(mesh)
     
         mesh.position.set( el.centerPoint.x,el.centerPoint.y,el.centerPoint.z)
