@@ -7,8 +7,8 @@ import Navbar from './components/navbar/Navbar'
 import Innernav from './components/InnerNav/InnerNav'
 import MinimapMenu from './components/minimapMenu/MinimapMenu';
 import HeaderLogo from './components/headerLogo/HeaderLogo'
-import Hexagon from './components/hex/Hexagon';
-import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom'
+import {BrowserRouter as Router,  Routes, Route} from 'react-router-dom'
+import ContentWindow from './components/contentWindow/ContentWindow';
 
 
 function App() {
@@ -21,12 +21,14 @@ function App() {
 	return (
 		<Web3ReactProvider getLibrary={getLibrary}>
 			<Router>
-				{/* <HeaderLogo />
-				<Navbar />
-				<Map/>
-				<Innernav />
-				<MinimapMenu /> */}
-				<Hexagon />
+				<Routes>
+					<Route path="/" element={<Main />} />
+					<Route path='/:contenName' element={<ContentWindow />} />
+				</Routes>
+			
+				{/* <Route path='/:contenName' element={<ContentWindow />}/> */}
+			{/* </Route> */}
+				
 			</Router>
 		</Web3ReactProvider>
 	);

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState, useRef} from 'react'
 import * as THREE from 'three'
 // import Hexasphere from '../../../public/hexasphere'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -6,13 +6,11 @@ import map from '../../assets/img/map_inverted.png'
 import json from '../../datasets/hexasphere.json'
 
 const Hexagon = () => {
-    const [data, setData] = useState()
-
-    console.log(json)
-
+            
     var renderer = new THREE.WebGLRenderer({antialias:true});
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xDDDDDD, 1);
+    renderer.setClearColor("black", 1);
+    
     document.body.appendChild(renderer.domElement);
         
     const scene = new THREE.Scene();
@@ -30,32 +28,22 @@ const Hexagon = () => {
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
+
     json.tiles.forEach((el) => {
         var mesh = new THREE.Mesh(
-            new THREE.CylinderGeometry( 0.4, 0.4, 0.1, 6 ),
-            new THREE.MeshBasicMaterial({color: "white"})
+            new THREE.CylinderGeometry(0.3, 0.3, 0.1, 6),
+            new THREE.MeshBasicMaterial({ color: `#${Math.round(Math.random() * Math.pow(2, 24)).toString(16).padStart(6, '0')}` })
         )
 
+        let normal = new THREE.Vector3().copy(el.centerPoint);
+        normal.sub(cube.position);
+        mesh.lookAt(normal);
 
-        mesh.rotation.z = Math.PI /2
-        const some = new THREE.getWorldPosition(cube)
-        cube.add(mesh)
-    
-        mesh.position.set( el.centerPoint.x,el.centerPoint.y,el.centerPoint.z)
+        scene.add(mesh);
+
+        mesh.position.copy(el.centerPoint);
+        mesh.rotateOnAxis(new THREE.Vector3().copy({ x: 1, y: 0, z: 0 }), Math.PI / 2);
     })
-
-    // for(let i =0; i < 3; i++) {
-    //     var mesh = new THREE.Mesh(
-    //         new THREE.CylinderGeometry( 1, 1, 0.1, 6 ),
-    //         new THREE.MeshBasicMaterial({color: "white"})
-    //     )
-    //     mesh.rotation.z = (Math.PI /2) 
-    
-    //     cube.add(mesh)
-    
-    //     mesh.position.set(10,0,0)    
-    // }
-
             
 
     function render() {
@@ -64,19 +52,18 @@ const Hexagon = () => {
         renderer.render(scene, camera);
       }
       render();
+      
+      
      
       const controls = new OrbitControls(camera, renderer.domElement)
-    //   controls.target.set(4.5, 0, 4.5);
  
       controls.enablePan = true;
       controls.maxPolarAngle = Math.PI;
      
       controls.enableDamping = true;
-    
 
     return <></>
 }
 
 
-export default Hexagon
-;
+export default React.memo(Hexagon);

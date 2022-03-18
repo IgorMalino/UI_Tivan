@@ -31,6 +31,16 @@
 
 .minimap-left, .minimap-right {
     align-self: center;
+    max-width: 200px;
+}
+
+.minimap-right-links, .minimap-left-links {
+    white-space: nowrap;
+}
+
+.minimap-left-links {
+    display: flex;
+    justify-content: end;
 }
 
 .minimap-right-header p {

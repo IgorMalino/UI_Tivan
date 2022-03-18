@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useTranslation } from 'react-i18next';
 // import CSS styles
 import "./innerNav.css"
 
@@ -9,7 +9,7 @@ const content_item_cont = {
 }
 
 const InnerNav = () => {
-
+  const {t} = useTranslation()
 
     return (
         <div id="nav">
@@ -17,14 +17,12 @@ const InnerNav = () => {
               <div id="nav-left" className="noSelect">
                 <a href="#" onClick={(e) => {
                   e.preventDefault();
-                //   window.toggleInfo_box("about")
-                }}  data-id={content_item_cont.about}>{content_item_cont.about}</a>
+                }}  data-id="About">{t("About")}</a>
               </div>
               <div id="nav-right" className="noSelect">
                 <a href="#"  onClick={(e) => {
                   e.preventDefault();
-                //   trg_open_page("buyit")
-                }} data-id={content_item_cont.buyit}>{content_item_cont.buyit}</a>
+                }} data-id="Buy it">{t("Buy_it")}</a>
               </div>
             </div>
           </div>

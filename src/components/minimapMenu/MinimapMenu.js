@@ -1,6 +1,9 @@
 import React from 'react';
 import minimapBackground from '../../assets/img/mapDetails.png'
+import ContentWindow from '../contentWindow/ContentWindow';
+import {Link} from 'react-router-dom'
 import './minimapMenu.css'
+import { useTranslation } from 'react-i18next';
 
 const content_item_cont = {
     communication: "communication",
@@ -11,6 +14,7 @@ const content_item_cont = {
 }
 
 const MinimapMenu = () => {
+        const {t} = useTranslation()
     return (
         <>
         <div className='minimapBackground'>
@@ -21,13 +25,13 @@ const MinimapMenu = () => {
                 <div className='minimap-menu'>
                                 <div className='minimap-left'>
                                 <div className='minimap-left-header'>
-                                        <p>Game</p>
+                                        <p>{t("Game")}</p>
                                 </div>
                                 <div className='minimap-left-links'>
-                                        <a>GALLERY</a>
-                                        <a>ARENA</a>
-                                        <a>BANK</a>
-                                        <a>MARKET</a>
+                                        <Link to="/gallery">{t("Gallery")}</Link>
+                                        <Link to="/arena">{t("Arena")}</Link>
+                                        <Link to="/bank">{t("Bank")}</Link>
+                                        <Link to="/market">{t("Market")}</Link>
                                 </div>
                                 </div>          
                                 <div id="minimap">
@@ -236,13 +240,13 @@ const MinimapMenu = () => {
                                 </div>
                                 <div className='minimap-right'>
                                 <div className='minimap-right-header'>
-                                        <p>Game</p>
+                                        <p>{t("Control")}</p>
                                 </div>
                                 <div className='minimap-right-links'>
-                                        <a>GALLERY</a>
-                                        <a>ARENA</a>
-                                        <a>BANK</a>
-                                        <a>MARKET</a>
+                                        <Link to="/base">{t("Main_base")}</Link>
+                                        <Link to="/labs">{t("Labs")}</Link>
+                                        <Link to="/wiki">{t("Wiki")}</Link>
+                                        <Link to="/news">{t("News")}</Link>
                                 </div>
                                 </div>   
                 </div>
@@ -264,6 +268,7 @@ const MinimapMenu = () => {
                         <div className='zoom-out'><p>Zoom out</p></div>
                 </div>
         </div>
+        {/* <ContentWindow /> */}
       </>
     )
 }
