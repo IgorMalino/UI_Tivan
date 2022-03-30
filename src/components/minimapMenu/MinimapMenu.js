@@ -4,6 +4,9 @@ import ContentWindow from '../contentWindow/ContentWindow';
 import {Link} from 'react-router-dom'
 import './minimapMenu.css'
 import { useTranslation } from 'react-i18next';
+import i18n from 'i18next'
+import { useAudio } from '../../utils/useAudio';
+import audio from '../../assets/audio/comingsoon.mp3';
 
 const content_item_cont = {
     communication: "communication",
@@ -15,6 +18,10 @@ const content_item_cont = {
 
 const MinimapMenu = () => {
         const {t} = useTranslation()
+
+        const [playing, toggle] = useAudio(audio);
+        console.log(playing)
+
     return (
         <>
         <div className='minimapBackground'>
@@ -28,10 +35,10 @@ const MinimapMenu = () => {
                                         <p>{t("Game")}</p>
                                 </div>
                                 <div className='minimap-left-links'>
-                                        <Link to="/gallery">{t("Gallery")}</Link>
-                                        <Link to="/arena">{t("Arena")}</Link>
-                                        <Link to="/bank">{t("Bank")}</Link>
-                                        <Link to="/market">{t("Market")}</Link>
+                                        <Link style={{textDecoration:"none"}} to="gallery">{t("Gallery")}</Link>
+                                        <Link style={{textDecoration:"none"}} to="arena">{t("Arena")}</Link>
+                                        <Link style={{textDecoration:"none"}} to="bank">{t("Bank")}</Link>
+                                        <Link style={{textDecoration:"none"}} to="market">{t("Market")}</Link>
                                 </div>
                                 </div>          
                                 <div id="minimap">
@@ -243,15 +250,15 @@ const MinimapMenu = () => {
                                         <p>{t("Control")}</p>
                                 </div>
                                 <div className='minimap-right-links'>
-                                        <Link to="/base">{t("Main_base")}</Link>
-                                        <Link to="/labs">{t("Labs")}</Link>
-                                        <Link to="/wiki">{t("Wiki")}</Link>
-                                        <Link to="/news">{t("News")}</Link>
+                                        <Link style={{textDecoration:"none"}} to="mainBase">{t("Main_base")}</Link>
+                                        <Link style={{textDecoration:"none"}} to="laboratory">{t("Labs")}</Link>
+                                        <a style={{textDecoration:"none"}} href="https://wiki.tivan.art/" target="_blank">{t("Wiki")}</a>
+                                        <Link style={{textDecoration:"none"}} to='news'>{t("News")}</Link>
                                 </div>
                                 </div>   
                 </div>
-                <div className='sound-part'>
-                        <a href="#"  id="soundButton" className="on noSelect">
+                <div onClick={toggle} className='sound-part'>
+                        <a href="#"  id="soundButton" className={`${playing ? "on" : "off"} noSelect`}>
                                 <div className="bar"></div>
                                 <div className="bar"></div>
                                 <div className="bar"></div>

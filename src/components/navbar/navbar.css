@@ -7,14 +7,28 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 20px;
+    padding: 15px;
 }
 
-
+#connect-button {
+    text-transform: capitalize;
+    color: #00CCFF;
+    padding: 0px 3px;
+    padding-right: 15px;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-size: 17px;
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
 
 .left-side {
     color: #0082a2;
-    padding: 6px 8px
+    padding: 6px 0px;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+    color: #0082a2;
 }
 
 .right-side {
@@ -22,14 +36,60 @@
     align-items: center;
 }
 
-.right-side div {
+/* .right-side div {
     margin-right: 10px;
-}
+} */
 
 .right-side-element {
+    display: flex;
     position: relative;
     padding-right: 10px;
     font-family: "Blender Pro";
     color: #00CCFF;
     text-decoration: none;
+}
+
+#connect-button a {
+    text-decoration: none;
+    color: rgb(0, 204, 255);
+}
+
+#connect-button a:hover, .right-side-element:hover, #fade-button svg:hover {
+    color: white;
+} 
+
+#social a {
+    display: flex;
+}
+.svg-inline--fa {
+    height: 22px;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        justify-content: flex-end;
+        padding: unset;
+        width: 100vw;
+    }
+    .right-side {
+        margin-right: 5px;
+        margin-top: 22px;
+    }
+    .left-side {
+        display: none;
+    }
+    .right-side-element, #social {
+        /* display: none; */
+    }
+    .right-side button {
+        display: block;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 24px;
+    transition: color 0.5s ease, background-color 0.5s ease;
+    }
+    .right-side button svg {
+        /* display: none; */
+    }
 }

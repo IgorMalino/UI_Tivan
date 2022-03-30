@@ -1,6 +1,6 @@
 export const enLanguage = {
-    About : "About",
-    Buy_it : "Buy it",
+    About : "ABOUT",
+    Presale : "PRESALE",
     Gallery : "GALLERY",
     Game: "Game",
     Arena : "ARENA",
@@ -11,5 +11,8 @@ export const enLanguage = {
     Wiki : "WIKI",
     News : "NEWS",
     Connect: "Connect",
-    Control: "Control"
+    Control: "Control",
+    Presale_Text: "End of presale in: GO BUY TVT",
+    Choose_wallet:"CHOOSE WALLET",
+    More_wallets_coming: "More wallets coming soon"
 }

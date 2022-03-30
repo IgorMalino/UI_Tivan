@@ -4,8 +4,8 @@ import './headerLogo.css'
 
 const content_item_cont = {
     about: "About",
-    title_top: "Title Top",
-    title_top_art: "Title Top Art"
+    title_top: "Tivan",
+    title_top_art: "artifacts"
 }
 
 const HeaderLogo = () => {
@@ -25,7 +25,7 @@ const HeaderLogo = () => {
 
               </svg>
             </div>
-            <div className="animate"><strong>{content_item_cont.title_top}</strong></div>
+            <div className='title'>TIVAN</div>
             <div className="subtitle animate">{content_item_cont.title_top_art}</div>
           </a></>
     )

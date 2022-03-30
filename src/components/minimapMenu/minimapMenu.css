@@ -39,8 +39,7 @@
 }
 
 .minimap-left-links {
-    display: flex;
-    justify-content: end;
+    float: right;
 }
 
 .minimap-right-header p {
@@ -60,6 +59,7 @@
     font-weight: 900;
     font-size: 18px;
     text-shadow: 0px 0px 10px rgb(0 0 0 / 80%);
+    cursor: alias;
 }
 
 .minimap-right-links a, .minimap-left-links a {
@@ -86,7 +86,7 @@
     overflow: hidden;
     position: absolute;
     bottom: 0;
-    height: 270px;
+    height: 150px;
     display: flex;
     align-items: end;
     width: 100vw;
@@ -97,8 +97,11 @@
 
 .minimapBackground img {
     width: 800px;
+    position: absolute;
+    bottom: 2px;
     height: 250px;
     margin-bottom: -25px;
+    filter: invert(63%) sepia(86%) saturate(2316%) hue-rotate(151deg) brightness(102%) contrast(103%);
 }
 
 .sound-part {
@@ -163,6 +166,28 @@
     animation-duration: 1s;
 }
 
+@media only screen and (max-width: 768px) {
+    #minimap {
+        display: none;
+    }
+    .minimap-block {
+        bottom: 5px;
+    }
+    .minimap-left {
+        margin-right: 10px;
+    }
+    .minimap-left-links {
+        text-align: right;
+    } 
+    .minimap-right {
+        margin-left: 10px;
+    }
+    .minimap-right-links, .minimap-left-links {
+        height: 60px;
+        white-space: unset;
+    }
+}
+
 @keyframes soundAnimation {
     0% {
         height: 100%;
@@ -210,6 +235,9 @@
 }
 
 
-
+.off .bar {
+    animation: none !important;
+    height: 1px !important;
+}
 
  

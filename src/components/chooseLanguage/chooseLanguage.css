@@ -9,10 +9,12 @@
 
 }
 
-#fontAwesomeIcon-telegram {
+.telegram.plane.icon {
     color: #00CCFF;
 }
-
+.telegram.plane.icon:hover {
+    color: white;
+}
 
 
 .icocu:first-child {

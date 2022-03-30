@@ -1,6 +1,6 @@
 export const ruLanguage = {
     About : "О Проекте",
-    Buy_it : "Купить",
+    Presale : "ПРЕПРОДАЖА",
     Gallery : "ГАЛЛЕРЕЯ",
     Game: "Игра",
     Arena : "АРЕНА",
@@ -11,5 +11,8 @@ export const ruLanguage = {
     Wiki : "ВИКИ",
     News : "НОВОСТИ",
     Connect: "Подключить",
-    Control: "Контроль"
+    Control: "Контроль",
+    Presale_Text: "Конец препродажи: Купите TVT",
+    Choose_wallet:"ВЫБЕРИТЕ КОШЕЛЕК",
+    More_wallets_coming: "Скоро появятся новые кошельки"
 }

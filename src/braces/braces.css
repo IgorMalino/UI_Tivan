@@ -1,0 +1,44 @@
+/* .svg-ring {
+    stroke-dashoffset: -2155.83;
+    stroke-dasharray: 307.976px, 3089.76px;
+} */
+
+.fade50 {
+    opacity: .5;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.fade75 {
+    opacity: .25;
+}
+
+.braces {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 1400px;
+    min-width: 800px;
+    height: auto;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.braces svg {
+    transform-origin: center center 0px;
+    transform: matrix(0, -1, 1, 0, 0, 0);
+    margin: 25px;
+}
+
+@media only screen and (max-width: 768px) {
+    .braces {
+        display: none;
+    }
+}

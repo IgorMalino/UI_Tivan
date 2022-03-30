@@ -10,19 +10,68 @@ const content_item_cont = {
 
 const InnerNav = () => {
   const {t} = useTranslation()
+  
+  
+  function unHideWord(e, logoTitle, direction) {
+    const width = e.target.offsetWidth
+    
+    const getRandomSybmol = () => {
+      const symbols = "$%{&^+(=*$)}"
+      return symbols[Math.floor(Math.random() * symbols.length)]
+    }
+    e.target.style.width = `${width}px`
+    e.target.style.opacity = "0.5"
+    let showWord = []
+    let index = direction === "right" ? logoTitle.length : 0
+    e.target.innerText = showWord.join('')
+    
+    function putSymbol(counter=0) {
+      if(direction === "right" ? index < 0 : index > logoTitle.length-1) return   //
+      if(counter < 2){
+        setTimeout(()=>{
+         const char = getRandomSybmol()
+         showWord[index] = char
+         e.target.innerText = showWord.join('')
+         counter++
+         putSymbol(counter)
+        }, 10 )
+      } else {
+        setTimeout(()=>{
+          showWord[index] = logoTitle[index]
+          e.target.innerText = showWord.join('')
+          direction === "right" ? index-- : index++
+          if(index === logoTitle.length-3) {
+            e.target.style.opacity = "0.75"
+          }
+          if(index === logoTitle.length-2) {
+            e.target.style.opacity = "0.85"
+          }
+          if(index === logoTitle.length-1) {
+            e.target.style.opacity = "1"
+          }
+          putSymbol()
+        }, 30)
+        }
+      }
+    putSymbol()
+      
+  }
+
+
+ 
 
     return (
         <div id="nav">
             <div id="nav-inner">
-              <div id="nav-left" className="noSelect">
+              <div id="nav-left" className="noSelect" onMouseOver={(e) => unHideWord(e, t("About"), "left")}>
                 <a href="#" onClick={(e) => {
                   e.preventDefault();
                 }}  data-id="About">{t("About")}</a>
               </div>
-              <div id="nav-right" className="noSelect">
-                <a href="#"  onClick={(e) => {
+              <div id="nav-right" className="noSelect" onMouseOver={(e) => unHideWord(e, t("Presale"), "right")}>
+                <a href="#" onClick={(e) => {
                   e.preventDefault();
-                }} data-id="Buy it">{t("Buy_it")}</a>
+                }} data-id="Buy it">{t("Presale")}</a>
               </div>
             </div>
           </div>

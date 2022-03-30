@@ -13,6 +13,7 @@
     text-align: center;
     z-index: 2;
     color: white;
+    text-decoration: none;
 }
 
 #header strong {
@@ -22,15 +23,40 @@
 	opacity: 0.55;
 }
 
+.title {
+    text-decoration: none;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-size: 33px;
+    text-shadow: 0px 0px 10px rgb(0 0 0 / 80%);
+    transition: color 0.5s ease;
+    text-align: center;
+    color: #00CCFF;
+}
+
 #header:hover path {
 	fill: white !important;
 }
-
+#header:hover .title, #header:hover .subtitle {
+    color: white !important;
+}
 #header path{
 	fill: #00CCFF;
 	transition: 0.5s ease;
 }
 
 .logosvg {
-    width: 70px
+    max-width: 60px;
+    filter: drop-shadow(0px 0px 10px rgb(0 0 0 / 80%));
+}
+
+.subtitle {
+    color:#00CCFF;
+    transition: color 0.5s ease
+}
+
+@media only screen and (max-width: 768px) {
+    #header {
+        display: none;
+    }
 }

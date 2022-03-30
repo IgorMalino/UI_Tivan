@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {BrowserRouter as Router,  Routes, Route, useNavigate} from 'react-router-dom'
 import './i18n'
+import 'semantic-ui-css/semantic.min.css'
 
 
 ReactDOM.render(
   // <React.StrictMode>
   <React.Suspense fallback="">
+    <Router>
     <App />
+    </Router>
   </React.Suspense>,
   // </React.StrictMode>,
   document.getElementById('root')

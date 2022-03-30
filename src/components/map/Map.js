@@ -13,7 +13,6 @@ import Hexagon from '../hex/Hexagon';
 
 const Map = () => {
     
-
 return (
         <div className="map">
             {/* {<SizeMe >{({ size: { width } }) => ( */}

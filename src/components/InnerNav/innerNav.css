@@ -22,6 +22,10 @@
     cursor: pointer;
 }
 
+#nav-left a:hover, #nav-right a:hover {
+    color: white;
+}
+
 #nav-left,
 #nav-right {
 	display: block;
@@ -33,6 +37,9 @@
 	text-align: left;
 	pointer-events: auto;
 	text-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+	width: fit-content;
+	transition: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	white-space: nowrap;
 }
 #nav-right {
 	left: auto;
@@ -50,7 +57,35 @@
 	transition: color 0.5s ease, background-color 0.5s ease;
 
 }
+#nav-right a {
+	text-align: right;
+    display: flex;
+    justify-content: end;
+}
 body.isDesktop #nav-left a:hover,
 body.isDesktop #nav-right a:hover {
 	color: #FFFFFF;
+}
+
+@media only screen and (max-width: 768px) {
+	#nav {
+		width: 250px;
+		top: 18px;
+	}
+	#nav-left {
+		left: 20px;
+	}
+	#nav-left, #nav-right {
+		position: unset;
+    	margin: 0;
+		width: auto;
+		margin-left: 5px;
+	}
+	#nav-inner {
+		display: flex;
+	}
+}
+
+#soundButton .off .bar {
+	height: 0;
 }
