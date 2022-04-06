@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import './navbar.css'
 
 // Components
-import ConnectWallet from '../ConnectWallet';
+import ConnectWallet from '../connectWallet/ConnectWallet';
 import ChooseLanguage from '../chooseLanguage/ChooseLanguage';
 
 // Font Awesome elements
@@ -21,7 +21,7 @@ const Navbar = () => {
  return (
      <div className='navbar'>
          <div className='left-side'>
-          <FontAwesomeIcon style={{marginRight: "5px"}} icon={faPencilRuler} />{t("Presale_Text")}
+          <FontAwesomeIcon style={{marginRight: "4px", height:"17.5px"}} icon={faPencilRuler} />{t("Presale_Text")}
          </div>
          <div className='right-side'>
             <ConnectWallet className="right-side-element" />

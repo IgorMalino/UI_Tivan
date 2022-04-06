@@ -14,6 +14,9 @@ export const useAudio = url => {
   
     useEffect(() => {
       audio.addEventListener('ended', () => setPlaying(false));
+      //  console.log("loaded")
+      // audio.muted = true 
+      // audio.play()
       return () => {
         audio.removeEventListener('ended', () => setPlaying(false));
       };

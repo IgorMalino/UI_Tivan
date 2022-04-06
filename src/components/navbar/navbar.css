@@ -1,3 +1,112 @@
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Medium.eot');
+	src: local('Blender Pro Medium'), local('BlenderPro-Medium'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.eot');
+	src: local('Blender Pro Thin Italic'), local('BlenderPro-ThinItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.eot');
+	src: local('Blender Pro Heavy'), local('BlenderPro-Heavy'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro Book';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.eot');
+	src: local('Blender Pro Book Italic'), local('BlenderPro-BookItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro Book';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Book.eot');
+	src: local('Blender Pro Book'), local('BlenderPro-Book'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Bold.eot');
+	src: local('Blender Pro Bold'), local('BlenderPro-Bold'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Thin.eot');
+	src: local('Blender Pro Thin'), local('BlenderPro-Thin'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.eot');
+	src: local('Blender Pro Medium Italic'), local('BlenderPro-MediumItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.eot');
+	src: local('Blender Pro Bold Italic'), local('BlenderPro-BoldItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+
 .navbar {
     box-sizing: border-box;
     position: absolute;
@@ -14,9 +123,9 @@
     text-transform: capitalize;
     color: #00CCFF;
     padding: 0px 3px;
-    padding-right: 15px;
+    padding-right: 10px;
     font-family: 'Blender Pro';
-    font-weight: bold;
+    font-weight: 700;
     font-size: 17px;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
@@ -29,6 +138,7 @@
     font-size: 18px;
     text-align: left;
     color: #0082a2;
+    display: inline-block;
 }
 
 .right-side {
@@ -43,7 +153,7 @@
 .right-side-element {
     display: flex;
     position: relative;
-    padding-right: 10px;
+    padding-right: 7px;
     font-family: "Blender Pro";
     color: #00CCFF;
     text-decoration: none;
@@ -62,21 +172,22 @@
     display: flex;
 }
 .svg-inline--fa {
-    height: 22px;
+    height: 20px;
 }
 
 @media only screen and (max-width: 768px) {
     .navbar {
-        justify-content: flex-end;
+        justify-content: space-between;
         padding: unset;
         width: 100vw;
     }
     .right-side {
         margin-right: 5px;
-        margin-top: 22px;
+        margin-top: 18px;
     }
     .left-side {
-        display: none;
+        transform: translateY(50px);
+        margin-left: 26px;
     }
     .right-side-element, #social {
         /* display: none; */

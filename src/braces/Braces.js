@@ -5,7 +5,7 @@ const Braces = () => {
 
     return (
         <div className="braces">
-                <div className='inner_Braces'>
+                <div style={{margin: "-1px"}} className='inner_Braces'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
               <defs>
                 <lineargradient id="glowInner" x1="0" x2="0" y1="0" y2="1">

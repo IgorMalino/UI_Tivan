@@ -3,7 +3,7 @@
 	display: block;
 	position: absolute;
 	top: 50%;
-	left: 0;
+	/* left: 18px; */
 	width: 100%;
 	pointer-events: none;
 }
@@ -12,7 +12,7 @@
 	position: relative;
 	max-width: 1400px;
 	margin: 0 auto;
-	padding: 5px;
+	padding: 9px;
 	text-align: center;
 }
 
@@ -80,10 +80,15 @@ body.isDesktop #nav-right a:hover {
     	margin: 0;
 		width: auto;
 		margin-left: 5px;
+		margin-right: 15px;
 	}
 	#nav-inner {
 		display: flex;
 	}
+	#nav-left a,
+	#nav-right a {
+	font-size: 18px;
+}
 }
 
 #soundButton .off .bar {

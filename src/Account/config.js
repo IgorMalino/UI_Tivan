@@ -5,6 +5,9 @@ import MathWallet from "./WalletIcons/MathWallet.svg";
 import TokenPocket from "./WalletIcons/TokenPocket.svg";
 import SafePal from "./WalletIcons/SafePal.svg";
 import TrustWallet from "./WalletIcons/TrustWallet.png";
+import Coinbase from "./WalletIcons/Coinbase.png";
+import Binance from "./WalletIcons/Binance.png"
+
 
 
 export const connectors1 = [
@@ -30,33 +33,45 @@ export const connectors = [
     priority: 2,
   },
   {
-    title: "Trust Wallet",
-    icon: TrustWallet,
-    connectorId: "injected",
-    priority: 3,
+    title: "Coinbase",
+    icon: Coinbase,
+    connectorId: "Coinbase",
+    priority: 2,
   },
   {
-    title: "MathWallet",
-    icon: MathWallet,
-    connectorId: "injected",
-    priority: 999,
-  },
-  {
-    title: "TokenPocket",
-    icon: TokenPocket,
-    connectorId: "injected",
-    priority: 999,
-  },
-  {
-    title: "SafePal",
-    icon: SafePal,
-    connectorId: "injected",
-    priority: 999,
-  },
-  {
-    title: "Coin98",
-    icon: Coin98,
-    connectorId: "injected",
-    priority: 999,
-  },
+    title: "Binance",
+    icon: Binance,
+    connectorId: "Binance",
+    priority: 2,
+  }
+  // {
+  //   title: "Trust Wallet",
+  //   icon: TrustWallet,
+  //   connectorId: "injected",
+  //   priority: 3,
+  // },
+  // {
+  //   title: "MathWallet",
+  //   icon: MathWallet,
+  //   connectorId: "injected",
+  //   priority: 999,
+  // },
+  // {
+  //   title: "TokenPocket",
+  //   icon: TokenPocket,
+  //   connectorId: "injected",
+  //   priority: 999,
+  // },
+  // {
+  //   title: "SafePal",
+  //   icon: SafePal,
+  //   connectorId: "injected",
+  //   priority: 999,
+  // },
+  // {
+  //   title: "Coin98",
+  //   icon: Coin98,
+  //   connectorId: "injected",
+  //   priority: 999,
+  // },
 ];

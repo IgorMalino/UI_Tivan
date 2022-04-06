@@ -96,7 +96,7 @@ const ChooseLanguage = () => {
                 target="_blank"
                 href="http://t.me/TIVAN_ENG"
             >
-              <i style={{fontSize:"22px"}} className="telegram plane icon"></i>
+              <i style={{fontSize:"19px"}} className="telegram plane icon"></i>
             </a>
             <ThemeProvider  theme={theme}>
               <Menu

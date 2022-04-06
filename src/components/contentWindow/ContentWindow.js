@@ -9,7 +9,7 @@ import SmallSizeLoading from '../../assets/img/smallSizeLoading.png'
 import {Link} from 'react-router-dom'
 import i18n from 'i18next'
 import {useLocation} from 'react-router-dom'
-import {ConnectWalletContent} from '../ConnectWallet'
+import {ConnectWalletContent} from '../connectWallet/ConnectWallet'
 import { db } from '../../initializeFirebase';
 import ReactHtmlParser from 'react-html-parser';
 import './contentWindow.css'

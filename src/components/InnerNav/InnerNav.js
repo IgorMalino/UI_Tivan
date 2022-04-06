@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import {Link} from 'react-router-dom'
 // import CSS styles
 import "./innerNav.css"
 
@@ -64,14 +65,10 @@ const InnerNav = () => {
         <div id="nav">
             <div id="nav-inner">
               <div id="nav-left" className="noSelect" onMouseOver={(e) => unHideWord(e, t("About"), "left")}>
-                <a href="#" onClick={(e) => {
-                  e.preventDefault();
-                }}  data-id="About">{t("About")}</a>
+                <Link to='about' data-id="About">{t("About")}</Link>
               </div>
               <div id="nav-right" className="noSelect" onMouseOver={(e) => unHideWord(e, t("Presale"), "right")}>
-                <a href="#" onClick={(e) => {
-                  e.preventDefault();
-                }} data-id="Buy it">{t("Presale")}</a>
+                <Link to='presale' data-id="Buy it">{t("Presale")}</Link>
               </div>
             </div>
           </div>

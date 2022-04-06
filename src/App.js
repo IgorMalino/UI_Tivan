@@ -1,6 +1,6 @@
 import { Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
-import ConnectWallet from './components/ConnectWallet'
+import ConnectWallet from './components/connectWallet/ConnectWallet'
 import Main from './components/main/Main'
 import Map from './components/map/Map'
 import Navbar from './components/navbar/Navbar'

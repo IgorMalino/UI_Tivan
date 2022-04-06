@@ -6,11 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router,  Routes, Route, useNavigate} from 'react-router-dom'
 import './i18n'
 import 'semantic-ui-css/semantic.min.css'
+import Preloader from './utils/Preloader'
 
 
 ReactDOM.render(
   // <React.StrictMode>
   <React.Suspense fallback="">
+    <Preloader />
     <Router>
     <App />
     </Router>

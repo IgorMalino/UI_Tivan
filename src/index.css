@@ -13,3 +13,307 @@ code {
     monospace;
 }
 
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-Medium.eot');
+	src: local('Blender Pro Medium'), local('BlenderPro-Medium'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Medium.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Medium.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Medium.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-ThinItalic.eot');
+	src: local('Blender Pro Thin Italic'), local('BlenderPro-ThinItalic'),
+	url('./assets/fonts/blenderpro2/BlenderPro-ThinItalic.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-ThinItalic.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-ThinItalic.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-ThinItalic.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-Heavy.eot');
+	src: local('Blender Pro Heavy'), local('BlenderPro-Heavy'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Heavy.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Heavy.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Heavy.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Heavy.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro Book';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-BookItalic.eot');
+	src: local('Blender Pro Book Italic'), local('BlenderPro-BookItalic'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BookItalic.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BookItalic.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BookItalic.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BookItalic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro Book';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-Book.eot');
+	src: local('Blender Pro Book'), local('BlenderPro-Book'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Book.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Book.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Book.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-Bold.eot');
+	src: local('Blender Pro Bold'), local('BlenderPro-Bold'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Bold.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Bold.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Bold.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-Thin.eot');
+	src: local('Blender Pro Thin'), local('BlenderPro-Thin'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Thin.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Thin.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Thin.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-MediumItalic.eot');
+	src: local('Blender Pro Medium Italic'), local('BlenderPro-MediumItalic'),
+	url('./assets/fonts/blenderpro2/BlenderPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-MediumItalic.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-MediumItalic.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('./assets/fonts/blenderpro2/BlenderPro-BoldItalic.eot');
+	src: local('Blender Pro Bold Italic'), local('BlenderPro-BoldItalic'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BoldItalic.woff2') format('woff2'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BoldItalic.woff') format('woff'),
+	url('./assets/fonts/blenderpro2/BlenderPro-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+.preloader_wrapper {
+  position: absolute;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader_quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader_quote div {
+  margin: 0 5px;
+  transition: 3s;
+  opacity: .5;
+  /* color: rgb(51, 204, 255); */
+  animation: colorChange 10s both;
+}
+
+.preloader_quote h3 {
+  height: 150px;
+}
+
+.preloader_quote h1 {
+  transform-style: preserve-3d;
+  perspective: 300px;
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) translateY(-50%);
+  text-align: center;
+  max-width: 800px;
+  width: 80%;
+  display: inline-table;
+  /* transform: translate3d(0px, 0px, 30px); */
+}
+
+.preloader_quote h1 {
+  font-family: "Blender Pro";
+  font-weight: bold;
+  font-size: 42px;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+/* Zooming exits */
+@-webkit-keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes colorChange {  
+  from {
+    color: rgb(255, 255, 255);
+  }
+  50% {
+    color: rgb(255, 255, 255);
+  }
+  to {
+    color: rgb(51, 204, 255);
+  }
+}
+
+.fadeOutAndZoomOut {
+  -webkit-animation-name: myFadeOut;
+  animation-name: myFadeOut;
+  animation-duration: 3s;
+}
+
+/* Fading exits */
+/* @-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+} */
+@keyframes myFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1)
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+.progressBar {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 80%;
+  height: 2px;
+  margin: 25px auto 0 !important;
+  text-align: center;
+  transition: 10s;
+  transform-origin: center center 0px;
+}
+
+.progressBarAnim {
+  background-color: #333333;
+  animation-name: progressBar !important;
+  animation-duration: 5s !important;
+}
+
+@keyframes progressBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.progressBarLine {
+  opacity: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #00CCFF;
+}
+
+.progressBarLineAnim {
+  animation: progressBarLineAnimation 4s both;
+  animation-delay: 3s;
+}
+
+@keyframes progressBarLineAnimation {
+  from {
+    width: 0%;
+    opacity: 1;
+  }
+  40% {
+    width: 50%;
+    opacity: 1;
+  }
+  70% {
+    width: 70%;
+    opacity: 1;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .preloader_quote h3 {
+    /* height: 100px; */
+  }
+}

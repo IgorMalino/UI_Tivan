@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import minimapBackground from '../../assets/img/mapDetails.png'
 import ContentWindow from '../contentWindow/ContentWindow';
 import {Link} from 'react-router-dom'
@@ -21,6 +21,11 @@ const MinimapMenu = () => {
 
         const [playing, toggle] = useAudio(audio);
         console.log(playing)
+        // useEffect(() => {
+        //         setTimeout(()=> {
+        //                 !playing && toggle();
+        //         }, 17000)
+        //         }, [])
 
     return (
         <>
