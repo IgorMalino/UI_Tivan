@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from 'i18next'
 import Hexagon from '../hex/Hexagon';
 import Braces from '../../braces/Braces';
+import HexGlobe from '../hex/HexGlobe'
 import './main.css'
 import { renderGlobe } from '../hex/renderGlobe';
 
@@ -27,8 +28,8 @@ const Main = () => {
         <div className="main">
         <HeaderLogo />
         <Navbar />
+        <HexGlobe />
         <Braces />
-        {/* <Hexagon /> */}
         <InnerNav />
         <MinimapMenu />
         </div>

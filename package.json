@@ -43,7 +43,7 @@
     "react-sizeme": "^3.0.2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.1.2",
-    "three": "^0.138.0",
+    "three": "^0.139.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

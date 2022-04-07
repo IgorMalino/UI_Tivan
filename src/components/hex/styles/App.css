@@ -1,0 +1,133 @@
+.main {
+  background: url('../../../assets/img/universe.jpeg') center / cover no-repeat;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+html body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #020107 0%, #201b46 100%);
+}
+
+.container .text {
+  color: #2a6d8c;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  margin: -10px -75px 0 0;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.stars {
+  z-index: 10;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 1890px 2191px #2a6d8c, 2038px 622px #2a6d8c, 2270px 39px #2a6d8c, 1122px 1059px #2a6d8c, 66px 1658px #2a6d8c, 1673px 580px #2a6d8c, 1627px 1196px #2a6d8c, 119px 642px #2a6d8c, 1357px 1169px #2a6d8c, 917px 2002px #2a6d8c, 2074px 1158px #2a6d8c, 395px 1575px #2a6d8c, 2063px 1693px #2a6d8c, 75px 2000px #2a6d8c, 1711px 1425px #2a6d8c, 1065px 2370px #2a6d8c, 375px 1986px #2a6d8c, 1458px 1453px #2a6d8c, 1830px 1202px #2a6d8c, 1311px 1405px #2a6d8c, 212px 1456px #2a6d8c, 2429px 1556px #2a6d8c, 1205px 161px #2a6d8c, 589px 1382px #2a6d8c, 580px 1709px #2a6d8c, 2329px 2469px #2a6d8c, 479px 2175px #2a6d8c, 2470px 2371px #2a6d8c, 312px 1363px #2a6d8c, 1704px 504px #2a6d8c, 585px 92px #2a6d8c, 1096px 1625px #2a6d8c, 861px 2369px #2a6d8c, 1765px 1475px #2a6d8c, 2033px 685px #2a6d8c, 484px 2337px #2a6d8c, 1641px 1885px #2a6d8c, 734px 1294px #2a6d8c, 1290px 674px #2a6d8c, 2098px 270px #2a6d8c, 278px 2216px #2a6d8c, 554px 1155px #2a6d8c, 2294px 1326px #2a6d8c, 1740px 1571px #2a6d8c, 2139px 1937px #2a6d8c, 1390px 2430px #2a6d8c, 1810px 2149px #2a6d8c, 1219px 2383px #2a6d8c, 664px 517px #2a6d8c, 1138px 2088px #2a6d8c, 2293px 2372px #2a6d8c, 169px 1389px #2a6d8c, 474px 1788px #2a6d8c, 1874px 668px #2a6d8c, 929px 1320px #2a6d8c, 1556px 2418px #2a6d8c, 2142px 2521px #2a6d8c, 2412px 135px #2a6d8c, 256px 997px #2a6d8c, 2331px 934px #2a6d8c, 1509px 2134px #2a6d8c, 93px 1476px #2a6d8c, 2249px 803px #2a6d8c, 2253px 443px #2a6d8c, 1131px 1097px #2a6d8c, 34px 21px #2a6d8c, 1527px 693px #2a6d8c, 361px 1199px #2a6d8c, 2431px 346px #2a6d8c, 1053px 19px #2a6d8c, 971px 1044px #2a6d8c, 1976px 201px #2a6d8c, 2437px 1575px #2a6d8c, 123px 270px #2a6d8c, 1387px 1594px #2a6d8c, 508px 655px #2a6d8c, 2273px 1197px #2a6d8c, 1899px 1937px #2a6d8c, 2013px 1141px #2a6d8c, 1598px 1708px #2a6d8c, 304px 2394px #2a6d8c, 1900px 2421px #2a6d8c, 632px 2312px #2a6d8c, 1406px 1215px #2a6d8c, 311px 1082px #2a6d8c, 817px 2306px #2a6d8c, 715px 1565px #2a6d8c, 2011px 2451px #2a6d8c, 25px 2401px #2a6d8c, 2223px 1730px #2a6d8c, 2210px 274px #2a6d8c, 2449px 1982px #2a6d8c, 1940px 1536px #2a6d8c, 2101px 2399px #2a6d8c, 1307px 1645px #2a6d8c, 1644px 1227px #2a6d8c, 395px 768px #2a6d8c, 2351px 849px #2a6d8c, 96px 1781px #2a6d8c, 593px 153px #2a6d8c;
+  animation: animStar 400s linear infinite;
+}
+
+.stars:after {
+  content: " ";
+  top: -800px;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  position: absolute;
+  background: transparent;
+  box-shadow: 1002px 1767px #2a6d8c, 810px 2481px #2a6d8c, 230px 1222px #2a6d8c, 1956px 1206px #2a6d8c, 2448px 337px #2a6d8c, 188px 1578px #2a6d8c, 811px 1092px #2a6d8c, 1028px 1636px #2a6d8c, 1860px 792px #2a6d8c, 1594px 435px #2a6d8c, 1502px 1237px #2a6d8c, 2168px 2060px #2a6d8c, 670px 2542px #2a6d8c, 694px 2445px #2a6d8c, 1060px 2076px #2a6d8c, 2127px 2175px #2a6d8c, 1197px 2215px #2a6d8c, 1163px 502px #2a6d8c, 368px 979px #2a6d8c, 1439px 2px #2a6d8c, 1564px 1278px #2a6d8c, 2069px 1098px #2a6d8c, 1307px 560px #2a6d8c, 147px 1701px #2a6d8c, 493px 1027px #2a6d8c, 101px 1917px #2a6d8c, 296px 945px #2a6d8c, 2263px 428px #2a6d8c, 586px 1233px #2a6d8c, 1046px 666px #2a6d8c, 2080px 115px #2a6d8c, 300px 757px #2a6d8c, 2080px 884px #2a6d8c, 2327px 1297px #2a6d8c, 2229px 1199px #2a6d8c, 197px 190px #2a6d8c, 1816px 1718px #2a6d8c, 630px 2308px #2a6d8c, 559px 1529px #2a6d8c, 1279px 1836px #2a6d8c, 1444px 1211px #2a6d8c, 1886px 1812px #2a6d8c, 2243px 2427px #2a6d8c, 93px 1064px #2a6d8c, 251px 1892px #2a6d8c, 1939px 1950px #2a6d8c, 1908px 2033px #2a6d8c, 104px 2193px #2a6d8c, 1987px 2133px #2a6d8c, 1898px 1300px #2a6d8c, 1174px 2179px #2a6d8c, 46px 203px #2a6d8c, 1393px 2254px #2a6d8c, 2390px 1082px #2a6d8c, 1517px 997px #2a6d8c, 356px 2539px #2a6d8c, 1224px 1155px #2a6d8c, 1530px 1704px #2a6d8c, 1549px 1791px #2a6d8c, 1439px 796px #2a6d8c, 1148px 2372px #2a6d8c, 986px 372px #2a6d8c, 188px 1819px #2a6d8c, 2245px 2123px #2a6d8c, 9px 1488px #2a6d8c, 1652px 183px #2a6d8c, 1294px 1822px #2a6d8c, 277px 677px #2a6d8c, 1714px 2223px #2a6d8c, 1292px 331px #2a6d8c, 2084px 925px #2a6d8c, 2543px 1524px #2a6d8c, 1978px 1649px #2a6d8c, 587px 1888px #2a6d8c, 1292px 1537px #2a6d8c, 684px 462px #2a6d8c, 900px 1951px #2a6d8c, 1017px 163px #2a6d8c, 2476px 631px #2a6d8c, 591px 1746px #2a6d8c, 704px 799px #2a6d8c, 2074px 2437px #2a6d8c, 853px 1965px #2a6d8c, 141px 1124px #2a6d8c, 2104px 40px #2a6d8c, 781px 595px #2a6d8c, 708px 534px #2a6d8c, 2549px 922px #2a6d8c, 1488px 2487px #2a6d8c, 129px 942px #2a6d8c, 2101px 2321px #2a6d8c, 1232px 1461px #2a6d8c, 1306px 1149px #2a6d8c, 760px 643px #2a6d8c, 931px 2523px #2a6d8c, 1758px 1253px #2a6d8c, 789px 2331px #2a6d8c, 372px 977px #2a6d8c, 1999px 2095px #2a6d8c, 327px 1549px #2a6d8c;
+}
+
+.stars1 {
+  z-index: 10;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 1151px 1546px #2a6d8c, 1197px 1842px #2a6d8c, 689px 1839px #2a6d8c, 831px 43px #2a6d8c, 282px 808px #2a6d8c, 218px 2178px #2a6d8c, 197px 411px #2a6d8c, 1036px 1165px #2a6d8c, 1780px 1530px #2a6d8c, 1481px 964px #2a6d8c, 508px 1238px #2a6d8c, 1049px 773px #2a6d8c, 2495px 262px #2a6d8c, 878px 1961px #2a6d8c, 906px 1482px #2a6d8c, 2156px 125px #2a6d8c, 1763px 2392px #2a6d8c, 1185px 1226px #2a6d8c, 151px 772px #2a6d8c, 1440px 2441px #2a6d8c, 1316px 656px #2a6d8c, 2124px 1625px #2a6d8c, 175px 349px #2a6d8c, 1405px 2516px #2a6d8c, 1290px 882px #2a6d8c, 677px 1197px #2a6d8c, 65px 56px #2a6d8c, 2389px 2555px #2a6d8c, 2212px 48px #2a6d8c, 736px 638px #2a6d8c, 2305px 1563px #2a6d8c, 2398px 1412px #2a6d8c, 2174px 242px #2a6d8c, 804px 2360px #2a6d8c, 509px 403px #2a6d8c, 438px 2217px #2a6d8c, 1297px 2412px #2a6d8c, 2010px 544px #2a6d8c, 2043px 1474px #2a6d8c, 1218px 1190px #2a6d8c, 18px 2234px #2a6d8c, 1122px 1375px #2a6d8c, 2065px 2410px #2a6d8c, 1961px 2041px #2a6d8c, 590px 2558px #2a6d8c, 1952px 505px #2a6d8c, 764px 1017px #2a6d8c, 1758px 1949px #2a6d8c, 1104px 2346px #2a6d8c, 1867px 1745px #2a6d8c, 272px 2108px #2a6d8c, 7px 874px #2a6d8c, 1206px 211px #2a6d8c, 1213px 2443px #2a6d8c, 771px 1837px #2a6d8c, 62px 985px #2a6d8c, 899px 89px #2a6d8c, 571px 1724px #2a6d8c, 526px 564px #2a6d8c, 1874px 1694px #2a6d8c, 2393px 2427px #2a6d8c, 1431px 2189px #2a6d8c, 274px 2238px #2a6d8c, 564px 60px #2a6d8c, 797px 2476px #2a6d8c, 669px 1844px #2a6d8c, 1584px 2085px #2a6d8c, 2104px 988px #2a6d8c, 1554px 148px #2a6d8c, 703px 1828px #2a6d8c, 2014px 240px #2a6d8c, 49px 1680px #2a6d8c, 835px 650px #2a6d8c, 2559px 1072px #2a6d8c, 1612px 74px #2a6d8c, 1082px 2287px #2a6d8c, 2547px 1409px #2a6d8c, 784px 1076px #2a6d8c, 2066px 2228px #2a6d8c, 1968px 429px #2a6d8c, 2204px 912px #2a6d8c, 1330px 1310px #2a6d8c, 1685px 768px #2a6d8c, 637px 1485px #2a6d8c, 2244px 1573px #2a6d8c, 1935px 672px #2a6d8c, 1234px 1870px #2a6d8c, 2220px 830px #2a6d8c, 876px 698px #2a6d8c, 525px 2127px #2a6d8c, 894px 1316px #2a6d8c, 2425px 2246px #2a6d8c, 575px 1020px #2a6d8c, 2022px 1065px #2a6d8c, 1889px 2297px #2a6d8c, 1356px 1684px #2a6d8c, 1168px 1403px #2a6d8c, 1814px 714px #2a6d8c, 1147px 2557px #2a6d8c, 2285px 1403px #2a6d8c;
+  animation: animStar 425s linear infinite;
+}
+
+.stars1:after {
+  content: " ";
+  top: -800px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  position: absolute;
+  background: transparent;
+  box-shadow: 570px 432px #2a6d8c, 484px 843px #2a6d8c, 726px 2241px #2a6d8c, 1024px 1393px #2a6d8c, 1702px 2070px #2a6d8c, 2196px 1105px #2a6d8c, 1252px 2250px #2a6d8c, 2539px 1957px #2a6d8c, 200px 2353px #2a6d8c, 95px 1372px #2a6d8c, 846px 803px #2a6d8c, 1941px 727px #2a6d8c, 2482px 327px #2a6d8c, 813px 2043px #2a6d8c, 31px 2026px #2a6d8c, 655px 478px #2a6d8c, 1538px 71px #2a6d8c, 56px 1348px #2a6d8c, 1585px 922px #2a6d8c, 1324px 2030px #2a6d8c, 980px 948px #2a6d8c, 1141px 37px #2a6d8c, 284px 1957px #2a6d8c, 96px 1437px #2a6d8c, 886px 560px #2a6d8c, 1877px 2351px #2a6d8c, 1418px 2127px #2a6d8c, 1016px 399px #2a6d8c, 538px 65px #2a6d8c, 1332px 1973px #2a6d8c, 1671px 2123px #2a6d8c, 1492px 1968px #2a6d8c, 764px 948px #2a6d8c, 603px 2466px #2a6d8c, 2283px 1534px #2a6d8c, 2141px 159px #2a6d8c, 2172px 2107px #2a6d8c, 1527px 2554px #2a6d8c, 288px 529px #2a6d8c, 421px 1074px #2a6d8c, 1493px 1725px #2a6d8c, 1690px 2010px #2a6d8c, 2113px 2448px #2a6d8c, 640px 1401px #2a6d8c, 18px 858px #2a6d8c, 846px 1135px #2a6d8c, 1780px 582px #2a6d8c, 341px 298px #2a6d8c, 785px 708px #2a6d8c, 1294px 936px #2a6d8c, 1591px 670px #2a6d8c, 2430px 798px #2a6d8c, 1936px 2482px #2a6d8c, 1405px 1126px #2a6d8c, 2104px 2061px #2a6d8c, 1642px 676px #2a6d8c, 2172px 2012px #2a6d8c, 2261px 429px #2a6d8c, 1538px 2012px #2a6d8c, 2153px 1272px #2a6d8c, 379px 57px #2a6d8c, 226px 16px #2a6d8c, 428px 560px #2a6d8c, 1358px 1342px #2a6d8c, 59px 1637px #2a6d8c, 965px 998px #2a6d8c, 1471px 1971px #2a6d8c, 1910px 443px #2a6d8c, 613px 1548px #2a6d8c, 1381px 1650px #2a6d8c, 962px 453px #2a6d8c, 330px 859px #2a6d8c, 923px 1275px #2a6d8c, 2351px 1816px #2a6d8c, 780px 2413px #2a6d8c, 160px 735px #2a6d8c, 2202px 2151px #2a6d8c, 912px 376px #2a6d8c, 1684px 118px #2a6d8c, 1767px 585px #2a6d8c, 1740px 672px #2a6d8c, 1270px 1331px #2a6d8c, 1499px 797px #2a6d8c, 2267px 1343px #2a6d8c, 1853px 1094px #2a6d8c, 1926px 1091px #2a6d8c, 1827px 97px #2a6d8c, 1533px 1687px #2a6d8c, 855px 2513px #2a6d8c, 2521px 886px #2a6d8c, 2171px 1597px #2a6d8c, 2398px 2431px #2a6d8c, 415px 1202px #2a6d8c, 123px 1084px #2a6d8c, 313px 1958px #2a6d8c, 1550px 802px #2a6d8c, 2105px 2168px #2a6d8c, 1795px 339px #2a6d8c, 204px 447px #2a6d8c, 1008px 1186px #2a6d8c;
+}
+
+.stars2 {
+  z-index: 10;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 1123px 1001px #2a6d8c, 620px 1082px #2a6d8c, 198px 425px #2a6d8c, 1804px 2299px #2a6d8c, 1554px 336px #2a6d8c, 1079px 1437px #2a6d8c, 1237px 1343px #2a6d8c, 576px 2174px #2a6d8c, 2547px 9px #2a6d8c, 2112px 299px #2a6d8c, 1995px 699px #2a6d8c, 842px 1531px #2a6d8c, 542px 1471px #2a6d8c, 978px 2463px #2a6d8c, 1087px 1457px #2a6d8c, 1831px 2316px #2a6d8c, 744px 1237px #2a6d8c, 455px 2341px #2a6d8c, 647px 84px #2a6d8c, 2080px 975px #2a6d8c, 1566px 1229px #2a6d8c, 1532px 2452px #2a6d8c, 847px 2011px #2a6d8c, 1187px 1412px #2a6d8c, 747px 2227px #2a6d8c, 1081px 1657px #2a6d8c, 626px 129px #2a6d8c, 684px 97px #2a6d8c, 1367px 2173px #2a6d8c, 2398px 1809px #2a6d8c, 243px 1492px #2a6d8c, 275px 1983px #2a6d8c, 1942px 173px #2a6d8c, 1465px 2381px #2a6d8c, 1998px 2204px #2a6d8c, 381px 1843px #2a6d8c, 1540px 33px #2a6d8c, 1026px 1346px #2a6d8c, 1225px 502px #2a6d8c, 1995px 1331px #2a6d8c, 1853px 2009px #2a6d8c, 1396px 384px #2a6d8c, 1199px 1679px #2a6d8c, 1962px 1732px #2a6d8c, 57px 771px #2a6d8c, 1155px 730px #2a6d8c, 506px 404px #2a6d8c, 906px 2080px #2a6d8c, 301px 2089px #2a6d8c, 2104px 948px #2a6d8c, 623px 89px #2a6d8c, 293px 2388px #2a6d8c, 1630px 2234px #2a6d8c, 81px 878px #2a6d8c, 2189px 2299px #2a6d8c, 1736px 886px #2a6d8c, 425px 350px #2a6d8c, 2166px 1104px #2a6d8c, 2491px 2236px #2a6d8c, 1236px 1988px #2a6d8c, 2153px 658px #2a6d8c, 460px 1673px #2a6d8c, 1763px 2px #2a6d8c, 2088px 1547px #2a6d8c, 1529px 966px #2a6d8c, 1450px 1235px #2a6d8c, 1154px 2289px #2a6d8c, 1350px 1153px #2a6d8c, 2483px 1514px #2a6d8c, 759px 970px #2a6d8c, 86px 2259px #2a6d8c, 1264px 1201px #2a6d8c, 2301px 2176px #2a6d8c, 172px 1130px #2a6d8c, 829px 135px #2a6d8c, 1773px 1477px #2a6d8c, 1248px 882px #2a6d8c, 1619px 363px #2a6d8c, 1407px 482px #2a6d8c, 1124px 1910px #2a6d8c, 855px 1774px #2a6d8c, 882px 2511px #2a6d8c, 2281px 1802px #2a6d8c, 1391px 381px #2a6d8c, 1351px 1087px #2a6d8c, 2525px 1133px #2a6d8c, 854px 2534px #2a6d8c, 2305px 1337px #2a6d8c, 943px 1931px #2a6d8c, 224px 2312px #2a6d8c, 2161px 1144px #2a6d8c, 1803px 1052px #2a6d8c, 483px 2248px #2a6d8c, 1468px 2098px #2a6d8c, 1356px 648px #2a6d8c, 1637px 791px #2a6d8c, 1695px 2460px #2a6d8c, 461px 1462px #2a6d8c, 1140px 1190px #2a6d8c, 83px 1216px #2a6d8c;
+  animation: animStar 475s linear infinite;
+}
+
+.stars2:after {
+  content: " ";
+  top: -800px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  position: absolute;
+  background: transparent;
+  box-shadow: 1952px 555px #2a6d8c, 1981px 2369px #2a6d8c, 564px 1455px #2a6d8c, 1311px 1953px #2a6d8c, 2338px 1217px #2a6d8c, 305px 2146px #2a6d8c, 1958px 1603px #2a6d8c, 152px 1499px #2a6d8c, 1017px 1422px #2a6d8c, 35px 2249px #2a6d8c, 1497px 927px #2a6d8c, 2031px 957px #2a6d8c, 2449px 34px #2a6d8c, 1288px 483px #2a6d8c, 560px 1076px #2a6d8c, 1950px 1877px #2a6d8c, 1568px 1692px #2a6d8c, 2429px 1968px #2a6d8c, 1352px 2208px #2a6d8c, 2483px 1073px #2a6d8c, 1934px 1610px #2a6d8c, 838px 228px #2a6d8c, 1537px 434px #2a6d8c, 156px 2070px #2a6d8c, 201px 531px #2a6d8c, 1189px 1197px #2a6d8c, 327px 2381px #2a6d8c, 190px 2124px #2a6d8c, 280px 2359px #2a6d8c, 2070px 2496px #2a6d8c, 1088px 1682px #2a6d8c, 1929px 1292px #2a6d8c, 2144px 1583px #2a6d8c, 1601px 1683px #2a6d8c, 1393px 2019px #2a6d8c, 1544px 1856px #2a6d8c, 642px 1452px #2a6d8c, 713px 1359px #2a6d8c, 2018px 501px #2a6d8c, 2016px 873px #2a6d8c, 1832px 1122px #2a6d8c, 1965px 2547px #2a6d8c, 890px 953px #2a6d8c, 106px 1246px #2a6d8c, 1016px 41px #2a6d8c, 394px 998px #2a6d8c, 776px 2160px #2a6d8c, 2532px 741px #2a6d8c, 2522px 1237px #2a6d8c, 1487px 1351px #2a6d8c, 2299px 2184px #2a6d8c, 1448px 2519px #2a6d8c, 2431px 1198px #2a6d8c, 432px 2162px #2a6d8c, 1757px 1749px #2a6d8c, 212px 1856px #2a6d8c, 1342px 1242px #2a6d8c, 2191px 1325px #2a6d8c, 1110px 261px #2a6d8c, 1102px 612px #2a6d8c, 2415px 430px #2a6d8c, 1220px 1256px #2a6d8c, 95px 209px #2a6d8c, 2262px 2262px #2a6d8c, 1302px 2244px #2a6d8c, 1176px 1001px #2a6d8c, 1466px 1601px #2a6d8c, 1530px 1623px #2a6d8c, 1704px 2430px #2a6d8c, 396px 1754px #2a6d8c, 2483px 2436px #2a6d8c, 707px 1433px #2a6d8c, 1920px 816px #2a6d8c, 582px 1678px #2a6d8c, 258px 1449px #2a6d8c, 265px 232px #2a6d8c, 2360px 504px #2a6d8c, 581px 1250px #2a6d8c, 1851px 856px #2a6d8c, 642px 627px #2a6d8c, 529px 2223px #2a6d8c, 177px 804px #2a6d8c, 2481px 534px #2a6d8c, 1945px 2515px #2a6d8c, 1794px 1860px #2a6d8c, 469px 1754px #2a6d8c, 2044px 796px #2a6d8c, 2166px 169px #2a6d8c, 1308px 1973px #2a6d8c, 1578px 2226px #2a6d8c, 1157px 739px #2a6d8c, 677px 319px #2a6d8c, 626px 409px #2a6d8c, 2272px 528px #2a6d8c, 1833px 1167px #2a6d8c, 378px 2284px #2a6d8c, 1425px 345px #2a6d8c, 1256px 774px #2a6d8c, 229px 134px #2a6d8c, 856px 98px #2a6d8c;
+}
+
+.shooting-stars {
+  z-index: 10;
+  width: 5px;
+  height: 85px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), white);
+  animation: animShootingStar 10s linear infinite;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-2560px) translateX(-2560px);
+  }
+}
+
+@keyframes animShootingStar {
+  from {
+    transform: translateY(0px) translateX(0px) rotate(-45deg);
+    opacity: 1;
+    height: 5px;
+  }
+
+  to {
+    transform: translateY(-2560px) translateX(-2560px) rotate(-45deg);
+    opacity: 1;
+    height: 800px;
+  }
+}
