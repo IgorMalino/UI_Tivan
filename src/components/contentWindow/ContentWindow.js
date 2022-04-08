@@ -12,8 +12,13 @@ import {useLocation} from 'react-router-dom'
 import {ConnectWalletContent} from '../connectWallet/ConnectWallet'
 import { db } from '../../initializeFirebase';
 import ReactHtmlParser from 'react-html-parser';
+import card3 from '../../assets/img/card_3.png'
+import card4 from '../../assets/img/card_4.png'
+import archibox from "../../assets/img/archibox.png"
+import bank from "../../assets/img/bank.png"
 import './contentWindow.css'
 import 'animate.css';
+import News from '../news/News';
 
 const ContentWindow = (props) => {
 
@@ -64,7 +69,7 @@ const ContentWindow = (props) => {
             return ''
             break;
             case 'news':
-            return ''
+            return <News />
             break;
             default:
             console.log('Sorry, we are out of ' + selected + '.');  
@@ -94,7 +99,9 @@ const ContentWindow = (props) => {
             
             <div className="content">
                 {selected && renderContentWindowContent(selected)}
-                {data && <div className="animate__animated animate__fadeInUp">{ReactHtmlParser(data[i18n.language])}</div>}
+                {data && <div className={`${selected === "about" && "contentWindow_content"} animate__animated animate__fadeInUp`}>{ReactHtmlParser(data[i18n.language])}</div>}
+                {console.log(data?.en)}
+
             </div>
 
         </div>

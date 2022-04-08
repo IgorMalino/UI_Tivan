@@ -152,10 +152,10 @@ export const World = ({ }) => {
         altitude: 4,
       });
     }
-    setTimeout(() => {
-      globe.controls().enableZoom = true;
-      event.altitude = 4;
-    }, 1000);
+    // setTimeout(() => {
+    //   globe.controls().enableZoom = true;
+    //   event.altitude = 4;
+    // }, 1000);
   };
 
   const globeMaterial = new MeshPhongMaterial();

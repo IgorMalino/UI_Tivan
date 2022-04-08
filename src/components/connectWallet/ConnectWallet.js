@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlug } from "@fortawesome/free-solid-svg-icons"
+import { faPlug, faAddressCard } from "@fortawesome/free-solid-svg-icons"
 import {Link} from 'react-router-dom'
 import {useTranslation} from 'react-i18next'
 import {connectors} from '../../Account/config'
@@ -11,6 +11,7 @@ import { getConnectFunctions } from '../../utils/getConnectFunctions';
 import smalSize from '../../assets/img/smallSize.png'
 import smalSizeLoading from '../../assets/img/smallSizeLoading.png'
 import smalSizeClose from '../../assets/img/smallSizeClose.png'
+// import { getEllipsisTxt } from "helpers/formatters"
 
 import './connectWallet.css'
 
@@ -126,6 +127,7 @@ export const ConnectWalletContent = ({handleClose}) => {
 
 function ConnectWallet() {
   const [open, setOpen] = React.useState(false);
+  const {account} = useWeb3React();
   const handleOpen = () => {
     setOpen(true);
   };
@@ -134,14 +136,24 @@ function ConnectWallet() {
   };
   const {t} = useTranslation()
 
+  const getEllipsisTxt = (str, number) => {
+    const newStr = str.split("")
+    return [...newStr.slice(0,number), "...", ...newStr.slice(newStr.length-number)].join('')
+}
 
   console.log();
 
   return (
     <React.Fragment>
+      {
+        !account ? <Button id="connect-button" style={{color: "#00CCFF"}} onClick={handleOpen}><span><div><FontAwesomeIcon style={{marginRight: "5px", height:"16.5px"}} icon={faPlug} />{t("Connect")}</div></span></Button> : 
+        <>
+        <a className="social-icon" href="#"> <FontAwesomeIcon style={{marginRight:"5px"}} icon={faAddressCard} /> <span className="acc_long_adr">{getEllipsisTxt(account, 6)}</span> </a></>
+      }
       
-      <Button id="connect-button" style={{color: "#00CCFF"}} onClick={handleOpen}><span><div><FontAwesomeIcon style={{marginRight: "5px", height:"16.5px"}} icon={faPlug} />{t("Connect")}</div></span></Button>
       
+      
+
       {/* <Modal
         hideBackdrop
         open={open}

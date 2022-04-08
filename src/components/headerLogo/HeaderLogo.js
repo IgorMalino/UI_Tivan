@@ -21,7 +21,7 @@ const HeaderLogo = () => {
 
   return (
         <>
-        <Link to='headerContent'>
+        <Link to='about'>
         <div id="header" >
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -75 50 138.95" className="animate logosvg">
