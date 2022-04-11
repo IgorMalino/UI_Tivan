@@ -28,7 +28,7 @@ const Main = () => {
         <div className="main">
         <HeaderLogo />
         <Navbar />
-        <HexGlobe />
+        {/* <HexGlobe /> */}
         <Braces />
         <InnerNav />
         <MinimapMenu />

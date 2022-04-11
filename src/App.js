@@ -12,6 +12,7 @@ import {useLocation} from "react-router"
 import ContentWindow from './components/contentWindow/ContentWindow';
 import i18n from 'i18next'
 import { useEffect } from 'react';
+import ArticlePage from './components/news/ArticlePage';
 
 function App() {
 	const navigate = useNavigate()
@@ -45,6 +46,7 @@ function App() {
 					<Route path={`/${i18n.language}`} element={<Main />} />
 					<Route path={`/${i18n.language}/:contenName`} element={<ContentWindow />} />
 					<Route path={`/:contenName`} element={<ContentWindow />} />
+					<Route path={`/${i18n.language}/news/:id`} element={<ArticlePage />} />
 				</Routes>
 			
 				{/* <Route path='/:contenName' element={<ContentWindow />}/> */}

@@ -37,7 +37,7 @@
 .social-icon {
 	text-transform: capitalize;
     color: #00CCFF;
-    padding: 0px 3px;
+    padding: 0px 0px;
     padding-right: 10px;
     font-family: 'Blender Pro';
     font-weight: 700;
@@ -68,4 +68,41 @@
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+}
+
+.UserWalletConnect_content{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - 15px);
+    text-align: center;
+    color: #00CCFF;
+}
+
+.UserWalletConnect_content a {
+    text-decoration: none;
+    color: #00CCFF;
+    display: block;
+    font-family: 'Blender Pro';
+    font-size: 18px;
+}
+
+.UserWalletConnect_content a:hover {
+    color: white
+}
+.UserWalletConnect_content h2 {
+    font-family: 'Blender Pro';
+    text-decoration: none;
+    color: #00CCFF;
+    display: block;
+    font-size: 25px;
+}
+
+
+.UserWalletConnect_content p {
+    text-decoration: none;
+    color: #00CCFF;
+    display: block;
+    font-family: "Blender Pro";
+    font-size: 18px;
 }

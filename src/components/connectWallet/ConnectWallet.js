@@ -11,7 +11,9 @@ import { getConnectFunctions } from '../../utils/getConnectFunctions';
 import smalSize from '../../assets/img/smallSize.png'
 import smalSizeLoading from '../../assets/img/smallSizeLoading.png'
 import smalSizeClose from '../../assets/img/smallSizeClose.png'
-// import { getEllipsisTxt } from "helpers/formatters"
+import Web3 from "web3";
+import ERC20TTVTBalance from './ERC20TTVTBalance'
+import ReferalLink from './ReferalLink'
 
 import './connectWallet.css'
 
@@ -74,7 +76,7 @@ export const ConnectWalletContent = ({handleClose}) => {
     connectWalletConnectSimple,
     connectCoinbaseSimple,
     connectMetamaskSimple
-  } = getConnectFunctions(web3reactContext)
+  } = getConnectFunctions(web3reactContext, handleClose)
 
 
   const getConnector = (name) => {
@@ -125,6 +127,105 @@ export const ConnectWalletContent = ({handleClose}) => {
   )
 }
 
+export const UserWalletConnect = ({handleClose}) => {
+  const web3reactContext = useWeb3React();
+  const {t} = useTranslation()
+  const {
+    connectBinanceWallet,
+    connectWalletConnectSimple,
+    connectCoinbaseSimple,
+    connectMetamaskSimple
+  } = getConnectFunctions(web3reactContext)
+
+  const getEllipsisTxt = (str, number) => {
+    const newStr = str.split("")
+    return [...newStr.slice(0,number), "...", ...newStr.slice(newStr.length-number)].join('')
+  }
+
+  const getConnector = (name) => {
+    switch (name) {
+      case "Metamask" :
+        return connectMetamaskSimple
+      case "Coinbase" :
+        return connectCoinbaseSimple
+      case "WalletConnect" :
+        return connectWalletConnectSimple
+      case "Binance" :
+        return connectBinanceWallet
+    }
+  }
+
+  return (
+    <div className='ConnectWalletContent_wrapper'>
+      <div className='ConnectWalletContent_modal'>
+      <img className='ConnectWalletContent_img' src={smalSize} />
+      <img className='ConnectWalletContent_img_loading' src={smalSizeLoading} />
+      <img className='ConnectWalletContent_img_close' onClick={handleClose} src={smalSizeClose} />
+      <div className='UserWalletConnect_content'>
+        
+         <div id="f_account" className="">
+              <h2 className="animate">ACCOUNT</h2>
+              <p>{getEllipsisTxt(web3reactContext.account, 6)}</p>
+              <p className="bal_teg"><ERC20TTVTBalance /></p>
+              {/* <p className="bal_teg"><NativeBalance /></p> */}
+              <a href="#" onClick={(e) => {
+                  web3reactContext.deactivate()
+                  handleClose()}}>
+                  Log out
+              </a>
+                <div style={{ marginTop: "10px", padding: "0 10px" }}>
+                  <a href="#" onClick={(e) => {
+                    e.preventDefault();
+                    const web3 = new Web3(Web3.givenProvider);
+                    try {
+                      web3.currentProvider.sendAsync({
+                        method: 'wallet_watchAsset',
+                        params: {
+                          'type': 'ERC20',
+                          'options': {
+                            'address': '0x0b260a12cb0f59d24fdd1d56ca5569f3925e233a',
+                            'symbol': 'TVT',
+                            'decimals': '18',
+                            'image': "https://tivan.art/img/fav/tokenLogo.png",
+                          },
+                        },
+                        id: Math.round(Math.random() * 100000)
+                      }, function (err, data) {
+                        if (!err) {
+                          if (data.result) {
+                            console.log('Token added');
+                          } else {
+                            console.log(data);
+                            console.log('Some error');
+                          }
+                        } else {
+                          console.log(err.message);
+                        }
+                      });
+                    } catch (e) {
+                      console.log(e);
+                    }
+                  }}>
+                    Add TVT token to Web3 Wallet
+                  </a>
+                </div>
+                <div style={{ marginTop: "10px", padding: "0 10px" }}>
+                  <a href='https://bscscan.com/address/0xf029ebed6b0ed51f50f47749d1c416098850fffe' target="_blank" rel="noreferrer">
+                    {/* <SelectOutlined style={{ marginRight: "5px" }} /> */}
+                    View on explorer
+                  </a>
+                </div>
+               {/* <ReferalLink /> */}
+                
+              </div>
+      </div>
+      </div>
+      
+      
+    </div>
+  )
+}
+
 function ConnectWallet() {
   const [open, setOpen] = React.useState(false);
   const {account} = useWeb3React();
@@ -148,25 +249,10 @@ function ConnectWallet() {
       {
         !account ? <Button id="connect-button" style={{color: "#00CCFF"}} onClick={handleOpen}><span><div><FontAwesomeIcon style={{marginRight: "5px", height:"16.5px"}} icon={faPlug} />{t("Connect")}</div></span></Button> : 
         <>
-        <a className="social-icon" href="#"> <FontAwesomeIcon style={{marginRight:"5px"}} icon={faAddressCard} /> <span className="acc_long_adr">{getEllipsisTxt(account, 6)}</span> </a></>
+        <a onClick={handleOpen} className="social-icon" href="#"> <FontAwesomeIcon style={{marginRight:"5px"}} icon={faAddressCard} /> <span className="acc_long_adr">{getEllipsisTxt(account, 6)}</span> </a></>
       }
-      
-      
-      
 
-      {/* <Modal
-        hideBackdrop
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="child-modal-title"
-        aria-describedby="child-modal-description"
-      >
-          <Box sx={{ ...style, width: 200 }}>
-          <Web3ReactConnectionComponent />
-          <Button onClick={handleClose}>Close</Button>
-          </Box>
-      </Modal> */}
-      {open && <ConnectWalletContent handleClose={handleClose} />}
+      {open ? !account ? <ConnectWalletContent handleClose={handleClose}/> : <UserWalletConnect handleClose={handleClose} /> : null}
       
       
     </React.Fragment>

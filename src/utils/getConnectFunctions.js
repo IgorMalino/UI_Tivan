@@ -2,12 +2,13 @@ import { injected, walletconnect, resetWalletConnector, walletlink, bsc } from '
 import { useWeb3React } from '@web3-react/core';
 
 
-export const getConnectFunctions = (web3reactContext) => {
+export const getConnectFunctions = (web3reactContext, handleClose) => {
     ;
 
     const connectBinanceWallet = async() => {
 		try {
 			await web3reactContext.activate(bsc);
+			handleClose()
 		} catch (ex) {
 			console.log(ex);
 		}
@@ -16,6 +17,7 @@ export const getConnectFunctions = (web3reactContext) => {
 	const disconnectMetamaskSimple = () => {
 		try {
 			web3reactContext.deactivate();
+			handleClose()
 		} catch (ex) {
 			console.log(ex);
 		}
@@ -25,6 +27,7 @@ export const getConnectFunctions = (web3reactContext) => {
 	const connectMetamaskSimple = async () => {
 		try {
 			await web3reactContext.activate(injected);
+			handleClose()
 		} catch (ex) {
 			console.log(ex);
 		}
@@ -35,6 +38,7 @@ export const getConnectFunctions = (web3reactContext) => {
 		try {
 			resetWalletConnector(walletconnect);
 			await web3reactContext.activate(walletconnect);
+			handleClose()
 		} catch (ex) {
 			console.log(ex);
 		}
@@ -44,6 +48,7 @@ export const getConnectFunctions = (web3reactContext) => {
 	const connectCoinbaseSimple = async () => {
 		try {
 			await web3reactContext.activate(walletlink);
+			handleClose()
 		} catch (ex) {
 			console.log(ex);
 		}

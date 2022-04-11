@@ -1,0 +1,262 @@
+.article_wrapper {
+    border: 2px solid #4183c4;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: initial;
+    color: #4183c4;
+    font-size: 18px;
+    font-family: 'Blender Pro';
+    margin: 25px 0;
+}
+
+.caption {
+    font-size: 25px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.caption:hover {
+    color: white;
+}
+
+.show_button {
+    cursor: pointer;
+    color: white;
+}
+
+.show_button:hover {
+    color: rgb(255, 67, 67);
+
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Medium.eot');
+	src: local('Blender Pro Medium'), local('BlenderPro-Medium'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.eot');
+	src: local('Blender Pro Thin Italic'), local('BlenderPro-ThinItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-ThinItalic.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.eot');
+	src: local('Blender Pro Heavy'), local('BlenderPro-Heavy'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Heavy.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro Book';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.eot');
+	src: local('Blender Pro Book Italic'), local('BlenderPro-BookItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BookItalic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro Book';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Book.eot');
+	src: local('Blender Pro Book'), local('BlenderPro-Book'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Bold.eot');
+	src: local('Blender Pro Bold'), local('BlenderPro-Bold'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-Thin.eot');
+	src: local('Blender Pro Thin'), local('BlenderPro-Thin'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.eot');
+	src: local('Blender Pro Medium Italic'), local('BlenderPro-MediumItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Blender Pro';
+	src: url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.eot');
+	src: local('Blender Pro Bold Italic'), local('BlenderPro-BoldItalic'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.woff2') format('woff2'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.woff') format('woff'),
+	url('../../assets/fonts/blenderpro2/BlenderPro-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+.content {
+    position: absolute;
+    color:white;
+    text-align: center;
+    height: 70%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.mainContent {
+
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.BigWindow svg{
+    width: 100%;
+    height: 100%;
+}
+
+.SmallWindow svg{
+    width: 100%;
+    height: 100%;
+}
+
+.bigSizeImg {
+    width: 100%;
+    height: 100%;
+} 
+
+.bigSizeImgClose {
+    position: absolute;
+    right: 5%;
+    top: 7.5%;
+    width: 3%;
+    cursor: pointer;
+}
+
+.bigSizeImgLoading {
+    position: absolute;
+    bottom: 3.5%;
+    left: 35px;
+    height: 3.5%;
+    width: 40%;
+}
+
+.smallSizeImgLoading {
+    position: absolute;
+    bottom: 15px;
+    right: 13px;
+    height: 25px;
+}
+
+.smallSizeImgClose {
+    position: absolute;
+    right: 6%;
+    top: 4%;
+    height: 24px;
+    /* border-radius: 28px 180px 30px 17px; */
+    cursor: pointer;
+}
+
+.smallSizeImg {
+    height: 100%;
+    width: 100%;
+}
+
+.bigSizeImgClose:active, .smallSizeImgClose:active {
+    transform: scale(0.98);
+}
+
+.contentWindow_content {
+    position: absolute;
+    top: 0;
+ }
+
+.singleArticle_wrapper{
+    height: 100%;
+    text-align: initial;
+    color: #4183c4;
+}
+
+.singleArticle_caption{
+    font-family: 'Blender Pro';
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.singleArticle_text{
+    font-family: 'Blender Pro';
+    font-size: 18px;
+}
+
+.article_content {
+    overflow: auto;
+}
+
+.article_date {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 50px;
+    opacity: 0.7;
+}
