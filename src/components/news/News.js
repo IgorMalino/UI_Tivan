@@ -5,9 +5,18 @@ import './news.css'
 
 const News = () => {
     const [data, setData] = useState()
+    const [page, setPage] = useState(0)
 
-    const fetchBlogs= async (current) =>{
-        const response = await db.collection('News').get();
+    const nextPage = () => {
+        setPage(page+10)
+    }
+    const previousPage = () => {
+        setPage(page-10)
+    }
+
+    const fetchBlogs = async () =>{
+        const response = await db.collection('News').orderBy("caption", "asc").get();
+        
         const arr = response.docs.map(el => {    
            const newEl = el.data()
            newEl.id = el.id
@@ -15,6 +24,8 @@ const News = () => {
         })
         setData(arr)
     }
+
+
 
     useEffect(() => {
         fetchBlogs()
@@ -29,7 +40,12 @@ const News = () => {
     return (
         <>
         <div></div>
-        <div style={{position:"absolute", top:"0"}}>{data && data.map(renderNews)}</div>
+        <div style={{position:"absolute", top:"0"}}>{data && data.slice(page, page+10).map(renderNews)}
+        <button className='pagination_button' onClick={previousPage}>previous</button>
+        <button className='pagination_button' onClick={nextPage}>next</button>
+        </div>
+        
+        
         </>
     )
 }

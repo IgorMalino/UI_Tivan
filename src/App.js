@@ -11,10 +11,13 @@ import {BrowserRouter as Router,  Routes, Route, useNavigate} from 'react-router
 import {useLocation} from "react-router"
 import ContentWindow from './components/contentWindow/ContentWindow';
 import i18n from 'i18next'
-import { useEffect } from 'react';
+import { useEffect, createContext, useState } from 'react';
 import ArticlePage from './components/news/ArticlePage';
+import { UserContext } from './UserContext';
 
 function App() {
+	const [anim, setAnim] = useState(true)
+	const TivanContext = createContext()
 	const navigate = useNavigate()
 	const location = useLocation();
 	// console.log(location.pathname)
@@ -41,6 +44,7 @@ function App() {
 
 	return (
 		<Web3ReactProvider getLibrary={getLibrary}>
+			<UserContext.Provider value={{anim, setAnim}}>
 			{/* <Router> */}
 				<Routes>
 					<Route path={`/${i18n.language}`} element={<Main />} />
@@ -53,6 +57,7 @@ function App() {
 			{/* </Route> */}
 				
 			{/* </Router> */}
+			</UserContext.Provider>
 		</Web3ReactProvider>
 	);
 }

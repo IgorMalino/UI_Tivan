@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 // importing Css styles
 import './headerLogo.css'
 import {Link}from 'react-router-dom'
+import { UserContext } from '../../UserContext';
 
 const content_item_cont = {
     about: "About",
@@ -10,14 +11,17 @@ const content_item_cont = {
 }
 
 const HeaderLogo = () => {
-  const [animatHeader, setAnimateHeader] = useState(true)
+  const {anim, setAnim} = useContext(UserContext)
+  console.log(anim)
+  const [animatHeader, setAnimateHeader] = useState(anim)
 
   useEffect(()=> {
       setTimeout(() => {
-        setAnimateHeader(false)
+        setAnimateHeader(setAnim(false))
       }, 22000)
   }, [])
   
+
 
   return (
         <>

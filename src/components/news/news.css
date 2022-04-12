@@ -190,9 +190,9 @@
 .bigSizeImgClose {
     position: absolute;
     right: 5%;
-    top: 7.5%;
-    width: 3%;
-    cursor: pointer;
+    top: 8.5%;
+    width: 2%;
+    cursor: pointer;;
 }
 
 .bigSizeImgLoading {
@@ -259,4 +259,20 @@
     vertical-align: middle;
     margin-left: 50px;
     opacity: 0.7;
+}
+
+.pagination_button {
+    background-color: transparent;
+    margin: 0 16px;
+    color: #4183c4;
+    padding: 10px 10px;
+    font-family: 'Blender Pro';
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.pagination_button:hover {
+    color: white;
 }
