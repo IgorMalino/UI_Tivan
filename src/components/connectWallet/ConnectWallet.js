@@ -209,13 +209,13 @@ export const UserWalletConnect = ({handleClose}) => {
                     Add TVT token to Web3 Wallet
                   </a>
                 </div>
-                <div style={{ marginTop: "10px", padding: "0 10px" }}>
+                <div style={{ marginTop: "10px", padding: "0 10px", fontSize:"14px" }}>
                   <a href='https://bscscan.com/address/0xf029ebed6b0ed51f50f47749d1c416098850fffe' target="_blank" rel="noreferrer">
                     {/* <SelectOutlined style={{ marginRight: "5px" }} /> */}
                     View on explorer
                   </a>
                 </div>
-               {/* <ReferalLink /> */}
+               <ReferalLink />
                 
               </div>
       </div>

@@ -142,13 +142,21 @@
     position: absolute;
     color:white;
     text-align: center;
-    height: 70%;
+    height: 83%;
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     overflow: scroll;
+    font-family: 'Blender Pro';
+}
+.content p {
+    font-size: 16px;
+}
+
+.content h2, .content h3, .content p, .content h1 {
+    font-family: 'Blender Pro';
 }
 
 .mainContent {
@@ -275,4 +283,30 @@
 
 .pagination_button:hover {
     color: white;
+}
+
+.pagination ul li {
+    height: 100%;
+}
+
+.pagination ul li button {
+    background: #689bcf;;
+    
+}
+
+.pagination ul li div {
+    /* border: 1px solid red; */
+    height: 100%;
+    border-radius: 2px;
+    color: black;
+    display: flex;
+    align-items: center;
+    background: #689bcf;
+
+}
+
+.css-r93niq-MuiButtonBase-root-MuiPaginationItem-root:hover {
+    background-color: transparent;
+    border: 1px solid #689bcf;
+    color: #689bcf;
 }

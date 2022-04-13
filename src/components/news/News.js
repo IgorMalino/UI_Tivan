@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../initializeFirebase';
+import PaginationPart from './PaginationPart'
 import Article from './Article';
 import './news.css'
 
 const News = () => {
     const [data, setData] = useState()
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(1)
 
-    const nextPage = () => {
-        setPage(page+10)
-    }
-    const previousPage = () => {
-        setPage(page-10)
-    }
+    // const nextPage = () => {
+    //     setPage(page+10)
+    // }
+    // const previousPage = () => {
+    //     setPage(page-10)
+    // }
 
     const fetchBlogs = async () =>{
         const response = await db.collection('News').orderBy("caption", "asc").get();
@@ -40,9 +41,8 @@ const News = () => {
     return (
         <>
         <div></div>
-        <div style={{position:"absolute", top:"0"}}>{data && data.slice(page, page+10).map(renderNews)}
-        <button className='pagination_button' onClick={previousPage}>previous</button>
-        <button className='pagination_button' onClick={nextPage}>next</button>
+        <div style={{position:"absolute", top:"0"}}>{data && data.slice((page-1)*10, ((page-1)*10)+10).map(renderNews)}
+        {data && <PaginationPart setPage={setPage} pagesCount={Math.ceil(data.length/10)} />}
         </div>
         
         

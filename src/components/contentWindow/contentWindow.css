@@ -232,16 +232,19 @@
     font-family: 'Blender Pro';
 }
 
-#about h2 {
-    display: block;
-    position: relative;
-    font-family: "Blender Pro";
-    font-weight: bold;
-    font-size: 30px;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-}
+
+    #about h2 {
+		display: block;
+		position: relative;
+		font-family: "Blender Pro";
+		font-weight: bold;
+		font-size: 30px;
+		margin: 0;
+		padding: 0;
+		text-transform: uppercase;
+		color: #0082A2;
+	}
+
 
 /* .ovinBox{
 	border: solid 1px;

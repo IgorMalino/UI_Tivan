@@ -76,7 +76,8 @@
     transform: translateY(-50%);
     width: calc(100% - 15px);
     text-align: center;
-    color: #00CCFF;
+    color: white;
+    font-family: "Blender Pro";
 }
 
 .UserWalletConnect_content a {
@@ -93,15 +94,18 @@
 .UserWalletConnect_content h2 {
     font-family: 'Blender Pro';
     text-decoration: none;
-    color: #00CCFF;
+    color: white;
     display: block;
     font-size: 25px;
 }
 
+.UserWalletConnect_content svg{
+    color: #00CCFF
+ }
 
 .UserWalletConnect_content p {
     text-decoration: none;
-    color: #00CCFF;
+    color: white;
     display: block;
     font-family: "Blender Pro";
     font-size: 18px;

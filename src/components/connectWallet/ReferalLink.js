@@ -20,15 +20,14 @@ const ReferalLink = () => {
   const RefAdrStatus = async (refferer) => {
         console.log("before if")
     if (web3reactContext.account) {
-
+      console.log(web3reactContext.account, "account")
       const web3 = new Web3(Web3.givenProvider);
       const SwapContract = new web3.eth.Contract(configData.contract_presale.abi, configData.contract_presale.address);
       let ch_ref = await SwapContract.methods.getRefInfo(refferer).call();
-
       if (ch_ref.status) {
         setRef_link({status:true,totalAmount:"",needAmount:"",needMoreAmount:""});
       }else{
-        setRef_link({status:false,totalAmount:parseFloat(web3.utils.fromWei(ch_ref.totalAmount, 18).toFixed(2)),needAmount:parseFloat(web3.utils.fromWei(ch_ref.needAmount, 18).toFixed(2)),needMoreAmount:parseFloat(web3.utils.fromWei(ch_ref.needMoreAmount, 18).toFixed(2))});
+        setRef_link({status:false,totalAmount:parseFloat(web3.utils.fromWei(ch_ref.totalAmount)),needAmount:parseFloat(web3.utils.fromWei(ch_ref.needAmount)),needMoreAmount:parseFloat(web3.utils.fromWei(ch_ref.needMoreAmount))});
       }
 
     }
