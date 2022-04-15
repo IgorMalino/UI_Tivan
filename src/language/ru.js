@@ -6,7 +6,7 @@ export const ruLanguage = {
     Arena : "АРЕНА",
     Bank : "БАНК",
     Market : "МАРКЕТ",
-    Main_base : "ГЛАВНАЯ БАЗА",
+    Main_base : "БАЗА",
     Labs : "ЛАБОРАТОРИИ",
     Wiki : "ВИКИ",
     News : "НОВОСТИ",

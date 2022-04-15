@@ -7,7 +7,6 @@ import {BrowserRouter as Router,  Routes, Route, useNavigate} from 'react-router
 import './i18n'
 import 'semantic-ui-css/semantic.min.css'
 import Preloader from './utils/Preloader'
-import {moralisProvider} from 'react-moralis'
 
 ReactDOM.render(
   // <React.StrictMode>
