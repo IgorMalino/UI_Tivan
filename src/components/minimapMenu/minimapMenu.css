@@ -204,6 +204,14 @@
     }
     .minimapBackground img {
         bottom: -20px;
+        transform: translateY(45px);
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .minimapBackground {
+        /* bottom: -49px;
+        height: 200px */
     }
 }
 

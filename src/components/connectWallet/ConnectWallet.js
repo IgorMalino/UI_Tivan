@@ -14,6 +14,7 @@ import smalSizeClose from '../../assets/img/smallSizeClose.png'
 import Web3 from "web3";
 import ERC20TTVTBalance from './ERC20TTVTBalance'
 import ReferalLink from './ReferalLink'
+import windowDimensions from '../../utils/windowDimensions'
 
 import './connectWallet.css'
 
@@ -229,6 +230,7 @@ export const UserWalletConnect = ({handleClose}) => {
 function ConnectWallet() {
   const [open, setOpen] = React.useState(false);
   const {account} = useWeb3React();
+  const {width} = windowDimensions()
   const handleOpen = () => {
     setOpen(true);
   };
@@ -247,9 +249,9 @@ function ConnectWallet() {
   return (
     <React.Fragment>
       {
-        !account ? <Button id="connect-button" style={{color: "#00CCFF"}} onClick={handleOpen}><span><div><FontAwesomeIcon style={{marginRight: "5px", height:"16.5px"}} icon={faPlug} />{t("Connect")}</div></span></Button> : 
+        !account ? <Button id="connect-button" style={{color: "#00CCFF"}} onClick={handleOpen}><span><div><FontAwesomeIcon style={{marginRight: "5px", height:"16.5px"}} icon={faPlug} /><span className='connect_text'>{t("Connect")}</span></div></span></Button> : 
         <>
-        <a onClick={handleOpen} className="social-icon" href="#"> <FontAwesomeIcon style={{marginRight:"5px"}} icon={faAddressCard} /> <span className="acc_long_adr">{getEllipsisTxt(account, 6)}</span> </a></>
+        <a onClick={handleOpen} className="social-icon" href="#"> <FontAwesomeIcon style={{marginRight:"5px"}} icon={faAddressCard} /> <span className="acc_long_adr">{getEllipsisTxt(account, width < 500 ? 3 : 6)}</span> </a></>
       }
 
       {open ? !account ? <ConnectWalletContent handleClose={handleClose}/> : <UserWalletConnect handleClose={handleClose} /> : null}

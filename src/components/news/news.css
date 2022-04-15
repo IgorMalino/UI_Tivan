@@ -310,3 +310,7 @@
     border: 1px solid #689bcf;
     color: #689bcf;
 }
+
+.content::-webkit-scrollbar {
+    width: 0px;
+}

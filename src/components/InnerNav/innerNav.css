@@ -70,7 +70,8 @@ body.isDesktop #nav-right a:hover {
 @media only screen and (max-width: 768px) {
 	#nav {
 		width: 250px;
-		top: 18px;
+		top: 13px;
+		left: 16px;
 	}
 	#nav-left {
 		left: 20px;
