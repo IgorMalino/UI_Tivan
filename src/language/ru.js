@@ -1,6 +1,6 @@
 export const ruLanguage = {
     About : "О Проекте",
-    Presale : "ПРЕПРОДАЖА",
+    Presale : "ПРОДАЖА",
     Gallery : "ГАЛЛЕРЕЯ",
     Game: "Игра",
     Arena : "АРЕНА",
