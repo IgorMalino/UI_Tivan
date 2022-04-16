@@ -111,3 +111,9 @@
     font-size: 18px;
 }
 
+@media only screen and (max-width: 768px) {
+    .ConnectWalletContent_wrapper {
+        left: auto;
+        right: -12px;
+    }
+}
