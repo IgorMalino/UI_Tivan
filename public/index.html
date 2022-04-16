@@ -13,6 +13,119 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"></link>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Tivan</title>
+
+    <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/ArrayExecuter.js"
+  ></script>
+
+  <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/three/three.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/three/stats.min.js"
+  ></script>
+
+  <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/gsap/TweenMax.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/gsap/utils/SplitText.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/gsap/plugins/AttrPlugin.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/gsap/plugins/ScrambleTextPlugin.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="%PUBLIC_URL%/js/gsap/plugins/DrawSVGPlugin.min.js"
+  ></script>
+
+  <script type="x-shader/x-vertex" id="vertexshader">
+        varying vec2 vUv;
+
+    void main() {
+            vUv = uv;
+      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="fragmentshader">
+    varying vec2 vUv;
+    uniform vec3 color;
+    uniform sampler2D texture;
+
+    void main() {
+      gl_FragColor = vec4( color, 1.0 );
+      gl_FragColor = gl_FragColor * texture2D( texture, vUv );
+    }
+  </script>
+
+  <script type="x-shader/x-vertex" id="particle_vertexshader">
+    attribute float size;
+    attribute float alpha;
+    varying float vAlpha;
+
+    void main() {
+            vAlpha = alpha;
+      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      gl_PointSize = size * ( 300.0 / -mvPosition.z );
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="particle_fragmentshader">
+    uniform vec3 color;
+    uniform sampler2D texture;
+        varying float vAlpha;
+
+    void main() {
+      gl_FragColor = vec4( color, 1.0 );
+      gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+      gl_FragColor.a *= vAlpha;
+    }
+  </script>
+
+  <script type="x-shader/x-vertex" id="line_vertexshader">
+    attribute float alpha;
+    varying float vAlpha;
+
+    void main() {
+            vAlpha = alpha;
+      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="line_fragmentshader">
+    uniform vec3 color;
+        varying float vAlpha;
+
+      uniform vec3 fogColor;
+    uniform float fogNear;
+    uniform float fogFar;
+
+    void main() {
+      gl_FragColor = vec4( color, 1.0 );
+      gl_FragColor = vec4(  color, vAlpha );
+
+      #ifdef USE_FOG
+        #ifdef USE_LOGDEPTHBUF_EXT
+          float depth = gl_FragDepthEXT / gl_FragCoord.w;
+        #else
+          float depth = gl_FragCoord.z / gl_FragCoord.w;
+        #endif
+        float fogFactor = smoothstep( fogNear, fogFar, depth );
+        gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor );
+      #endif
+    }
+  </script>
   </head>
   <body>
     <div id="root"></div>
@@ -41,5 +154,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <script src="./hexasphere.js"></script>
     <!-- <script type="text/javascript" src="%PUBLIC_URL%/js/threed.js"></script>  -->
+    <div id="interactive1"></div>
+
+    <script type="text/javascript" src="%PUBLIC_URL%/js/threed.js"></script>
   </body>
 </html>
