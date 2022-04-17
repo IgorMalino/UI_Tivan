@@ -2,6 +2,8 @@ var container,
   camera,
   scene,
   renderer,
+  stats,
+  statsCreated,
   i,
   x,
   y,
@@ -51,8 +53,8 @@ var colorPrimary_Base = "#33CCFF",
   colorHighlight = new THREE.Color(colorSecondary);
 
 function initWebgl() {
-  container = document.getElementById("interactive1");
-
+  debugger;
+  //   setupDeviceSettings();
   var e = window.innerWidth,
     a = window.innerHeight;
   (scene = new THREE.Scene()),
@@ -86,6 +88,10 @@ function initWebgl() {
       vars: [stepComplete],
     },
     {
+      fn: createMedia,
+      vars: [stepComplete],
+    },
+    {
       fn: createArcsSnake,
       vars: [stepComplete],
     },
@@ -114,6 +120,14 @@ function initWebgl() {
       vars: [stepComplete],
     },
     {
+      fn: createMinimapBg,
+      vars: [stepComplete],
+    },
+    {
+      fn: createGlitch,
+      vars: [stepComplete],
+    },
+    {
       fn: createPreloader,
       vars: [stepComplete],
     },
@@ -121,28 +135,71 @@ function initWebgl() {
       fn: createStars,
       vars: null,
     },
-  ]),
-    (renderer = new THREE.WebGLRenderer({
-      antialias: !0,
-      alpha: !1,
-    })),
-    initExperience(),
-    renderer.setSize(e, a),
-    renderer.setClearColor(0, 1),
-    container.appendChild(renderer.domElement),
-    animate();
+  ]);
+
+  renderer = new THREE.WebGLRenderer({
+    antialias: !0,
+    alpha: !1,
+  });
+
+  renderer.setSize(e, a);
+  renderer.setClearColor(0, 1);
+
+  container = document.getElementById("interactive");
+  container.appendChild(renderer.domElement);
+  // $("body").click(function () {
+  //   soundIsOn || initAudio();
+  // }),
+  animate();
 }
+var preloaderAnimationIn,
+  preloaderAnimationOut,
+  preloaderSplitText,
+  preloaderSplitTextWordTotal,
+  introAnimation,
+  preloaderAnimationInComplete = !1,
+  preloaderArray = [],
+  preloaderComplete = !1,
+  preloaderLoaded = 0,
+  preloaderTotal = 0,
+  isIntroDone = !1;
 
 function createPreloader(e) {
   preloaderAnimationIn = new TimelineMax({
     paused: !0,
     delay: 0.25,
     onComplete: function () {
+      preloaderAnimationInComplete = !0;
+      startPreloader();
+    },
+  });
+
+  preloaderAnimationIn.timeScale(1);
+  preloaderAnimationIn.play(0);
+  e && e();
+}
+
+function startPreloader() {
+  checkPreloader();
+}
+
+function checkPreloader() {
+  preloaderComplete = !0;
+
+  finishPreloader();
+  initExperience();
+}
+
+function finishPreloader() {
+  preloaderAnimationOut = new TimelineMax({
+    paused: !0,
+    onComplete: function () {
+      debugger;
       playIntro();
     },
   });
 
-  preloaderAnimationIn.timeScale(1), preloaderAnimationIn.play(0), e && e();
+  preloaderAnimationOut.timeScale(1), preloaderAnimationOut.play(0);
 }
 
 var arrayExecuter = new ArrayExecuter(),
@@ -150,40 +207,695 @@ var arrayExecuter = new ArrayExecuter(),
 
 function initExperience() {
   document
-    .getElementById("interactive1")
+    .getElementById("interactive")
     .addEventListener("mousedown", onDocumentMouseDown, !1),
     document
-      .getElementById("interactive1")
+      .getElementById("interactive")
       .addEventListener("mousemove", onDocumentMouseMove, !1),
     document
-      .getElementById("interactive1")
+      .getElementById("interactive")
       .addEventListener("mouseup", onDocumentMouseUp, !1),
     document
-      .getElementById("interactive1")
+      .getElementById("interactive")
       .addEventListener("mouseleave", onDocumentMouseLeave, !1),
     document
-      .getElementById("interactive1")
+      .getElementById("interactive")
       .addEventListener("touchstart", onDocumentTouchStart, !1),
     document
-      .getElementById("interactive1")
+      .getElementById("interactive")
       .addEventListener("touchmove", onDocumentTouchMove, !1),
     document
-      .getElementById("interactive1")
+      .getElementById("interactive")
       .addEventListener("touchend", onDocumentTouchEnd, !1),
     document
-      .getElementById("interactive1")
+      .getElementById("interactive")
       .addEventListener("mousewheel", onMouseWheel, !1),
     document.addEventListener("gesturestart", function (a) {
       a.preventDefault();
     }),
     window.addEventListener("resize", onWindowResize, !1),
-    onWindowResize();
+    onWindowResize(),
+    initButtons();
 }
 
 function playIntro() {
-  (isGlobeRotated = !0), (isGlobeEventsEnabled = !0);
+  debugger;
 
-  setArcAnimation("snake"), showGlobe();
+  isGlobeRotated = !0;
+  isGlobeEventsEnabled = !0;
+
+  TweenMax.set("#ui svg", {
+    rotation: -90,
+    transformOrigin: "center center",
+  });
+  TweenMax.set("#bracket-left", {
+    drawSVG: "20% 30%",
+  });
+  TweenMax.set("#bracket-right", {
+    drawSVG: "70% 80%",
+  });
+  introAnimation = new TimelineMax({
+    paused: !0,
+    force3D: !0,
+    onComplete: function () {
+      isIntroDone = !0;
+    },
+  });
+  introAnimation.fromTo(
+    "#preloader",
+    2,
+    {
+      autoAlpha: 1,
+    },
+    {
+      autoAlpha: 0,
+      ease: Linear.easeNone,
+    },
+    0
+  );
+  introAnimation.staggerFromTo(
+    "#header .animate",
+    2,
+    {
+      y: -75,
+    },
+    {
+      y: 0,
+      ease: Expo.easeInOut,
+    },
+    -0.1,
+    1
+  );
+  introAnimation.fromTo(
+    "#nav-left a",
+    2,
+    {
+      x: 100,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      ease: Expo.easeInOut,
+    },
+    0.1,
+    2
+  );
+  introAnimation.fromTo(
+    "#nav-right a",
+    2,
+    {
+      x: -100,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      ease: Expo.easeInOut,
+    },
+    0.1,
+    2
+  );
+  introAnimation.staggerFromTo(
+    "#arcMode .optionitem",
+    2,
+    {
+      x: -150,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      ease: Expo.easeOut,
+    },
+    -0.1,
+    1.5
+  );
+  introAnimation.staggerFromTo(
+    "#colorMode .optionitem",
+    2,
+    {
+      x: 150,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      ease: Expo.easeOut,
+    },
+    0.1,
+    1.5
+  );
+  introAnimation.fromTo(
+    ".category",
+    2,
+    {
+      autoAlpha: 0,
+    },
+    {
+      autoAlpha: 1,
+    },
+    2
+  );
+  introAnimation.fromTo(
+    "#minimapBackground",
+    1,
+    {
+      autoAlpha: 0,
+    },
+    {
+      autoAlpha: 1,
+    },
+    1
+  );
+  introAnimation.fromTo(
+    "#minimap",
+    2,
+    {
+      autoAlpha: 0,
+    },
+    {
+      autoAlpha: 1,
+    },
+    2
+  );
+  introAnimation.fromTo(
+    "#palette",
+    2,
+    {
+      y: 50,
+      autoAlpha: 0,
+    },
+    {
+      y: 0,
+      autoAlpha: 1,
+      ease: Expo.easeOut,
+    },
+    1.25
+  );
+  introAnimation.fromTo(
+    "#soundButton",
+    2,
+    {
+      x: -50,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      ease: Expo.easeOut,
+    },
+    1.75
+  );
+  introAnimation.fromTo(
+    "#rotationMode",
+    2,
+    {
+      x: 50,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      ease: Expo.easeOut,
+    },
+    1.75
+  );
+
+  introAnimation.timeScale(1);
+  introAnimation.play();
+
+  var e = new TimelineMax({
+    paused: !0,
+    delay: 3,
+  });
+  e.fromTo(
+    minimapSpiral,
+    1,
+    {
+      pixi: {
+        alpha: 0,
+      },
+    },
+    {
+      pixi: {
+        alpha: 1,
+      },
+      ease: Linear.easeNone,
+    },
+    0
+  ),
+    e.fromTo(
+      minimapDetails,
+      1,
+      {
+        pixi: {
+          alpha: 0,
+        },
+      },
+      {
+        pixi: {
+          alpha: 1,
+        },
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapLines,
+      1,
+      {
+        pixi: {
+          alpha: 0,
+        },
+      },
+      {
+        pixi: {
+          alpha: 1,
+        },
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.to(
+      minimapDetails,
+      1,
+      {
+        pixi: {
+          tint: colorPrimary,
+        },
+      },
+      3
+    ),
+    e.fromTo(
+      minimapLines,
+      2,
+      {
+        pixi: {
+          tint: 16777215,
+        },
+      },
+      {
+        pixi: {
+          tint: colorPrimary,
+        },
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapMaskGradient,
+      2,
+      {
+        pixi: {
+          scaleX: 0,
+        },
+      },
+      {
+        pixi: {
+          scaleX: 1.25,
+        },
+        ease: Expo.easeOut,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapSpiral,
+      2,
+      {
+        pixi: {
+          rotation: 90,
+        },
+      },
+      {
+        pixi: {
+          rotation: 450,
+        },
+        ease: Expo.easeOut,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapSpiral,
+      0.1,
+      {
+        pixi: {
+          alpha: 0,
+        },
+      },
+      {
+        pixi: {
+          alpha: 1,
+        },
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapSpiral,
+      0.75,
+      {
+        pixi: {
+          alpha: 1,
+        },
+      },
+      {
+        pixi: {
+          alpha: 0,
+        },
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      0.2
+    ),
+    e.fromTo(
+      minimapMaskGradient,
+      2,
+      {
+        pixi: {
+          alpha: 1,
+        },
+      },
+      {
+        pixi: {
+          alpha: 0,
+        },
+        ease: Linear.easeNone,
+      },
+      0.5
+    ),
+    e.fromTo(
+      minimapBlipsGroup,
+      0.65,
+      {
+        pixi: {
+          scale: 0,
+        },
+      },
+      {
+        pixi: {
+          scale: 1,
+        },
+        ease: Expo.easeOut,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapBlipArray,
+      0.75,
+      {
+        pixi: {
+          alpha: 1,
+        },
+      },
+      {
+        pixi: {
+          alpha: 0,
+        },
+        ease: Linear.easeNone,
+      },
+      0.5
+    ),
+    e.fromTo(
+      minimapSpikesGroup,
+      0.75,
+      {
+        pixi: {
+          scale: 0,
+        },
+      },
+      {
+        pixi: {
+          scale: 1,
+        },
+        ease: Expo.easeOut,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapXArray,
+      0.75,
+      {
+        pixi: {
+          scaleY: 1,
+        },
+      },
+      {
+        pixi: {
+          scaleY: 0,
+        },
+        ease: Circ.easeInOut,
+      },
+      0.1
+    ),
+    e.fromTo(
+      minimapExtras1,
+      3,
+      {
+        pixi: {
+          rotation: 0,
+        },
+      },
+      {
+        pixi: {
+          rotation: -360,
+        },
+        ease: Expo.easeOut,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapExtras1,
+      0.1,
+      {
+        pixi: {
+          alpha: 0,
+        },
+      },
+      {
+        pixi: {
+          alpha: 1,
+        },
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapExtras1,
+      1,
+      {
+        pixi: {
+          alpha: 1,
+          tint: 16777215,
+        },
+      },
+      {
+        pixi: {
+          alpha: 0,
+          tint: colorPrimary,
+        },
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      0.2
+    ),
+    e.fromTo(
+      minimapExtras2,
+      1.5,
+      {
+        pixi: {
+          scale: 0.5,
+        },
+      },
+      {
+        pixi: {
+          scale: 1.1,
+        },
+        ease: Expo.easeOut,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapExtras2,
+      0.1,
+      {
+        pixi: {
+          alpha: 0,
+        },
+      },
+      {
+        pixi: {
+          alpha: 0.5,
+        },
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapExtras2,
+      1,
+      {
+        pixi: {
+          alpha: 0.5,
+          tint: 16777215,
+        },
+      },
+      {
+        pixi: {
+          alpha: 0,
+          tint: colorPrimary,
+        },
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      0.2
+    ),
+    e.fromTo(
+      minimapXArray,
+      1,
+      {
+        pixi: {
+          tint: 16777215,
+        },
+      },
+      {
+        pixi: {
+          tint: colorPrimary,
+        },
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.fromTo(
+      minimapBlipArray,
+      1,
+      {
+        pixi: {
+          tint: 16777215,
+        },
+      },
+      {
+        pixi: {
+          tint: colorPrimary,
+        },
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    e.timeScale(1.5),
+    e.play();
+  var a = new TimelineMax({
+    paused: !0,
+    delay: 5,
+  });
+  a.fromTo(
+    "#tutorial",
+    1,
+    {
+      autoAlpha: 0,
+    },
+    {
+      autoAlpha: 1,
+      immediateRender: !1,
+      ease: Linear.easeNone,
+    },
+    0
+  ),
+    a.fromTo(
+      "#tutorial",
+      2,
+      {
+        scrambleText: {
+          text: " ",
+        },
+      },
+      {
+        scrambleText: {
+          text: "GO TO BASE",
+          chars: "0123456789!@#$%^&*()",
+        },
+        ease: Expo.easeInOut,
+      },
+      0
+    ),
+    a.fromTo(
+      "#tutorial",
+      1,
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      3
+    ),
+    a.fromTo(
+      "#tutorial",
+      2,
+      {
+        scrambleText: {
+          text: " ",
+        },
+      },
+      {
+        scrambleText: {
+          text: "ZOOM IN TO SEE LOCATIONS",
+          chars: "0123456789!@#$%^&*()",
+        },
+        ease: Expo.easeInOut,
+      },
+      3
+    ),
+    a.fromTo(
+      "#tutorial",
+      1,
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      6
+    ),
+    a.fromTo(
+      "#tutorial",
+      2,
+      {
+        scrambleText: {
+          text: " ",
+        },
+      },
+      {
+        scrambleText: {
+          text: "PLAY WITH THE MENU BELOW",
+          chars: "0123456789!@#$%^&*()",
+        },
+        ease: Expo.easeInOut,
+      },
+      6
+    ),
+    a.fromTo(
+      "#tutorial",
+      1,
+      {
+        autoAlpha: 1,
+      },
+      {
+        autoAlpha: 0,
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      9
+    ),
+    a.timeScale(1),
+    a.play(),
+    setArcAnimation("snake"),
+    showGlobe();
 }
 var rotationObject, earthObject;
 
@@ -303,7 +1015,7 @@ var universeBgObject,
   universeCreated = !1;
 
 function createUniverse(e) {
-  (universeBgTexture = new THREE.TextureLoader().load("/img/universe.jpeg")),
+  (universeBgTexture = new THREE.TextureLoader().load("/img2/universe.jpeg")),
     (universeBgTexture.anisotropy = 16),
     (universeBgGeometry = new THREE.PlaneGeometry(1500, 750, 1, 1)),
     (universeBgMaterial = new THREE.MeshBasicMaterial({
@@ -352,7 +1064,7 @@ var globeBufferGeometry,
 
 function createGlobe(e) {
   (globeBufferGeometry = new THREE.SphereBufferGeometry(globeRadius, 64, 64)),
-    (globeTexture = new THREE.TextureLoader().load("/img/map2.png")),
+    (globeTexture = new THREE.TextureLoader().load("/img2/map2.png")),
     (globeTexture.anisotropy = 16),
     (globeInnerMaterial = new THREE.MeshBasicMaterial({
       map: globeTexture,
@@ -397,7 +1109,7 @@ function createGlobe(e) {
     (globeShieldMesh.name = "globeShieldMesh"),
     scene.add(globeShieldMesh);
   var a = new Image();
-  (a.src = "/img/map_inverted.png"),
+  (a.src = "/img2/map_inverted.png"),
     (a.onload = function () {
       var e = document.createElement("canvas");
       (e.width = a.width), (e.height = a.height);
@@ -466,7 +1178,9 @@ function createGlobe(e) {
         earthObject.add(globeCloud);
     }),
     (globeGlowSize = 200),
-    (globeGlowTexture = new THREE.TextureLoader().load("/img/earth-glow.jpeg")),
+    (globeGlowTexture = new THREE.TextureLoader().load(
+      "/img2/earth-glow.jpeg"
+    )),
     (globeGlowTexture.anisotropy = 2),
     (globeGlowTexture.wrapS = globeGlowTexture.wrapT = THREE.RepeatWrapping),
     (globeGlowTexture.magFilter = THREE.NearestFilter),
@@ -586,7 +1300,7 @@ function createDots(e) {
     dotObject = new THREE.Group(),
       dotObject.name = "dotObject",
       earthObject.add(dotObject),
-      dotTexture = new THREE.TextureLoader().load("/img/dot-inverted.png"),
+      dotTexture = new THREE.TextureLoader().load("/img2/dot-inverted.png"),
       dotMaterial = new THREE.MeshBasicMaterial({
         map: dotTexture,
         color: colorHighlight,
@@ -652,9 +1366,28 @@ function createDots(e) {
       dotSpikesVerticesArray.push(u),
       dotSpikesCloudVerticesArray.push(u);
   }
-
+  /*Lines*/
+  /*
+    for (var S = new Float32Array(3 * dotSpikesVerticesArray.length), g = 0; g < dotSpikesVerticesArray.length; g++) S[3 * g] = dotSpikesVerticesArray[g].x, S[3 * g + 1] = dotSpikesVerticesArray[g].y, S[3 * g + 2] = dotSpikesVerticesArray[g].z;
+    dotSpikesMaterial = new THREE.LineBasicMaterial({
+        linewidth: 1,
+        color: colorHighlight,
+        transparent: !0,
+        blending: THREE.AdditiveBlending,
+        fog: !0,
+        depthWrite: !1
+    }), dotSpikesBufferGeometry = new THREE.BufferGeometry, dotSpikesBufferGeometry.addAttribute("position", new THREE.BufferAttribute(S, 3)), dotSpikesMesh = new THREE.LineSegments(dotSpikesBufferGeometry, dotSpikesMaterial), dotObject.add(dotSpikesMesh);
+    */
   var U = [];
-
+  /*Roket*/
+  /*
+    for (g = 0; g < dotSpikesCloudVerticesArray.length; g++) {
+        var m = new THREE.Vector3;
+        m = dotSpikesCloudVerticesArray[g];
+        var u = m.clone();
+        u.multiplyScalar(1.0025), U.push(m), U.push(u)
+    }
+    */
   for (var S = new Float32Array(3 * U.length), g = 0; g < U.length; g++)
     (S[3 * g] = U[g].x), (S[3 * g + 1] = U[g].y), (S[3 * g + 2] = U[g].z);
   (dotSpikesExtraMaterial = new THREE.LineBasicMaterial({
@@ -689,6 +1422,72 @@ function renderDots() {
     var t = 2;
     2 === dotDetailsArray[i].type && (t = 3),
       dotSpritesArray[i].scale.set(t - a, t - a, 1);
+  }
+}
+var mediaObject,
+  mediaTexture,
+  mediaMaterial,
+  mediaCloud,
+  mediaSpritesArray = [],
+  mediaDetailsArray = [],
+  mediaVerticesArray = [],
+  mediaCreated = !1;
+
+function createMedia(e) {
+  for (
+    mediaObject = new THREE.Group(),
+      mediaObject.name = "mediaObject",
+      earthObject.add(mediaObject),
+      l = 0;
+    l < dataMedia.length;
+    l++
+  ) {
+    var a = dataMedia[l][0],
+      t = dataMedia[l][2],
+      o = dataMedia[l][3],
+      n = 0.1 * (Math.floor(20 * Math.random()) + 1),
+      r = latLongToVector3(t, o, globeRadius, globeExtraDistance + 8 + n);
+    mediaVerticesArray.push(r),
+      mediaDetailsArray.push({
+        position: new THREE.Vector3(r.x, r.y, r.z),
+        type: a,
+      });
+  }
+  (mediaTexture = new THREE.TextureLoader().load("/img2/photo.png")),
+    (mediaMaterial = new THREE.PointsMaterial({
+      map: mediaTexture,
+      size: 0,
+      transparent: !0,
+      blending: THREE.AdditiveBlending,
+      color: 16777215,
+      depthWrite: !1,
+    })),
+    (mediaMaterial.needsUpdate = !0);
+  for (
+    var s = new Float32Array(3 * mediaVerticesArray.length), l = 0;
+    l < mediaVerticesArray.length;
+    l++
+  )
+    (s[3 * l] = mediaVerticesArray[l].x),
+      (s[3 * l + 1] = mediaVerticesArray[l].y),
+      (s[3 * l + 2] = mediaVerticesArray[l].z);
+  (mediaBufferGeometry = new THREE.BufferGeometry()),
+    mediaBufferGeometry.addAttribute(
+      "position",
+      new THREE.BufferAttribute(s, 3)
+    ),
+    (mediaCloud = new THREE.Points(mediaBufferGeometry, mediaMaterial)),
+    (mediaCloud.sortParticles = !0),
+    mediaObject.add(mediaCloud),
+    (mediaCreated = !0),
+    e && e();
+}
+
+function renderMedia() {
+  var e = camera.position.z;
+  if (e < 200 && e > globeMaxZoom) {
+    (mediaMaterial.size = 1.25 * ((200 - e) / 110)),
+      (mediaMaterial.needsUpdate = !0);
   }
 }
 var starsObject1,
@@ -766,7 +1565,7 @@ function createStars(e) {
       starsZoomObject = new THREE.Group(),
       starsZoomObject.name = "starsObjectZoom",
       scene.add(starsZoomObject),
-      starZoomTexture = new THREE.TextureLoader().load("/img/star.jpeg"),
+      starZoomTexture = new THREE.TextureLoader().load("/img2/star.jpeg"),
       r = 0;
     r < starsZoomTotal;
     r++
@@ -1409,7 +2208,7 @@ function createRingPulse(e) {
       ringPulseObject.add(ringPulseMesh),
       rotationObject.add(ringPulseObject),
       ringExplosionTexture = new THREE.TextureLoader().load(
-        "/img/ring_explosion.jpeg"
+        "/img2/ring_explosion.jpeg"
       ),
       ringExplosionBufferGeometry = new THREE.PlaneBufferGeometry(
         ringExplosionSize,
@@ -1462,7 +2261,112 @@ function createRingPulse(e) {
 function renderRingPulse() {
   ringPulseObject.rotation.y += 0.025;
 }
+var gyroscopeObject,
+  gyroscopeGeometry,
+  gyroscopeMaterial,
+  gyroscopeMesh1,
+  gyroscopeMesh2,
+  gyroscopeMesh3,
+  gyroscopeMesh4,
+  gyroscopeRingSize = 90,
+  gyroscopeRingThickness = 89,
+  gyroscopeCreated = !1;
 
+function createGyroscope(e) {
+  (gyroscopeObject = new THREE.Object3D()),
+    rotationObject.add(gyroscopeObject),
+    (gyroscopeGeometry = new THREE.RingGeometry(
+      gyroscopeRingSize,
+      gyroscopeRingThickness,
+      128
+    )),
+    (gyroscopeMaterial = new THREE.MeshBasicMaterial({
+      color: colorHighlight,
+      opacity: 0.25,
+      transparent: !0,
+      blending: THREE.AdditiveBlending,
+      side: THREE.DoubleSide,
+      fog: !0,
+      depthWrite: !1,
+    })),
+    (gyroscopeMaterial.needsUpdate = !0),
+    (gyroscopeMesh1 = new THREE.Mesh(
+      gyroscopeGeometry,
+      new THREE.MeshBasicMaterial({
+        color: colorBase,
+        opacity: 0,
+        transparent: !0,
+        blending: THREE.AdditiveBlending,
+        side: THREE.DoubleSide,
+        fog: !0,
+        depthWrite: !1,
+      })
+    )),
+    (gyroscopeMesh2 = new THREE.Mesh(
+      gyroscopeGeometry,
+      new THREE.MeshBasicMaterial({
+        color: colorBase,
+        opacity: 0,
+        transparent: !0,
+        blending: THREE.AdditiveBlending,
+        side: THREE.DoubleSide,
+        fog: !0,
+        depthWrite: !1,
+      })
+    )),
+    (gyroscopeMesh3 = new THREE.Mesh(
+      gyroscopeGeometry,
+      new THREE.MeshBasicMaterial({
+        color: colorBase,
+        opacity: 0,
+        transparent: !0,
+        blending: THREE.AdditiveBlending,
+        side: THREE.DoubleSide,
+        fog: !0,
+        depthWrite: !1,
+      })
+    )),
+    (gyroscopeMesh4 = new THREE.Mesh(
+      gyroscopeGeometry,
+      new THREE.MeshBasicMaterial({
+        color: colorBase,
+        opacity: 0,
+        transparent: !0,
+        blending: THREE.AdditiveBlending,
+        side: THREE.DoubleSide,
+        fog: !0,
+        depthWrite: !1,
+      })
+    ));
+  var a = new THREE.Object3D(),
+    t = new THREE.Object3D(),
+    i = new THREE.Object3D(),
+    o = new THREE.Object3D();
+  (a.rotation.x = 90 * toRAD),
+    (t.rotation.x = 90 * toRAD),
+    (i.rotation.x = 90 * toRAD),
+    (o.rotation.x = 90 * toRAD),
+    (a.rotation.y = 0 * toRAD),
+    (t.rotation.y = 0 * toRAD),
+    (i.rotation.y = 180 * toRAD),
+    (o.rotation.y = 0 * toRAD),
+    (a.rotation.z = 0 * toRAD),
+    (t.rotation.z = 90 * toRAD),
+    (i.rotation.z = 0 * toRAD),
+    (o.rotation.z = 270 * toRAD),
+    a.add(gyroscopeMesh1),
+    t.add(gyroscopeMesh2),
+    i.add(gyroscopeMesh3),
+    o.add(gyroscopeMesh4),
+    gyroscopeObject.add(a),
+    gyroscopeObject.add(t),
+    gyroscopeObject.add(i),
+    gyroscopeObject.add(o),
+    (gyroscopeCreated = !0),
+    e && e();
+}
+
+function renderGyroscope() {}
 var rainObject,
   rainCloud,
   rainGeometry,
@@ -1488,7 +2392,7 @@ function createRain(e) {
         value: colorBase,
       },
       texture: {
-        value: new THREE.TextureLoader().load("/img/dot-inverted.png"),
+        value: new THREE.TextureLoader().load("/img2/dot-inverted.png"),
       },
     }),
     (rainShaderMaterial = new THREE.ShaderMaterial({
@@ -1579,6 +2483,178 @@ function renderRain() {
     (a.alpha.needsUpdate = !0),
     (a.size.needsUpdate = !0);
 }
+var rendererPixi,
+  stagePixi,
+  minimapVizGroup,
+  minimapDetails,
+  minimapMaskGradient,
+  minimapLines,
+  minimapExtras1,
+  minimapExtras2,
+  minimapSpiral,
+  minimapSpikesGroup,
+  minimapBlipsGroup,
+  minimapXArray,
+  minimapBlipArray,
+  minimapBgCreated = !1;
+
+function createMinimapBg(e) {
+  (rendererPixi = new PIXI.autoDetectRenderer(1e3, 320, {
+    transparent: !0,
+    antialias: !0,
+  })),
+    (stagePixi = new PIXI.Stage()),
+    $("#minimapBackground").append(rendererPixi.view),
+    (minimapVizGroup = new PIXI.Container()),
+    stagePixi.addChild(minimapVizGroup),
+    (minimapDetails = new PIXI.Sprite.fromImage("/img2/mapDetails.png")),
+    minimapVizGroup.addChild(minimapDetails),
+    (minimapDetails.position.x = 0),
+    (minimapDetails.position.y = 0),
+    (minimapDetails.width = 1e3),
+    (minimapDetails.height = 320),
+    (minimapDetails.tint = 3394815),
+    (minimapMaskGradient = new PIXI.Sprite.fromImage("/img2/mapGradient2.png")),
+    minimapVizGroup.addChild(minimapMaskGradient),
+    (minimapMaskGradient.position.x = 500),
+    (minimapMaskGradient.position.y = 160),
+    (minimapMaskGradient.width = 1e3),
+    (minimapMaskGradient.height = 320),
+    (minimapMaskGradient.pivot.x = 500),
+    (minimapMaskGradient.pivot.y = 160),
+    (minimapMaskGradient.scale.x = 0),
+    (minimapLines = new PIXI.Sprite.fromImage("/img2/mapLines.png")),
+    minimapVizGroup.addChild(minimapLines),
+    (minimapLines.position.x = 0),
+    (minimapLines.position.y = 0),
+    (minimapLines.width = 1e3),
+    (minimapLines.height = 320),
+    (minimapLines.tint = 16777215),
+    (minimapLines.mask = minimapMaskGradient),
+    (minimapExtras1 = new PIXI.Sprite.fromImage("/img2/mapExtras1.png")),
+    minimapVizGroup.addChild(minimapExtras1),
+    (minimapExtras1.pivot.x = 160),
+    (minimapExtras1.pivot.y = 160),
+    (minimapExtras1.position.x = 500),
+    (minimapExtras1.position.y = 160),
+    (minimapExtras1.alpha = 0),
+    (minimapExtras2 = new PIXI.Sprite.fromImage("/img2/mapExtras2.png")),
+    minimapVizGroup.addChild(minimapExtras2),
+    (minimapExtras2.pivot.x = 160),
+    (minimapExtras2.pivot.y = 160),
+    (minimapExtras2.position.x = 500),
+    (minimapExtras2.position.y = 160),
+    (minimapExtras2.alpha = 0),
+    (minimapMaskCircle = new PIXI.Sprite.fromImage("/img2/mapCircles.png")),
+    minimapVizGroup.addChild(minimapMaskCircle),
+    (minimapMaskCircle.position.x = 0),
+    (minimapMaskCircle.position.y = 0),
+    (minimapMaskCircle.width = 1e3),
+    (minimapMaskCircle.height = 320),
+    (minimapSpiral = new PIXI.Sprite.fromImage("/img2/mapGradient1.png")),
+    minimapVizGroup.addChild(minimapSpiral),
+    (minimapSpiral.position.x = 500),
+    (minimapSpiral.position.y = 160),
+    (minimapSpiral.width = 1e3),
+    (minimapSpiral.height = 320),
+    (minimapSpiral.pivot.x = 500),
+    (minimapSpiral.pivot.y = 160),
+    (minimapSpiral.scale.x = 0.05),
+    (minimapSpiral.alpha = 0),
+    (minimapSpiral.mask = minimapMaskCircle),
+    (minimapSpikesGroup = new PIXI.Container()),
+    minimapVizGroup.addChild(minimapSpikesGroup),
+    (minimapSpikesGroup.width = 320),
+    (minimapSpikesGroup.height = 320),
+    (minimapSpikesGroup.x = 500),
+    (minimapSpikesGroup.y = 160),
+    (minimapSpikesGroup.scale.x = 0),
+    (minimapSpikesGroup.scale.y = 0);
+  var a = new PIXI.Graphics();
+  minimapSpikesGroup.addChild(a),
+    a.beginFill(16777215, 1),
+    a.drawRect(0, 0, 1, 35),
+    a.endFill(),
+    (a.pivot.x = 0.5),
+    (a.pivot.y = 35),
+    (a.rotation = 45 * toRAD),
+    (a.position.x = -90),
+    (a.position.y = 90);
+  var t = new PIXI.Graphics();
+  minimapSpikesGroup.addChild(t),
+    t.beginFill(16777215, 1),
+    t.drawRect(0, 0, 1, 35),
+    t.endFill(),
+    (t.pivot.x = 0.5),
+    (t.pivot.y = 35),
+    (t.rotation = 135 * toRAD),
+    (t.position.x = -90),
+    (t.position.y = -90);
+  var i = new PIXI.Graphics();
+  minimapSpikesGroup.addChild(i),
+    i.beginFill(16777215, 1),
+    i.drawRect(0, 0, 1, 35),
+    i.endFill(),
+    (i.pivot.x = 0.5),
+    (i.pivot.y = 35),
+    (i.rotation = 225 * toRAD),
+    (i.position.x = 90),
+    (i.position.y = -90);
+  var o = new PIXI.Graphics();
+  minimapSpikesGroup.addChild(o),
+    o.beginFill(16777215, 1),
+    o.drawRect(0, 0, 1, 35),
+    o.endFill(),
+    (o.pivot.x = 0.5),
+    (o.pivot.y = 35),
+    (o.rotation = 315 * toRAD),
+    (o.position.x = 90),
+    (o.position.y = 90),
+    (minimapBlipsGroup = new PIXI.Container()),
+    minimapVizGroup.addChild(minimapBlipsGroup),
+    (minimapBlipsGroup.width = 320),
+    (minimapBlipsGroup.height = 320),
+    (minimapBlipsGroup.x = 500),
+    (minimapBlipsGroup.y = 160),
+    (minimapBlipsGroup.scale.x = 0),
+    (minimapBlipsGroup.scale.y = 0);
+  var n = new PIXI.Graphics();
+  n.beginFill(16777215),
+    n.drawCircle(0, 0, 1),
+    n.endFill(),
+    (n.position.x = -95),
+    (n.position.y = -95),
+    minimapBlipsGroup.addChild(n);
+  var r = new PIXI.Graphics();
+  r.beginFill(16777215),
+    r.drawCircle(0, 0, 1),
+    r.endFill(),
+    (r.position.x = 95),
+    (r.position.y = -95),
+    minimapBlipsGroup.addChild(r);
+  var s = new PIXI.Graphics();
+  s.beginFill(16777215),
+    s.drawCircle(0, 0, 1),
+    s.endFill(),
+    (s.position.x = -95),
+    (s.position.y = 95),
+    minimapBlipsGroup.addChild(s);
+  var l = new PIXI.Graphics();
+  l.beginFill(16777215),
+    l.drawCircle(0, 0, 1),
+    l.endFill(),
+    (l.position.x = 95),
+    (l.position.y = 95),
+    minimapBlipsGroup.addChild(l),
+    (minimapXArray = [a, t, i, o]),
+    (minimapBlipArray = [n, r, s, l]),
+    (minimapBgCreated = !0),
+    e && e();
+}
+
+function renderMinimapBg() {
+  rendererPixi.render(stagePixi);
+}
 
 function checkDistance(e, a) {
   return Math.sqrt(
@@ -1610,36 +2686,517 @@ var cameraDirection = "left",
   dragSpeedSlowZone = 90 + dragZone;
 
 function render() {
-  if (
-    (renderer.render(scene, camera),
-    isGlobeEventsEnabled &&
-      (targetCameraZ < globeMaxZoom && (targetCameraZ = globeMaxZoom),
-      targetCameraZ > globeMinZoom && (targetCameraZ = globeMinZoom),
-      (camera.position.z = camera.position.z +=
-        0.01 * (targetCameraZ - camera.position.z))),
-    targetCameraZ < dragSpeedSlowZone && (dragSpeed = 0.025),
-    isGlobeRotated &&
-      (targetRotationX > 75 * toRAD && (targetRotationX = 75 * toRAD),
-      targetRotationX < -75 * toRAD && (targetRotationX = -75 * toRAD),
-      (rotationObject.rotation.x = rotationObject.rotation.x +=
-        (targetRotationX - rotationObject.rotation.x) * dragSpeed),
-      (rotationObject.rotation.y = rotationObject.rotation.y +=
-        (targetRotationY - rotationObject.rotation.y) * dragSpeed)),
-    "auto" == cameraTarget && isGlobeRotated)
-  )
-    if (isMouseDown || isParticleHit || isMediaHit);
-    else
-      "left" === cameraDirection
-        ? (targetRotationY += rotationSpeed.value)
-        : "right" === cameraDirection
-        ? (targetRotationY -= rotationSpeed.value)
-        : void 0;
-  globeCreated && renderGlobe(),
-    dotsCreated && renderDots(),
-    starsCreated && renderStars(),
-    ringPulseCreated && renderRingPulse(),
-    rainCreated && renderRain(),
-    ringsCreated && renderRings();
+  debugger;
+  if (preloaderComplete) {
+    if (
+      (renderer.render(scene, camera),
+      isGlobeEventsEnabled &&
+        (targetCameraZ < globeMaxZoom && (targetCameraZ = globeMaxZoom),
+        targetCameraZ > globeMinZoom && (targetCameraZ = globeMinZoom),
+        (camera.position.z = camera.position.z +=
+          0.01 * (targetCameraZ - camera.position.z))),
+      targetCameraZ < dragSpeedSlowZone && (dragSpeed = 0.025),
+      isGlobeRotated &&
+        (targetRotationX > 75 * toRAD && (targetRotationX = 75 * toRAD),
+        targetRotationX < -75 * toRAD && (targetRotationX = -75 * toRAD),
+        (rotationObject.rotation.x = rotationObject.rotation.x +=
+          (targetRotationX - rotationObject.rotation.x) * dragSpeed),
+        (rotationObject.rotation.y = rotationObject.rotation.y +=
+          (targetRotationY - rotationObject.rotation.y) * dragSpeed)),
+      "auto" == cameraTarget && isGlobeRotated)
+    )
+      if (isMouseDown || isParticleHit || isMediaHit);
+      else
+        "left" === cameraDirection
+          ? (targetRotationY += rotationSpeed.value)
+          : "right" === cameraDirection
+          ? (targetRotationY -= rotationSpeed.value)
+          : void 0;
+    globeCreated && renderGlobe(),
+      dotsCreated && renderDots(),
+      mediaCreated && renderMedia(),
+      starsCreated && renderStars(),
+      ringPulseCreated && renderRingPulse(),
+      gyroscopeCreated && renderGyroscope(),
+      rainCreated && renderRain(),
+      ringsCreated && renderRings(),
+      minimapBgCreated && renderMinimapBg(),
+      "cycle" == colorTypeCurrent && setColors("cycle"),
+      checkHover();
+  }
+}
+var currentLocationTitle = "";
+
+function checkHover() {
+  if (isMouseMoved) {
+    globeRaycaster.setFromCamera(mouse, camera);
+    var e = globeRaycaster.intersectObjects(dotSpritesArray, !0),
+      a = 0 < e.length ? e[0] : null;
+    if (0 < e.length) {
+      var t = dataMap[a.object.userData.id][4],
+        i = dotSpritesHoverArray[a.object.userData.id];
+      (isParticleHit && t == currentLocationTitle) ||
+        ((currentLocationTitle = t),
+        (isParticleHit = !0),
+        showTooltip(),
+        !TweenMax.isTweening(i.scale) &&
+          (TweenMax.fromTo(
+            i.scale,
+            1,
+            {
+              x: 2,
+              y: 2,
+            },
+            {
+              x: 10,
+              y: 10,
+              ease: Expo.easeOut,
+            }
+          ),
+          TweenMax.fromTo(
+            i.material,
+            1.5,
+            {
+              opacity: 1,
+            },
+            {
+              opacity: 0,
+              onStart: function () {
+                i.visible = !0;
+              },
+              onComplete: function () {
+                i.visible = !1;
+              },
+            }
+          )));
+    } else
+      (currentLocationTitle = ""),
+        (isParticleHit = !1),
+        isMediaHit || hideTooltip();
+    var e = globeRaycaster.intersectObject(mediaCloud, !0),
+      a = 0 < e.length ? e[0] : null;
+    if (0 < e.length) {
+      var t = "<b>" + dataMedia[a.index][0] + "</b> - " + dataMedia[a.index][4];
+      (currentLocationTitle = t),
+        isMediaHit || (isMediaHit = !0),
+        showTooltip();
+    } else
+      (currentLocationTitle = ""),
+        (isMediaHit = !1),
+        isParticleHit || hideTooltip();
+  }
+}
+var isTooltipVisible = !1;
+
+function showTooltip() {
+  (container.style.cursor = "pointer"),
+    $("#tooltip").html('<div class="label">' + currentLocationTitle + "</div>"),
+    isTooltipVisible ||
+      ((isTooltipVisible = !0),
+      clientMouseX > window.innerWidth - 250
+        ? (TweenMax.fromTo(
+            "#tooltip",
+            1,
+            {
+              x: -100,
+              autoAlpha: 0,
+            },
+            {
+              x: 0,
+              autoAlpha: 1,
+              display: "inline-block",
+              ease: Expo.easeOut,
+              delay: 0.1,
+            }
+          ),
+          (document.getElementById("tooltip").style.textAlign = "right"))
+        : (TweenMax.fromTo(
+            "#tooltip",
+            1,
+            {
+              x: 100,
+              autoAlpha: 0,
+            },
+            {
+              x: 0,
+              autoAlpha: 1,
+              display: "inline-block",
+              ease: Expo.easeOut,
+              delay: 0.1,
+            }
+          ),
+          (document.getElementById("tooltip").style.textAlign = "left")));
+}
+
+function hideTooltip() {
+  (isTooltipVisible = !1),
+    (container.style.cursor = isMouseDown ? "move" : "move"),
+    TweenMax.set("#tooltip", {
+      autoAlpha: 0,
+      display: "none",
+    });
+}
+
+function checkClick() {
+  globeRaycaster.setFromCamera(mouse, camera);
+  var e = globeRaycaster.intersectObjects(dotSpritesArray, !0),
+    a = 0 < e.length ? e[0] : null;
+  if (0 < e.length) {
+    var t = dataMap[a.object.userData.id][1],
+      i = "";
+    0 === t && (i = "E-BOOK"),
+      1 === t && (i = "PAPERBACK"),
+      2 === t && (i = "HARDCOVER"),
+      TweenMax.killTweensOf("#location", !1);
+    var o = new TimelineMax({
+      paused: !0,
+    });
+    o.fromTo(
+      "#location",
+      0.5,
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        display: "block",
+        immediateRender: !1,
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+      o.fromTo(
+        "#location .title",
+        1,
+        {
+          scrambleText: {
+            text: " ",
+          },
+        },
+        {
+          scrambleText: {
+            text: dataMap[a.object.userData.id][4],
+            chars: "0123456789!@#$%^&*()",
+          },
+          ease: Expo.easeInOut,
+        },
+        0
+      ),
+      o.fromTo(
+        "#location .booktype",
+        1,
+        {
+          scrambleText: {
+            text: " ",
+          },
+        },
+        {
+          scrambleText: {
+            text: i,
+            chars: "0123456789!@#$%^&*()",
+          },
+          ease: Expo.easeInOut,
+        },
+        0
+      ),
+      o.fromTo(
+        "#location",
+        1,
+        {
+          autoAlpha: 1,
+        },
+        {
+          autoAlpha: 0,
+          immediateRender: !1,
+          ease: Linear.easeNone,
+        },
+        1
+      ),
+      o.play(0);
+    var gdrtt = dataMap[a.object.userData.id][5];
+    setTimeout(() => {
+      toggleInfo(gdrtt);
+    }, 1000);
+  }
+  var e = globeRaycaster.intersectObject(mediaCloud, !0),
+    a = 0 < e.length ? e[0] : null;
+  if (0 < e.length) {
+    var n = dataMedia[a.index][5];
+    a.index, window.open(n, "_blank");
+  }
+}
+
+function initButtons() {
+  var a = !1;
+  $("#minimap")
+    .mousedown(function () {
+      setRotation("manual"), (a = !0);
+    })
+    .mousemove(function (t) {
+      if (a) {
+        var e = $(this).offset().top - $(window).scrollTop(),
+          i = $(this).offset().left - $(window).scrollLeft(),
+          o = Math.round(t.clientX - i),
+          n = Math.round(t.clientY - e),
+          r = o / $(this).width(),
+          s = n / $(this).height(),
+          l = 75,
+          d = 180,
+          A = Math.round(rotationObject.rotation.x / radianLoop) * radianLoop,
+          p = Math.round(rotationObject.rotation.y / radianLoop) * radianLoop;
+        (targetRotationX = A + -(s * (2 * l) - (l + 15)) * toRAD),
+          (targetRotationY = p - (r * (2 * d) - d) * toRAD);
+      }
+    })
+    .mouseleave(function () {
+      a = !1;
+    })
+    .mouseup(function (t) {
+      (a = !1), setRotation("manual");
+      var e = $(this).offset().top - $(window).scrollTop(),
+        i = $(this).offset().left - $(window).scrollLeft(),
+        o = Math.round(t.clientX - i),
+        n = Math.round(t.clientY - e),
+        r = o / $(this).width(),
+        s = n / $(this).height(),
+        l = 75,
+        d = 180,
+        A = Math.round(rotationObject.rotation.x / radianLoop) * radianLoop,
+        p = Math.round(rotationObject.rotation.y / radianLoop) * radianLoop;
+      (targetRotationX = A + -(s * (2 * l) - (l + 15)) * toRAD),
+        (targetRotationY = p - (r * (2 * d) - d) * toRAD);
+      console.log(A + -(s * (2 * l) - (l + 15)));
+      console.log(p - (r * (2 * d) - d));
+    }),
+    $("#palette").click(function (e) {
+      e.preventDefault();
+      setColors("random");
+    }),
+    deviceSettings.isMobile ||
+      ($(".close").hover(
+        function () {
+          TweenMax.to(".close .line1", 0.5, {
+            attr: {
+              x1: 15,
+              y1: 15,
+              x2: 35,
+              y2: 35,
+            },
+            stroke: colorSecondary,
+            ease: Expo.easeOut,
+          }),
+            TweenMax.to(".close .line2", 0.5, {
+              attr: {
+                x1: 15,
+                y1: 35,
+                x2: 35,
+                y2: 15,
+              },
+              stroke: colorSecondary,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.fromTo(
+              ".close circle",
+              0.5,
+              {
+                drawSVG: "50% 50%",
+                stroke: colorSecondary,
+              },
+              {
+                drawSVG: "35% 65%",
+                stroke: colorPrimary,
+                display: "block",
+                ease: Expo.easeOut,
+              }
+            ),
+            TweenMax.fromTo(
+              ".close circle",
+              0.25,
+              {
+                autoAlpha: 0,
+              },
+              {
+                autoAlpha: 1,
+                ease: Linear.easeNone,
+              }
+            );
+        },
+        function () {
+          TweenMax.to(".close .line1", 0.5, {
+            attr: {
+              x1: 0,
+              y1: 0,
+              x2: 50,
+              y2: 50,
+            },
+            stroke: colorPrimary,
+            ease: Expo.easeOut,
+          }),
+            TweenMax.to(".close .line2", 0.5, {
+              attr: {
+                x1: 0,
+                y1: 50,
+                x2: 50,
+                y2: 0,
+              },
+              stroke: colorPrimary,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to(".close circle", 0.5, {
+              drawSVG: "50% 50%",
+              stroke: colorSecondary,
+              autoAlpha: 0,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to(".close circle", 0.5, {
+              autoAlpha: 0,
+              ease: Linear.easeNone,
+            });
+        }
+      ),
+      $("#nav-left a").hover(
+        function () {
+          var e = $(this).attr("data-id");
+          TweenMax.fromTo(
+            this,
+            1,
+            {
+              scrambleText: {
+                text: " ",
+              },
+              autoAlpha: 0,
+            },
+            {
+              scrambleText: {
+                text: e,
+                chars: "0123456789!@#$%^&*()",
+                revealDelay: 0.1,
+              },
+              autoAlpha: 1,
+            }
+          );
+        },
+        function () {}
+      ),
+      $("#nav-right a").hover(
+        function () {
+          var e = $(this).attr("data-id");
+          TweenMax.fromTo(
+            this,
+            1,
+            {
+              scrambleText: {
+                text: " ",
+              },
+              autoAlpha: 0,
+            },
+            {
+              scrambleText: {
+                text: e,
+                chars: "0123456789!@#$%^&*()",
+                revealDelay: 0.1,
+                rightToLeft: !0,
+              },
+              autoAlpha: 1,
+            }
+          );
+        },
+        function () {}
+      ),
+      $(document).keydown(function (a) {
+        var e = a.keyCode || a.which,
+          t = {
+            left: 37,
+            up: 38,
+            right: 39,
+            down: 40,
+            blue: 66,
+            invert: 73,
+            random: 82,
+          },
+          i = 20 * toRAD;
+        e === t.left
+          ? ((targetRotationY -= i), (cameraDirection = "right"))
+          : e === t.right
+          ? ((targetRotationY += i), (cameraDirection = "left"))
+          : e === t.up
+          ? (targetCameraZ -= 20)
+          : e === t.down
+          ? (targetCameraZ += 20)
+          : e === t.blue
+          ? setColors("blue")
+          : e === t.invert
+          ? setColors("invert")
+          : e === t.random
+          ? setColors("random")
+          : void 0;
+      }),
+      $(".book").hover(
+        function () {
+          TweenMax.to($(this).find(".overlay"), 0.75, {
+            autoAlpha: 1,
+            immediateRender: !1,
+            ease: Expo.easeOut,
+          }),
+            TweenMax.to($(this).find(".overlay"), 0.75, {
+              rotationY: -40,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to($(this).find(".cover"), 0.75, {
+              rotationY: -40,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to($(this).find(".page1"), 0.75, {
+              rotationY: -34,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to($(this).find(".page2"), 0.75, {
+              rotationY: -27,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to($(this).find(".page3"), 0.75, {
+              rotationY: -15,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to("#buytext", 0.75, {
+              y: 15,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            });
+        },
+        function () {
+          TweenMax.to($(this).find(".overlay"), 0.5, {
+            autoAlpha: 0,
+            immediateRender: !1,
+            ease: Expo.easeOut,
+          }),
+            TweenMax.to($(this).find(".overlay"), 0.5, {
+              rotationY: 0,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to($(this).find(".cover"), 0.5, {
+              rotationY: 0,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to($(this).find(".page"), 0.5, {
+              rotationY: 0,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            }),
+            TweenMax.to("#buytext", 0.5, {
+              y: 0,
+              immediateRender: !1,
+              ease: Expo.easeOut,
+            });
+        }
+      ));
 }
 
 function resetAnimations() {
@@ -1677,6 +3234,25 @@ function resetAnimations() {
     earthObject.remove(arcAllObject));
 }
 
+function setRotation(e) {
+  $("#rotationMode a").removeClass("active");
+  "toggle" === e &&
+    ("auto" === cameraTarget
+      ? (e = "manual")
+      : "manual" === cameraTarget
+      ? (e = "auto")
+      : void 0);
+  cameraTarget = e;
+  "auto" === cameraTarget
+    ? $("#rotationMode a.auto").addClass("active")
+    : "manual" === cameraTarget
+    ? $("#rotationMode a.manual").addClass("active")
+    : void 0;
+}
+
+function toggleRotation() {
+  "auto" == cameraTarget ? setRotation("manual") : setRotation("auto");
+}
 var currentAnimationType = "";
 
 function setArcAnimation(e) {
@@ -1687,25 +3263,723 @@ function setArcAnimation(e) {
     currentAnimationType === e && (e = "off"),
     (currentAnimationType = e),
     resetAnimations(),
+    $("#arcMode a").removeClass("active"),
     e)
   ) {
     case "rocket":
       earthObject.add(arcRocketObject),
         (arcRocketObject.visible = !0),
-        arcRocketAnimation.play(0);
+        arcRocketAnimation.play(0),
+        $("#arcMode a.rocket").addClass("active");
       break;
     case "snake":
       earthObject.add(arcSnakeObject),
         (arcSnakeObject.visible = !0),
-        arcSnakeAnimation.play(0);
+        arcSnakeAnimation.play(0),
+        $("#arcMode a.snake").addClass("active");
       break;
     case "all":
       arcAllAnimation.play(0),
         earthObject.add(arcAllObject),
-        (arcAllObject.visible = !0);
+        (arcAllObject.visible = !0),
+        $("#arcMode a.all").addClass("active");
       break;
     case "off":
   }
+  isIntroDone && generateGlitch();
+}
+var colorTypeCurrent = "";
+
+function zoomOut() {
+  targetCameraZ = 250;
+}
+
+function goToPoint(e) {
+  switch (((colorTypeCurrent = e), $(".setting a").removeClass("active"), e)) {
+    case "mainBase":
+      setRotation("manual");
+      targetCameraZ = 0;
+      (targetRotationX = dataMap[0][2] * toRAD),
+        (targetRotationY = dataMap[0][3] * toRAD * -1);
+      $("#colorMode a.mainbase_1").addClass("active");
+      toggleInfo("mainBase");
+      break;
+    case "Labs":
+      setRotation("manual");
+      targetCameraZ = 0;
+      (targetRotationX = dataMap[1][2] * toRAD),
+        (targetRotationY = dataMap[1][3] * toRAD * -1);
+      $("#colorMode a.labs_f").addClass("active");
+      toggleInfo("Labs");
+      break;
+    case "Gallery":
+      setRotation("manual");
+      targetCameraZ = 0;
+      (targetRotationX = dataMap[2][2] * toRAD),
+        (targetRotationY = dataMap[2][3] * toRAD * -1);
+      $("#arcMode a.gallery_f").addClass("active");
+      toggleInfo("Gallery");
+      break;
+    case "Arena":
+      setRotation("manual");
+      targetCameraZ = 0;
+      (targetRotationX = dataMap[3][2] * toRAD),
+        (targetRotationY = dataMap[3][3] * toRAD * -1);
+      $("#arcMode a.arena_f").addClass("active");
+      toggleInfo("Arena");
+      break;
+    case "Bank":
+      setRotation("manual");
+      targetCameraZ = 0;
+      (targetRotationX = dataMap[4][2] * toRAD),
+        (targetRotationY = dataMap[4][3] * toRAD * -1);
+      $("#arcMode a.bank_f").addClass("active");
+      toggleInfo("Bank");
+      break;
+    case "Market":
+      setRotation("manual");
+      targetCameraZ = 0;
+      (targetRotationX = dataMap[5][2] * toRAD),
+        (targetRotationY = dataMap[5][3] * toRAD * -1);
+      $("#arcMode a.market_f").addClass("active");
+      toggleInfo("Market");
+      break;
+    case "News":
+      setRotation("manual");
+      targetCameraZ = 0;
+      (targetRotationX = dataMap[6][2] * toRAD),
+        (targetRotationY = dataMap[6][3] * toRAD * -1);
+      $("#colorMode a.news_f").addClass("active");
+      toggleInfo("News");
+      break;
+  }
+}
+
+function setColors(e) {
+  switch (
+    ((colorTypeCurrent = e), $("#colorMode a").removeClass("active"), e)
+  ) {
+    case "off":
+      (colorPrimary = "#FFFFFF"),
+        (colorSecondary = "#FFFFFF"),
+        $("#colorMode a.off").addClass("active");
+      break;
+    case "blue":
+      (colorPrimary = colorPrimary_Base),
+        (colorSecondary = colorSecondary_Base),
+        $("#colorMode a.blue").addClass("active");
+      break;
+    case "invert":
+      "#FFFFFF" === colorPrimary &&
+        "#FFFFFF" === colorSecondary &&
+        ((colorPrimary = colorPrimary_Base),
+        (colorSecondary = colorSecondary_Base));
+      var a = colorPrimary,
+        t = colorSecondary;
+      (colorPrimary = t),
+        (colorSecondary = a),
+        $("#colorMode a.invert").addClass("active");
+      break;
+    case "random":
+      (colorPrimary = "#000000".replace(/0/g, function () {
+        return (~~(16 * Math.random())).toString(16);
+      })),
+        (colorSecondary = "#000000".replace(/0/g, function () {
+          return (~~(16 * Math.random())).toString(16);
+        })),
+        $("#colorMode a.random").addClass("active");
+      break;
+    case "cycle":
+      var o = 5e-5 * Date.now();
+      h = ((360 * (1 + o)) % 360) / 360;
+      var n = new THREE.Color(colorPrimary);
+      (colorPrimary = n.setHSL(h, 0.5, 0.5)),
+        (colorPrimary = "#" + colorPrimary.getHexString());
+      var r = new THREE.Color(colorSecondary);
+      (colorSecondary = r.setHSL(h, 0.5, 0.5)),
+        (colorSecondary = "#" + colorSecondary.getHexString()),
+        $("#colorMode a.cycle").addClass("active");
+  }
+  if (
+    ((colorBase = new THREE.Color(colorPrimary)),
+    (colorBase50 = new THREE.Color(shadeBlend(0.5, colorPrimary, colorDarken))),
+    (colorBase75 = new THREE.Color(
+      shadeBlend(0.75, colorPrimary, colorDarken)
+    )),
+    (colorBase85 = new THREE.Color(
+      shadeBlend(0.85, colorPrimary, colorDarken)
+    )),
+    (colorHighlight = new THREE.Color(colorSecondary)),
+    scene.getObjectByName("rain") &&
+      ((rainCloud.material.uniforms.color.value = new THREE.Color(
+        colorPrimary
+      )),
+      (rainCloud.material.uniforms.needsUpdate = !0)),
+    lightsCreated &&
+      ((lightShield1.color = colorBase),
+      (lightShield2.color = colorBase),
+      (lightShield3.color = colorBase),
+      (lightShield1.needsUpdate = !0),
+      (lightShield2.needsUpdate = !0),
+      (lightShield3.needsUpdate = !0)),
+    ringsCreated &&
+      ((ringsOuterMaterial.color = colorBase75),
+      (ringsInnerMaterial.color = colorBase50),
+      (ringsOuterMaterial.needsUpdate = !0),
+      (ringsInnerMaterial.needsUpdate = !0)),
+    universeCreated &&
+      ((universeBgMaterial.color = colorBase),
+      (universeBgMaterial.needsUpdate = !0)),
+    globeCreated)
+  ) {
+    (globeInnerMaterial.color = colorBase75),
+      (globeOuterMaterial.color = colorBase),
+      (globeShieldMaterial.color = colorBase75),
+      (globeGlowMaterial.color = colorBase),
+      (globeInnerMaterial.needsUpdate = !0),
+      (globeOuterMaterial.needsUpdate = !0),
+      (globeShieldMaterial.needsUpdate = !0),
+      (globeGlowMaterial.needsUpdate = !0);
+    for (
+      var s = new Float32Array(3 * globeCloudVerticesArray.length),
+        l = [],
+        d = 0;
+      d < globeCloudVerticesArray.length;
+      d++
+    ) {
+      var A = 0.01 * generateRandomNumber(85, 90),
+        p = shadeBlend(A, colorPrimary, colorDarken);
+      l[d] = new THREE.Color(p);
+    }
+    for (var d = 0; d < globeCloudVerticesArray.length; d++)
+      (s[3 * d] = l[d].r), (s[3 * d + 1] = l[d].g), (s[3 * d + 2] = l[d].b);
+    globeCloudBufferGeometry.addAttribute(
+      "color",
+      new THREE.BufferAttribute(s, 3)
+    ),
+      (globeCloudBufferGeometry.colorsNeedUpdate = !0);
+  }
+  if (dotsCreated) {
+    (dotMaterial.color = colorHighlight),
+      (dotSpikesMaterial.color = colorHighlight),
+      (dotMaterial.needsUpdate = !0),
+      (dotSpikesMaterial.needsUpdate = !0);
+    for (var d = 0; d < dotSpritesHoverArray.length; d++)
+      (dotSpritesHoverArray[d].material.color = colorHighlight),
+        (dotSpritesHoverArray[d].material.needsUpdate = !0);
+  }
+  starsCreated &&
+    ((starsMaterial.color = colorBase50), (starsMaterial.needsUpdate = !0)),
+    arcRocketCreated &&
+      ((arcRocketMesh.material.uniforms.color.value = colorHighlight),
+      (arcRocketMesh.material.uniforms.needsUpdate = !0)),
+    arcSnakeCreated &&
+      ((arcSnakeMesh.material.uniforms.color.value = colorHighlight),
+      (arcSnakeMesh.material.uniforms.needsUpdate = !0)),
+    arcAllCreated &&
+      ((arcAllMaterial.color = colorHighlight),
+      (arcAllMaterial.needsUpdate = !0)),
+    spikesCreated &&
+      ((spikesMaterial.color = colorBase75), (spikesMaterial.needsUpdate = !0)),
+    ringPulseCreated &&
+      ((ringPulseMesh.material.uniforms.color.value = colorBase),
+      (ringPulseMesh.material.uniforms.needsUpdate = !0),
+      (ringExplosionMaterial.color = colorBase85),
+      (ringExplosionMaterial.needsUpdate = !0),
+      (ringPointMaterial.color = colorBase75),
+      (ringPointMaterial.needsUpdate = !0)),
+    gyroscopeCreated &&
+      ((gyroscopeMesh1.material.color = colorBase),
+      (gyroscopeMesh2.material.color = colorBase),
+      (gyroscopeMesh3.material.color = colorBase),
+      (gyroscopeMesh4.material.color = colorBase),
+      (gyroscopeMesh1.material.needsUpdate = !0),
+      (gyroscopeMesh2.material.needsUpdate = !0),
+      (gyroscopeMesh3.material.needsUpdate = !0),
+      (gyroscopeMesh4.material.needsUpdate = !0)),
+    rainCreated &&
+      ((rainCloud.material.uniforms.color.value = colorBase),
+      (rainCloud.material.uniforms.needsUpdate = !0)),
+    1 == $("#customCSS").length && $("#customCSS").remove();
+  var m = hexToRgb(colorPrimary),
+    u =
+      '<style id="customCSS">body, a:link, a:visited { color: ' +
+      colorPrimary +
+      ";} .settings a { border-color: rgba(" +
+      m.r +
+      ", " +
+      m.g +
+      ", " +
+      m.b +
+      ", .15);} .settings a.active { background-color: " +
+      colorPrimary +
+      ";} #rotationMode a { color: " +
+      shadeBlend(0.5, colorPrimary, colorDarken) +
+      ";} #rotationMode a.active { color: " +
+      colorPrimary +
+      ";} .svg-stop { stop-color: " +
+      colorPrimary +
+      ";} .pulseDot { background-color: " +
+      colorPrimary +
+      ";} .pulseTrail { background-color: " +
+      colorPrimary +
+      ";} #tooltip { background-color: " +
+      colorPrimary +
+      ";} #soundButton .bar:after { background-color: " +
+      colorPrimary +
+      ";} #soundButton .bar:after { background-color: " +
+      colorPrimary +
+      ";} #paletteHighlight { background-color: " +
+      colorSecondary +
+      ";} #paletteBase { background-color: " +
+      colorPrimary +
+      ";} #paletteBase50 { background-color: " +
+      shadeBlend(0.5, colorPrimary, colorDarken) +
+      ";} #paletteBase75 { background-color: " +
+      shadeBlend(0.75, colorPrimary, colorDarken) +
+      ";} #paletteBase85 { background-color: " +
+      shadeBlend(0.85, colorPrimary, colorDarken) +
+      ";} .minibar { background-color: " +
+      shadeBlend(0.5, colorSecondary, colorDarken) +
+      ";} #location { color: " +
+      colorSecondary +
+      ";} </style>";
+  $("head").append(u),
+    $("#minimap svg path, .svg-fill").css("fill", colorPrimary),
+    $(
+      ".close .line1, .close .line2, .close .bracket_x, .close .circle_x, .svg-ring, .cross, .pulseCircle circle"
+    ).css("stroke", colorPrimary),
+    isIntroDone && "cycle" != colorTypeCurrent && generateGlitch();
+}
+var statNumber = 0;
+
+function changeStat() {
+  var e = ["48", "36", "6"],
+    a = ["COUNTRIES", "U.S. STATES", "CONTINENTS"],
+    t = e.length - 1;
+  TweenMax.set("#nav-stats", {
+    transformPerspective: 800,
+  });
+  var i = new TimelineMax({
+    paused: !0,
+    force3D: !0,
+    repeat: -1,
+    delay: 1,
+    repeatDelay: 0,
+  });
+  i.to(
+    "#nav-stats",
+    1.5,
+    {
+      scaleX: 0.7,
+      scaleY: 0.7,
+      autoAlpha: 0,
+      rotationY: -90,
+      ease: Expo.easeIn,
+      immediateRender: !1,
+    },
+    0
+  ),
+    i.fromTo(
+      "#nav-stats",
+      3,
+      {
+        scaleX: 0,
+        scaleY: 0,
+        autoAlpha: 0,
+        rotationY: 180,
+      },
+      {
+        scaleX: 1,
+        scaleY: 1,
+        autoAlpha: 1,
+        rotationY: 0,
+        ease: Expo.easeOut,
+        immediateRender: !1,
+        onStart: function () {
+          statNumber++,
+            statNumber > t && (statNumber = 0),
+            $("#nav-stats .number").html(""),
+            $("#nav-stats .number").html(e[statNumber]),
+            $("#nav-stats .description").html(""),
+            $("#nav-stats .description").html(a[statNumber]);
+        },
+        onComplete: function () {
+          $("#nav-stats").removeAttr("style");
+        },
+      },
+      1.5
+    ),
+    i.timeScale(1),
+    i.play();
+}
+var isInfoVisible = !1,
+  infoSection = "";
+
+function toggleInfo_box(e) {
+  infoSection = "";
+  if (
+    (TweenMax.set("#overlayBox svg", {
+      rotation: -90,
+      transformOrigin: "center center",
+    }),
+    TweenMax.set(".close .circles", {
+      rotation: -180,
+      transformOrigin: "center center",
+    }),
+    isInfoVisible)
+  ) {
+    /*Отключаем все что показывали*/
+    myElement = document.getElementById("overlayInnerBox");
+    for (let i = 0; i < myElement.children.length; i++) {
+      /*Переключаем внутренние елементы*/
+      myElement.children[i].scrollTop = 0;
+      myElement.children[i].style.removeProperty("display");
+    }
+
+    isInfoVisible = !1;
+    var a = new TimelineMax({
+      paused: !0,
+    });
+    a.to(
+      "#overlayB",
+      0.5,
+      {
+        autoAlpha: 0,
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+      a.staggerTo(
+        "#overlayBox .svg-ring",
+        0.5,
+        {
+          drawSVG: "50% 50%",
+          ease: Expo.easeInOut,
+        },
+        0.25,
+        0
+      ),
+      a.play(0);
+    document.getElementById("about").scrollTop = 0;
+  } else {
+    (infoSection = e), (isInfoVisible = !0);
+    var a = new TimelineMax({
+      paused: !0,
+    });
+    a.fromTo(
+      "#overlayB",
+      0.5,
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        display: "block",
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+      a.staggerFromTo(
+        "#overlayBox .svg-ring",
+        2,
+        {
+          drawSVG: "50% 50%",
+        },
+        {
+          drawSVG: "0 100%",
+          ease: Expo.easeInOut,
+        },
+        0.25,
+        0
+      ),
+      a.fromTo(
+        "#" + e,
+        1,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          display: "block",
+          ease: Linear.easeNone,
+        },
+        0.5
+      ),
+      a.fromTo(
+        "#overlayBox",
+        1,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: Expo.easeOut,
+        },
+        0.5
+      ),
+      a.staggerFromTo(
+        "#" + e + " .animate",
+        1,
+        {
+          y: 50,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          ease: Expo.easeOut,
+        },
+        0.1,
+        1
+      ),
+      a.fromTo(
+        ".close .line1",
+        1,
+        {
+          attr: {
+            x1: 25,
+            y1: 25,
+            x2: 25,
+            y2: 25,
+          },
+          stroke: "#FFFFFF",
+          autoAlpha: 0,
+        },
+        {
+          attr: {
+            x1: 0,
+            y1: 0,
+            x2: 50,
+            y2: 50,
+          },
+          stroke: colorPrimary,
+          autoAlpha: 1,
+          ease: Expo.easeInOut,
+        },
+        1
+      ),
+      a.fromTo(
+        ".close .line2",
+        1,
+        {
+          attr: {
+            x1: 25,
+            y1: 25,
+            x2: 25,
+            y2: 25,
+          },
+          stroke: "#FFFFFF",
+          autoAlpha: 0,
+        },
+        {
+          attr: {
+            x1: 0,
+            y1: 50,
+            x2: 50,
+            y2: 0,
+          },
+          stroke: colorPrimary,
+          autoAlpha: 1,
+          ease: Expo.easeInOut,
+        },
+        1
+      ),
+      a.play(0),
+      generateGlitch();
+  }
+}
+
+function toggleInfo(e) {
+  infoSection = "";
+  if (
+    (TweenMax.set("#overlayRing svg", {
+      rotation: -90,
+      transformOrigin: "center center",
+    }),
+    TweenMax.set(".close .circles", {
+      rotation: -180,
+      transformOrigin: "center center",
+    }),
+    isInfoVisible)
+  ) {
+    /*Отключаем все что показывали*/
+    window.clic_dis();
+    window.clic_dis2();
+    myElement = document.getElementById("overlayInner");
+    for (let i = 0; i < myElement.children.length; i++) {
+      myElement.children[i].style.display = "none";
+      /*Переключаем внутренние елементы*/
+      for (let g = 0; g < myElement.children[i].children.length; g++) {
+        if (myElement.children[i].children[g].className == "first_visible")
+          try {
+            myElement.children[i].children[g].style.removeProperty("display");
+          } catch (e) {}
+        if (myElement.children[i].children[g].className == "second_visible")
+          try {
+            myElement.children[i].children[g].style.display = "none";
+          } catch (e) {}
+      }
+    }
+
+    isInfoVisible = !1;
+    var a = new TimelineMax({
+      paused: !0,
+    });
+    a.to(
+      "#overlay",
+      0.5,
+      {
+        autoAlpha: 0,
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+      a.staggerTo(
+        "#overlayRing .svg-ring",
+        0.5,
+        {
+          drawSVG: "50% 50%",
+          ease: Expo.easeInOut,
+        },
+        0.25,
+        0
+      ),
+      a.play(0);
+  } else {
+    (infoSection = e), (isInfoVisible = !0);
+    var a = new TimelineMax({
+      paused: !0,
+    });
+    a.fromTo(
+      "#overlay",
+      0.5,
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        display: "block",
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+      a.staggerFromTo(
+        "#overlayRing .svg-ring",
+        2,
+        {
+          drawSVG: "50% 50%",
+        },
+        {
+          drawSVG: "0 100%",
+          ease: Expo.easeInOut,
+        },
+        0.25,
+        0
+      ),
+      a.fromTo(
+        "#" + e,
+        1,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          display: "block",
+          ease: Linear.easeNone,
+        },
+        0.5
+      ),
+      a.fromTo(
+        "#overlayRing",
+        1,
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: Expo.easeOut,
+        },
+        0.5
+      ),
+      a.staggerFromTo(
+        "#" + e + " .animate",
+        1,
+        {
+          y: 50,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          ease: Expo.easeOut,
+        },
+        0.1,
+        1
+      ),
+      a.fromTo(
+        ".close .line1",
+        1,
+        {
+          attr: {
+            x1: 25,
+            y1: 25,
+            x2: 25,
+            y2: 25,
+          },
+          stroke: "#FFFFFF",
+          autoAlpha: 0,
+        },
+        {
+          attr: {
+            x1: 0,
+            y1: 0,
+            x2: 50,
+            y2: 50,
+          },
+          stroke: colorPrimary,
+          autoAlpha: 1,
+          ease: Expo.easeInOut,
+        },
+        1
+      ),
+      a.fromTo(
+        ".close .line2",
+        1,
+        {
+          attr: {
+            x1: 25,
+            y1: 25,
+            x2: 25,
+            y2: 25,
+          },
+          stroke: "#FFFFFF",
+          autoAlpha: 0,
+        },
+        {
+          attr: {
+            x1: 0,
+            y1: 50,
+            x2: 50,
+            y2: 0,
+          },
+          stroke: colorPrimary,
+          autoAlpha: 1,
+          ease: Expo.easeInOut,
+        },
+        1
+      ),
+      a.play(0),
+      generateGlitch();
+  }
+}
+
+function getDifference(e, a) {
+  return Math.abs(e - a);
+}
+
+function checkIsBlack(e) {
+  return !(e[0] != e[1] || e[1] != e[2] || 0 !== e[2]);
 }
 
 function shadeBlend(e, a, i) {
@@ -1746,6 +4020,549 @@ function shadeBlend(e, a, i) {
   );
 }
 
+function hexToRgb(e) {
+  var a = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);
+  return a
+    ? {
+        r: parseInt(a[1], 16),
+        g: parseInt(a[2], 16),
+        b: parseInt(a[3], 16),
+      }
+    : null;
+}
+var cometTotal = 15,
+  cometRotation = 24;
+
+function createGlitch(e) {
+  TweenMax.set(".cross", {
+    autoAlpha: 0,
+  }),
+    TweenMax.set("#pulseCircle1", {
+      rotation: -180,
+      transformOrigin: "center center",
+    }),
+    $("#pulseComets").html("");
+  for (var a = 0; a < cometTotal; a++)
+    $("#pulseComets").prepend(
+      '<div class="pulseComet" id="pulseComet' +
+        a +
+        '"><div class="pulseTrail"></div><div class="pulseDot"></div></div>'
+    ),
+      TweenMax.set("#pulseComet" + a, {
+        rotation: a * cometRotation,
+        transformOrigin: "center bottom",
+      });
+  e && e();
+}
+
+function generateExplosion() {
+  console.log("EXPLOSION WOW OVERPOWERIN");
+  var e = new TimelineMax({
+    paused: !0,
+  });
+  e.fromTo(
+    ringExplosionMesh.scale,
+    1,
+    {
+      x: 1,
+      y: 1,
+    },
+    {
+      x: 3,
+      y: 3,
+      ease: Quint.easeOut,
+    },
+    0
+  ),
+    e.fromTo(
+      ringExplosionMesh.material,
+      0.25,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        ease: Linear.easeNone,
+        onStart: function () {
+          ringExplosionMesh.visible = !0;
+        },
+      },
+      0
+    ),
+    e.fromTo(
+      ringExplosionMesh.material,
+      0.75,
+      {
+        opacity: 1,
+      },
+      {
+        opacity: 0,
+        immediateRender: !1,
+        ease: Linear.easeNone,
+        onComplete: function () {
+          ringExplosionMesh.visible = !1;
+        },
+      },
+      0.25
+    ),
+    e.timeScale(1),
+    e.play(0);
+}
+
+function generateGlitch() {
+  if (minimapBgCreated) {
+    var e = new TimelineMax({
+      paused: !0,
+    });
+    e.to(
+      minimapDetails,
+      2,
+      {
+        pixi: {
+          tint: colorPrimary,
+        },
+      },
+      0
+    ),
+      e.fromTo(
+        minimapLines,
+        2,
+        {
+          pixi: {
+            tint: 16777215,
+          },
+        },
+        {
+          pixi: {
+            tint: colorPrimary,
+          },
+          ease: Circ.easeOut,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapMaskGradient,
+        2,
+        {
+          pixi: {
+            scaleX: 0,
+          },
+        },
+        {
+          pixi: {
+            scaleX: 1.25,
+          },
+          ease: Expo.easeOut,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapSpiral,
+        2,
+        {
+          pixi: {
+            rotation: 90,
+          },
+        },
+        {
+          pixi: {
+            rotation: 450,
+          },
+          ease: Expo.easeOut,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapSpiral,
+        0.1,
+        {
+          pixi: {
+            alpha: 0,
+          },
+        },
+        {
+          pixi: {
+            alpha: 1,
+          },
+          immediateRender: !1,
+          ease: Linear.easeNone,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapSpiral,
+        0.75,
+        {
+          pixi: {
+            alpha: 1,
+          },
+        },
+        {
+          pixi: {
+            alpha: 0,
+          },
+          immediateRender: !1,
+          ease: Linear.easeNone,
+        },
+        0.2
+      ),
+      e.fromTo(
+        minimapMaskGradient,
+        2,
+        {
+          pixi: {
+            alpha: 1,
+          },
+        },
+        {
+          pixi: {
+            alpha: 0,
+          },
+          ease: Linear.easeNone,
+        },
+        0.5
+      ),
+      e.fromTo(
+        minimapBlipsGroup,
+        0.65,
+        {
+          pixi: {
+            scale: 0,
+          },
+        },
+        {
+          pixi: {
+            scale: 1,
+          },
+          ease: Expo.easeOut,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapBlipArray,
+        0.75,
+        {
+          pixi: {
+            alpha: 1,
+          },
+        },
+        {
+          pixi: {
+            alpha: 0,
+          },
+          ease: Linear.easeNone,
+        },
+        0.5
+      ),
+      e.fromTo(
+        minimapSpikesGroup,
+        0.75,
+        {
+          pixi: {
+            scale: 0,
+          },
+        },
+        {
+          pixi: {
+            scale: 1,
+          },
+          ease: Expo.easeOut,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapXArray,
+        0.75,
+        {
+          pixi: {
+            scaleY: 1,
+          },
+        },
+        {
+          pixi: {
+            scaleY: 0,
+          },
+          ease: Circ.easeInOut,
+        },
+        0.1
+      ),
+      e.fromTo(
+        minimapExtras1,
+        3,
+        {
+          pixi: {
+            rotation: 0,
+          },
+        },
+        {
+          pixi: {
+            rotation: -360,
+          },
+          ease: Expo.easeOut,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapExtras1,
+        0.1,
+        {
+          pixi: {
+            alpha: 0,
+          },
+        },
+        {
+          pixi: {
+            alpha: 1,
+          },
+          ease: Linear.easeNone,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapExtras1,
+        1,
+        {
+          pixi: {
+            alpha: 1,
+            tint: 16777215,
+          },
+        },
+        {
+          pixi: {
+            alpha: 0,
+            tint: colorPrimary,
+          },
+          immediateRender: !1,
+          ease: Linear.easeNone,
+        },
+        0.2
+      ),
+      e.fromTo(
+        minimapExtras2,
+        1.5,
+        {
+          pixi: {
+            scale: 0.5,
+          },
+        },
+        {
+          pixi: {
+            scale: 1.1,
+          },
+          ease: Expo.easeOut,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapExtras2,
+        0.1,
+        {
+          pixi: {
+            alpha: 0,
+          },
+        },
+        {
+          pixi: {
+            alpha: 0.5,
+          },
+          ease: Linear.easeNone,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapExtras2,
+        1,
+        {
+          pixi: {
+            alpha: 0.5,
+            tint: 16777215,
+          },
+        },
+        {
+          pixi: {
+            alpha: 0,
+            tint: colorPrimary,
+          },
+          immediateRender: !1,
+          ease: Linear.easeNone,
+        },
+        0.2
+      ),
+      e.fromTo(
+        minimapXArray,
+        1,
+        {
+          pixi: {
+            tint: 16777215,
+          },
+        },
+        {
+          pixi: {
+            tint: colorPrimary,
+          },
+          ease: Linear.easeNone,
+        },
+        0
+      ),
+      e.fromTo(
+        minimapBlipArray,
+        1,
+        {
+          pixi: {
+            tint: 16777215,
+          },
+        },
+        {
+          pixi: {
+            tint: colorPrimary,
+          },
+          ease: Linear.easeNone,
+        },
+        0
+      ),
+      e.timeScale(1.5),
+      e.play(0);
+  }
+  TweenMax.fromTo(
+    "#interactive",
+    0.25,
+    {
+      x: generateRandomNumber(-10, 10),
+      y: generateRandomNumber(-10, 10),
+    },
+    {
+      x: 0,
+      y: 0,
+      ease: RoughEase.ease.config({
+        strength: 2,
+        points: 20,
+      }),
+    }
+  );
+  var a = new TimelineMax({
+    paused: !0,
+    force3D: !0,
+  });
+  a.set("#glitcher", {
+    autoAlpha: 1,
+    display: "block",
+  }),
+    a.fromTo(
+      $("#glitcher"),
+      0.25,
+      {
+        x: generateRandomNumber(-15, 15),
+        y: generateRandomNumber(-15, 15),
+      },
+      {
+        x: 0,
+        y: 0,
+        ease: RoughEase.ease.config({
+          strength: 5,
+          points: 50,
+        }),
+      },
+      0
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        left: generateRandomNumber(0, 90) + "%",
+        top: generateRandomNumber(0, 90) + "%",
+        width: "25%",
+        height: 15,
+        autoAlpha: 1,
+        ease: Linear.easeNone,
+      },
+      0
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        left: generateRandomNumber(0, 90) + "%",
+        top: generateRandomNumber(0, 90) + "%",
+        width: "25%",
+        height: 8,
+        ease: Linear.easeNone,
+      },
+      0.05
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        left: generateRandomNumber(0, 90) + "%",
+        top: generateRandomNumber(0, 90) + "%",
+        width: "10%",
+        height: 5,
+        ease: Linear.easeNone,
+      },
+      0.1
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        left: generateRandomNumber(0, 90) + "%",
+        top: generateRandomNumber(0, 90) + "%",
+        width: "15%",
+        height: 5,
+        ease: Linear.easeNone,
+      },
+      0.15
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        left: generateRandomNumber(0, 90) + "%",
+        top: generateRandomNumber(0, 90) + "%",
+        width: "35%",
+        height: 1,
+        ease: Linear.easeNone,
+      },
+      0.2
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        left: generateRandomNumber(0, 90) + "%",
+        top: generateRandomNumber(0, 90) + "%",
+        width: "10%",
+        height: 8,
+        ease: Linear.easeNone,
+      },
+      0.25
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        left: generateRandomNumber(0, 90) + "%",
+        top: generateRandomNumber(0, 90) + "%",
+        width: "25%",
+        height: 8,
+        ease: Linear.easeNone,
+      },
+      0.3
+    ),
+    a.set(
+      $("#glitcher .minibar"),
+      {
+        autoAlpha: 0,
+      },
+      0.35
+    ),
+    a.set(
+      "#glitcher",
+      {
+        autoAlpha: 0,
+        display: "none",
+        immediateRender: !1,
+      },
+      1
+    ),
+    a.timeScale(1.5),
+    a.play(0),
+    generateExplosion();
+}
+
 function generateRandomNumber(e, a) {
   var t = Math.floor(Math.random() * (a - e + 1)) + e;
   return t;
@@ -1771,6 +4588,7 @@ function onDocumentMouseDown(e) {
     (mouseYOnMouseDown = e.clientY - windowHalfY),
     (targetRotationXOnMouseDown = targetRotationX),
     (targetRotationYOnMouseDown = targetRotationY),
+    checkClick(),
     (initMouseX = e.clientX));
 }
 var targetTiltX = 0,
@@ -1827,13 +4645,13 @@ function onDocumentMouseUp(e) {
     (e.preventDefault(),
     (isMouseDown = !1),
     25 > Math.abs(initMouseX - e.clientX) ||
-      setCameraDirection(initMouseX, e.clientX));
+      (setRotation("off"), setCameraDirection(initMouseX, e.clientX)));
 }
 
 function onDocumentMouseLeave(e) {
   if (!1 !== isGlobeEventsEnabled && (e.preventDefault(), isMouseDown)) {
     if (((isMouseDown = !1), 25 > Math.abs(initMouseX - e.clientX))) return;
-    setCameraDirection(initMouseX, e.clientX);
+    setRotation("off"), setCameraDirection(initMouseX, e.clientX);
   }
 }
 
@@ -1895,20 +4713,21 @@ function onDocumentTouchMove(e) {
 }
 
 function onDocumentTouchEnd(e) {
-  (_touchZoomDistanceStart = _touchZoomDistanceEnd = 0), onDocumentMouseUp(e);
+  (_touchZoomDistanceStart = _touchZoomDistanceEnd = 0),
+    setRotation("off"),
+    onDocumentMouseUp(e);
 }
 var dataMap = [
-  /*номер, соединение, вверх(прибаляя), влево(прибаляя) начало координат */
-  [1, 1, 33.75, -118, "Tivan Main Base, Tivan", "mainBase"],
-  [2, 1, 0, 0, "The Artifact Laboratory, Tivan", "Labs"],
-  [3, 1, 21.4, -157.81, "The Gallery facility, Tivan", "Gallery"],
-  [4, 1, 31.46, -97.85, "The Arena facility, Tivan", "Arena"],
-  [5, 1, 40, -82, "The Monolit Bank, Tivan", "Bank"],
-  [6, 1, 52, -115.85, "The Market, Tivan", "Market"],
-  [7, 1, 60, 60, "News"],
-];
-
-document.addEventListener("DOMContentLoaded", function () {
-  //do work
-  initWebgl();
-});
+    /*номер, соединение, вверх(прибаляя), влево(прибаляя) начало координат */
+    [1, 1, 33.75, -118, "Tivan Main Base, Tivan", "mainBase"],
+    [2, 1, 0, 0, "The Artifact Laboratory, Tivan", "Labs"],
+    [3, 1, 21.4, -157.81, "The Gallery facility, Tivan", "Gallery"],
+    [4, 1, 31.46, -97.85, "The Arena facility, Tivan", "Arena"],
+    [5, 1, 40, -82, "The Monolit Bank, Tivan", "Bank"],
+    [6, 1, 52, -115.85, "The Market, Tivan", "Market"],
+    [7, 1, 60, 60, "News"],
+  ],
+  dataMedia = [
+    /*["PHOTO", 2, 33.75, -118, "Las Flores, CA, USA", "#"]*/
+  ];
+$(document).ready(initWebgl);
