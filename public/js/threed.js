@@ -53,7 +53,6 @@ var colorPrimary_Base = "#33CCFF",
   colorHighlight = new THREE.Color(colorSecondary);
 
 function initWebgl() {
-  debugger;
   //   setupDeviceSettings();
   var e = window.innerWidth,
     a = window.innerHeight;
@@ -194,7 +193,6 @@ function finishPreloader() {
   preloaderAnimationOut = new TimelineMax({
     paused: !0,
     onComplete: function () {
-      debugger;
       playIntro();
     },
   });
@@ -239,7 +237,6 @@ function initExperience() {
 }
 
 function playIntro() {
-  debugger;
 
   isGlobeRotated = !0;
   isGlobeEventsEnabled = !0;
@@ -2686,7 +2683,6 @@ var cameraDirection = "left",
   dragSpeedSlowZone = 90 + dragZone;
 
 function render() {
-  debugger;
   if (preloaderComplete) {
     if (
       (renderer.render(scene, camera),

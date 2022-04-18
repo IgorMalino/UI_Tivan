@@ -316,7 +316,13 @@ code {
   .preloader_quote h3 {
     /* height: 100px; */
   }
-  .preloader_quoteText {
-    
+  .preloader_quote h1 {
+    font-size: 20px;
   }
+  .preloader_quote h3 {
+    height: 75px;
+  }
+  .preloader_quote h1 {
+    max-width: 400px;
+  } 
 }
