@@ -1064,7 +1064,7 @@ var globeBufferGeometry,
 
 function createGlobe(e) {
   (globeBufferGeometry = new THREE.SphereBufferGeometry(globeRadius, 64, 64)),
-    (globeTexture = new THREE.TextureLoader().load("/img2/map2.png")),
+    (globeTexture = new THREE.TextureLoader().load("/img2/geomap.png")),
     (globeTexture.anisotropy = 16),
     (globeInnerMaterial = new THREE.MeshBasicMaterial({
       map: globeTexture,
