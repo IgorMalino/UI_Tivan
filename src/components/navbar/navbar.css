@@ -213,6 +213,12 @@
 	}
 }
 
+@media only screen and (max-width: 600px) {
+	.connect_text {
+		display: none;
+}
+}
+
 @media only screen and (max-width: 500px) {
     #connect-button {
         display: flex;

@@ -9,6 +9,8 @@ const content_item_cont = {
     buyit: "Buy it"
 }
 
+const isMobile = window.innerWidth <= 500
+
 const InnerNav = () => {
   const {t} = useTranslation()
   
@@ -69,10 +71,15 @@ const InnerNav = () => {
                 <Link to='about' data-id="About">{t("About")}</Link>
               </div>
               <div id="nav-right" className="noSelect" onMouseOver={(e) => unHideWord(e, t("Presale"), "right")}>
+              <div id="nav-left" className="noSelect" onMouseOver={(e) => !isMobile && unHideWord(e, t("About"), "left")}>
+                <Link to='about' data-id="About">{t("About")}</Link>
+              </div>
+              <div id="nav-right" className="noSelect" onMouseOver={(e) => !isMobile && unHideWord(e, t("Presale"), "right")}>
                 <Link to='presale' data-id="Buy it">{t("Presale")}</Link>
               </div>
             </div>
           </div>
+        </div>
     )
 }
 

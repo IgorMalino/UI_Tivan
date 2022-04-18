@@ -315,3 +315,11 @@
 .content::-webkit-scrollbar {
     width: 0px;
 }
+
+@media only screen and (max-width: 768px) {
+    .content {
+        margin-top: 35px;
+        height: 78vh;
+        margin-bottom: 8vh;
+    }
+}
