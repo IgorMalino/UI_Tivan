@@ -53,8 +53,6 @@ var colorPrimary_Base = "#33CCFF",
   colorHighlight = new THREE.Color(colorSecondary);
 
 function initWebgl() {
-  debugger;
-  //   setupDeviceSettings();
   var e = window.innerWidth,
     a = window.innerHeight;
   (scene = new THREE.Scene()),
@@ -194,7 +192,6 @@ function finishPreloader() {
   preloaderAnimationOut = new TimelineMax({
     paused: !0,
     onComplete: function () {
-      debugger;
       playIntro();
     },
   });
@@ -239,8 +236,6 @@ function initExperience() {
 }
 
 function playIntro() {
-  debugger;
-
   isGlobeRotated = !0;
   isGlobeEventsEnabled = !0;
 
@@ -2686,7 +2681,6 @@ var cameraDirection = "left",
   dragSpeedSlowZone = 90 + dragZone;
 
 function render() {
-  debugger;
   if (preloaderComplete) {
     if (
       (renderer.render(scene, camera),
@@ -2971,232 +2965,7 @@ function initButtons() {
     $("#palette").click(function (e) {
       e.preventDefault();
       setColors("random");
-    }),
-    deviceSettings.isMobile ||
-      ($(".close").hover(
-        function () {
-          TweenMax.to(".close .line1", 0.5, {
-            attr: {
-              x1: 15,
-              y1: 15,
-              x2: 35,
-              y2: 35,
-            },
-            stroke: colorSecondary,
-            ease: Expo.easeOut,
-          }),
-            TweenMax.to(".close .line2", 0.5, {
-              attr: {
-                x1: 15,
-                y1: 35,
-                x2: 35,
-                y2: 15,
-              },
-              stroke: colorSecondary,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.fromTo(
-              ".close circle",
-              0.5,
-              {
-                drawSVG: "50% 50%",
-                stroke: colorSecondary,
-              },
-              {
-                drawSVG: "35% 65%",
-                stroke: colorPrimary,
-                display: "block",
-                ease: Expo.easeOut,
-              }
-            ),
-            TweenMax.fromTo(
-              ".close circle",
-              0.25,
-              {
-                autoAlpha: 0,
-              },
-              {
-                autoAlpha: 1,
-                ease: Linear.easeNone,
-              }
-            );
-        },
-        function () {
-          TweenMax.to(".close .line1", 0.5, {
-            attr: {
-              x1: 0,
-              y1: 0,
-              x2: 50,
-              y2: 50,
-            },
-            stroke: colorPrimary,
-            ease: Expo.easeOut,
-          }),
-            TweenMax.to(".close .line2", 0.5, {
-              attr: {
-                x1: 0,
-                y1: 50,
-                x2: 50,
-                y2: 0,
-              },
-              stroke: colorPrimary,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to(".close circle", 0.5, {
-              drawSVG: "50% 50%",
-              stroke: colorSecondary,
-              autoAlpha: 0,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to(".close circle", 0.5, {
-              autoAlpha: 0,
-              ease: Linear.easeNone,
-            });
-        }
-      ),
-      $("#nav-left a").hover(
-        function () {
-          var e = $(this).attr("data-id");
-          TweenMax.fromTo(
-            this,
-            1,
-            {
-              scrambleText: {
-                text: " ",
-              },
-              autoAlpha: 0,
-            },
-            {
-              scrambleText: {
-                text: e,
-                chars: "0123456789!@#$%^&*()",
-                revealDelay: 0.1,
-              },
-              autoAlpha: 1,
-            }
-          );
-        },
-        function () {}
-      ),
-      $("#nav-right a").hover(
-        function () {
-          var e = $(this).attr("data-id");
-          TweenMax.fromTo(
-            this,
-            1,
-            {
-              scrambleText: {
-                text: " ",
-              },
-              autoAlpha: 0,
-            },
-            {
-              scrambleText: {
-                text: e,
-                chars: "0123456789!@#$%^&*()",
-                revealDelay: 0.1,
-                rightToLeft: !0,
-              },
-              autoAlpha: 1,
-            }
-          );
-        },
-        function () {}
-      ),
-      $(document).keydown(function (a) {
-        var e = a.keyCode || a.which,
-          t = {
-            left: 37,
-            up: 38,
-            right: 39,
-            down: 40,
-            blue: 66,
-            invert: 73,
-            random: 82,
-          },
-          i = 20 * toRAD;
-        e === t.left
-          ? ((targetRotationY -= i), (cameraDirection = "right"))
-          : e === t.right
-          ? ((targetRotationY += i), (cameraDirection = "left"))
-          : e === t.up
-          ? (targetCameraZ -= 20)
-          : e === t.down
-          ? (targetCameraZ += 20)
-          : e === t.blue
-          ? setColors("blue")
-          : e === t.invert
-          ? setColors("invert")
-          : e === t.random
-          ? setColors("random")
-          : void 0;
-      }),
-      $(".book").hover(
-        function () {
-          TweenMax.to($(this).find(".overlay"), 0.75, {
-            autoAlpha: 1,
-            immediateRender: !1,
-            ease: Expo.easeOut,
-          }),
-            TweenMax.to($(this).find(".overlay"), 0.75, {
-              rotationY: -40,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to($(this).find(".cover"), 0.75, {
-              rotationY: -40,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to($(this).find(".page1"), 0.75, {
-              rotationY: -34,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to($(this).find(".page2"), 0.75, {
-              rotationY: -27,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to($(this).find(".page3"), 0.75, {
-              rotationY: -15,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to("#buytext", 0.75, {
-              y: 15,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            });
-        },
-        function () {
-          TweenMax.to($(this).find(".overlay"), 0.5, {
-            autoAlpha: 0,
-            immediateRender: !1,
-            ease: Expo.easeOut,
-          }),
-            TweenMax.to($(this).find(".overlay"), 0.5, {
-              rotationY: 0,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to($(this).find(".cover"), 0.5, {
-              rotationY: 0,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to($(this).find(".page"), 0.5, {
-              rotationY: 0,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            }),
-            TweenMax.to("#buytext", 0.5, {
-              y: 0,
-              immediateRender: !1,
-              ease: Expo.easeOut,
-            });
-        }
-      ));
+    });
 }
 
 function resetAnimations() {
