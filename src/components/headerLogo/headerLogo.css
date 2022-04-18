@@ -1,0 +1,103 @@
+#header {
+    position: absolute;
+    top: -65px;
+    left: 50%;
+    width: 200px;
+    height: auto;
+    margin: 0px 0px 0px -100px;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: 0px 0px 10px rgb(0 0 0 / 80%);
+    transition: color 0.5s ease;
+    text-align: center;
+    /* z-index: -1; */
+    color: white;
+    text-decoration: none;
+}
+
+#header strong {
+	font-size: 34px;
+}
+#header .subtitle {
+	opacity: 0.55;
+    margin-top: 9px;
+}
+
+.title {
+    text-decoration: none;
+    font-family: 'Blender Pro';
+    font-weight: bold;
+    font-size: 34px;
+    text-shadow: 0px 0px 10px rgb(0 0 0 / 80%);
+    transition: color 0.5s ease;
+    text-align: center;
+    color: #00CCFF;
+}
+
+#header:hover path {
+	fill: white !important;
+}
+#header:hover .title, #header:hover .subtitle {
+    color: white !important;
+}
+#header path{
+	fill: #00CCFF;
+	transition: 0.5s ease;
+}
+
+.logosvg {
+    max-width: 60px;
+    filter: drop-shadow(0px 0px 10px rgb(0 0 0 / 80%));
+}
+
+.subtitle {
+    color:#00CCFF;
+    transition: color 0.5s ease
+}
+
+@media only screen and (max-width: 768px) {
+    #header {
+        display: none;
+    }
+}
+
+.svgTop {
+    /* transition-delay: 0.4s; */
+}
+
+.svgLeft {
+    /* transition-delay: 0.4s; */
+}
+
+.svgRight {
+    /* transition-delay: 12s; */
+}
+
+.animation {
+    animation: animationLogo 0.8s both;
+    /* animation-delay: 21s; */
+}
+
+.animationHeader {
+    animation: animationHeaderText 0.8s both;
+    /* animation-delay: 22s; */
+}
+
+@keyframes animationLogo {
+    from {
+        transform: translateY(-90px);
+    }
+    to {
+        transform: translateY(0px)
+    }
+}
+
+@keyframes animationHeaderText {
+    from {
+        transform: translateY(-85px);
+    }
+    to {
+        transform: translateY(0px)
+    }
+}
