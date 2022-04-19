@@ -142,7 +142,8 @@
     position: absolute;
     color:white;
     text-align: center;
-    height: 83%;
+    height: 82%;
+    bottom: 12%;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -315,10 +316,28 @@
     width: 0px;
 }
 
+.content_uppercase {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+div#Arena p {
+    font-family: 'Blender Pro';
+}
+
 @media only screen and (max-width: 768px) {
     .content {
-        margin-top: 35px;
-        height: 78vh;
-        margin-bottom: 8vh;
+        margin-top: 15px;
+        height: 80vh;
+        margin-bottom: 2vh;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .content {
+        margin-top: 15px;
+        height: 70vh;
+        margin-bottom: 2vh;
     }
 }

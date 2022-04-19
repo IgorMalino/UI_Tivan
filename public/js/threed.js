@@ -53,6 +53,7 @@ var colorPrimary_Base = "#33CCFF",
   colorHighlight = new THREE.Color(colorSecondary);
 
 function initWebgl() {
+  //   setupDeviceSettings();
   var e = window.innerWidth,
     a = window.innerHeight;
   (scene = new THREE.Scene()),
@@ -236,6 +237,7 @@ function initExperience() {
 }
 
 function playIntro() {
+
   isGlobeRotated = !0;
   isGlobeEventsEnabled = !0;
 

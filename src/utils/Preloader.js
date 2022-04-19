@@ -57,7 +57,7 @@ const Preloader = () => {
                 <h3 >
                     {animateText && renderQuote("#"+quoteText[0])}
                 </h3>
-                <h1 >
+                <h1 className='preloader_quoteText' >
                     {animateText && renderQuote(quoteText[1])}
                 </h1>
                 <span className={`progressBar ${num ? 'progressBarAnim' : ''}`}>

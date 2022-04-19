@@ -97,7 +97,7 @@ const ContentWindow = (props) => {
                     </>
             }
             
-            <div className="content">
+            <div style={{width: width < 800 && "70%"}} className="content">
                 {selected && renderContentWindowContent(selected)}
                 {data && <div className={`${selected === "about" && "contentWindow_content"} animate__animated animate__fadeInUp`}>{ReactHtmlParser(data[i18n.language])}</div>}
                 {console.log(data?.en)}

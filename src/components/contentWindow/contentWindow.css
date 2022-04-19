@@ -108,15 +108,17 @@
 
 .content {
     position: absolute;
-    color:white;
+    color: white;
     text-align: center;
-    height: 70%;
+    height: 82%;
+    bottom: 12%;
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     overflow: scroll;
+    font-family: 'Blender Pro';
 }
 
 .mainContent {

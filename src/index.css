@@ -316,4 +316,22 @@ code {
   .preloader_quote h3 {
     /* height: 100px; */
   }
+  .preloader_quote h1 {
+    font-size: 20px;
+  }
+  .preloader_quote h3 {
+    height: 110px;
+  }
+  .preloader_quote h1 {
+    max-width: 350px;
+  } 
+}
+
+@media only screen and (max-width: 350px) {
+  .preloader_quote h1 {
+    font-size: 20px;
+  }
+  .preloader_quote h1 {
+    max-width: 300px;
+  } 
 }

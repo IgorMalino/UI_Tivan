@@ -16,6 +16,7 @@ const InnerNav = () => {
   
   
   function unHideWord(e, logoTitle, direction) {
+    if (e.view.innerWidth < 768) return
     const width = e.target.offsetWidth
     
     const getRandomSybmol = () => {
@@ -66,6 +67,10 @@ const InnerNav = () => {
     return (
         <div id="nav">
             <div id="nav-inner">
+              {/* <div id="nav-left" className="noSelect" onMouseOver={(e) => unHideWord(e, t("About"), "left")}>
+                <Link to='about' data-id="About">{t("About")}</Link>
+              </div> */}
+              {/* <div id="nav-right" className="noSelect" onMouseOver={(e) => unHideWord(e, t("Presale"), "right")}> */}
               <div id="nav-left" className="noSelect" onMouseOver={(e) => !isMobile && unHideWord(e, t("About"), "left")}>
                 <Link to='about' data-id="About">{t("About")}</Link>
               </div>

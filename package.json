@@ -28,6 +28,7 @@
     "babel-plugin-macros": "^3.1.0",
     "firebase": "^9.6.10",
     "firebase-admin": "^10.0.2",
+    "firebase-tools": "^10.6.0",
     "globe.gl": "^1.5.9",
     "i18n": "^0.14.2",
     "i18next": "^21.6.14",
