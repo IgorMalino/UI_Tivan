@@ -1,0 +1,18 @@
+export const ru = {
+  About: "О Проекте",
+  Arena: "АРЕНА",
+  Bank: "БАНК",
+  Choose_wallet: "ВЫБЕРИТЕ КОШЕЛЕК",
+  Connect: "Подключить",
+  Control: "Контроль",
+  Gallery: "ГАЛЛЕРЕЯ",
+  Game: "Игра",
+  Labs: "ЛАБОРАТОРИИ",
+  Main_base: "БАЗА",
+  Market: "МАРКЕТ",
+  More_wallets_coming: "Скоро появятся новые кошельки",
+  News: "НОВОСТИ",
+  Presale: "ПРОДАЖА",
+  Presale_Text: "Конец препродажи: Купите TVT",
+  Wiki: "ВИКИ",
+};
