@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import Web3 from "web3";
 import { useWeb3React } from "@web3-react/core";
 
-import { connectors } from "../../Wallet/config";
+import { connectors } from "./config";
 import watchImg from "../../assets/img/cs.png";
 import { getConnectFunctions } from "../../utils/getConnectFunctions";
 import smalSize from "../../assets/img/smallSize.png";
