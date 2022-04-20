@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../initializeFirebase";
+
+import { db } from "../../Services/Firebase";
+
 import PaginationPart from "./PaginationPart";
 import Article from "./Article";
 import "./news.css";

@@ -9,7 +9,8 @@ import BigSizeLoading from "../../assets/img/bigSizeLoading.png";
 import SmallSize from "../../assets/img/smallSize.png";
 import SmallSizeClose from "../../assets/img/smallSizeClose.png";
 import SmallSizeLoading from "../../assets/img/smallSizeLoading.png";
-import { db } from "../../initializeFirebase";
+
+import { db } from "../../Services/Firebase";
 
 import "./news.css";
 
