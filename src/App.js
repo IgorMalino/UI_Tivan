@@ -1,25 +1,20 @@
+import { useEffect, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
-import Main from "./components/main/Main";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
-import { useLocation } from "react-router";
-import ContentWindow from "./components/contentWindow/ContentWindow";
 import i18n from "i18next";
-import { useEffect, createContext, useState } from "react";
+
+import Main from "./components/main/Main";
+import ContentWindow from "./components/contentWindow/ContentWindow";
 import ArticlePage from "./components/news/ArticlePage";
 import { UserContext } from "./UserContext";
 
 function App() {
   const [anim, setAnim] = useState(true);
-  const TivanContext = createContext();
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location.pathname)
+
   const getLibrary = (provider) => {
     const library = new Web3Provider(provider, "any");
     library.pollingInterval = 15000;
@@ -27,8 +22,6 @@ function App() {
   };
 
   useEffect(() => {
-    const newPath = location.pathname;
-    // const some3 = [location.pathname[0], ...i18n.language.split(''), ...location.pathname.split('').slice(1)]
     if (location.pathname.split(`/${i18n.language}`)[1]) {
       const newPathname = [
         "/",
@@ -38,10 +31,8 @@ function App() {
       navigate(newPathname.join(""));
     } else {
       const newPathname = `/${i18n.language}`;
-      console.log(newPathname);
       navigate(newPathname);
     }
-    // navigate(some3.join(''))
   }, []);
 
   return (
