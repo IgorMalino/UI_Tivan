@@ -1,12 +1,12 @@
-import Binance from "./img/Binance.png";
-import Coin98 from "./img/Coin98.png";
-import Coinbase from "./img/Coinbase.png";
-import Math from "./img/Math.svg";
-import Metamask from "./img/Metamask.png";
-import SafePal from "./img/SafePal.svg";
-import TokenPocket from "./img/TokenPocket.svg";
-import Trust from "./img/Trust.png";
-import WalletConnect from "./img/WalletConnect.svg";
+import Binance from "./img/Logo/Binance.png";
+import Coin98 from "./img/Logo/Coin98.png";
+import Coinbase from "./img/Logo/Coinbase.png";
+import Math from "./img/Logo/Math.svg";
+import Metamask from "./img/Logo/Metamask.png";
+import SafePal from "./img/Logo/SafePal.svg";
+import TokenPocket from "./img/Logo/TokenPocket.svg";
+import Trust from "./img/Logo/Trust.png";
+import WalletConnect from "./img/Logo/WalletConnect.svg";
 
 export const connectors1 = [
   {

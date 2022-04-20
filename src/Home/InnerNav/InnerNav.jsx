@@ -5,11 +5,6 @@ import { Link } from "react-router-dom";
 // import CSS styles
 import "./innerNav.css";
 
-const content_item_cont = {
-  about: "About",
-  buyit: "Buy it",
-};
-
 const isMobile = window.innerWidth <= 500;
 
 const InnerNav = () => {
@@ -64,10 +59,6 @@ const InnerNav = () => {
   return (
     <div id="nav">
       <div id="nav-inner">
-        {/* <div id="nav-left" className="noSelect" onMouseOver={(e) => unHideWord(e, t("About"), "left")}>
-                <Link to='about' data-id="About">{t("About")}</Link>
-              </div> */}
-        {/* <div id="nav-right" className="noSelect" onMouseOver={(e) => unHideWord(e, t("Presale"), "right")}> */}
         <div
           id="nav-left"
           className="noSelect"

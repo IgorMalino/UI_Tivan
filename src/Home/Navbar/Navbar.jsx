@@ -1,24 +1,19 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
-// Importing Css styles
-import "./navbar.css";
 
-import { useWeb3React } from "@web3-react/core";
-
-// Components
-import ConnectWallet from "../connectWallet/ConnectWallet";
-import ChooseLanguage from "../chooseLanguage/ChooseLanguage";
-
-// Font Awesome elements
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 
-import Language from "../Language/Language";
+import { useTranslation } from "react-i18next";
+
+import ConnectWallet from "./connectWallet/ConnectWallet";
+import ChooseLanguage from "./chooseLanguage/ChooseLanguage";
+import Language from "./Language/Language";
+
+import "./navbar.css";
 
 const Navbar = () => {
   const { t } = useTranslation();
-  const web3ReactContext = useWeb3React();
 
   return (
     <div className="navbar">
@@ -29,8 +24,8 @@ const Navbar = () => {
         />
         {t("Presale_Text")}
       </div>
+
       <div className="right-side">
-        {console.log(web3ReactContext.account)}
         <ConnectWallet className="right-side-element" />
         <a
           className="right-side-element"
@@ -42,10 +37,6 @@ const Navbar = () => {
         </a>
         <ChooseLanguage className="right-side-element" />
         <Language />
-        {/* <select name="language" onChange={onChange}>
-            <option value="en">English</option>
-            <option value="ru">Russian</option>
-            </select> */}
       </div>
     </div>
   );

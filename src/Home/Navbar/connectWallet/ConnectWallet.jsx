@@ -1,21 +1,22 @@
 import React from "react";
-import Button from "@mui/material/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlug, faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
 import Web3 from "web3";
 import { useWeb3React } from "@web3-react/core";
 
 import { connectors } from "./config";
-import watchImg from "../../assets/img/cs.png";
-import { getConnectFunctions } from "../../utils/getConnectFunctions";
-import smalSize from "../../assets/img/smallSize.png";
-import smalSizeLoading from "../../assets/img/smallSizeLoading.png";
-import smalSizeClose from "../../assets/img/smallSizeClose.png";
+import { getConnectFunctions } from "../../../utils/getConnectFunctions";
+import smalSize from "../../../assets/img/smallSize.png";
+import smalSizeLoading from "../../../assets/img/smallSizeLoading.png";
+import smalSizeClose from "../../../assets/img/smallSizeClose.png";
 
 import ERC20TTVTBalance from "./ERC20TTVTBalance";
 import ReferalLink from "./ReferalLink";
-import windowDimensions from "../../utils/windowDimensions";
+import windowDimensions from "../../../utils/windowDimensions";
+
+import watchImg from "./img/cs.png";
 
 import "./connectWallet.css";
 

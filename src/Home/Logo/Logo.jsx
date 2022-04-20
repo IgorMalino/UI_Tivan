@@ -3,15 +3,9 @@ import { Link } from "react-router-dom";
 
 import { UserContext } from "../../UserContext";
 
-import "./headerLogo.css";
+import "./logo.css";
 
-const content_item_cont = {
-  about: "About",
-  title_top: "Tivan",
-  title_top_art: "artifacts",
-};
-
-const HeaderLogo = () => {
+const Logo = () => {
   const { anim, setAnim } = useContext(UserContext);
 
   const [animatHeader, setAnimateHeader] = useState(anim);
@@ -24,7 +18,7 @@ const HeaderLogo = () => {
 
   return (
     <Link to="about">
-      <div id="header">
+      <div id="logo">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,11 +64,11 @@ const HeaderLogo = () => {
           style={{ animationDelay: "20.2s" }}
           className={`subtitle ${animatHeader && "animationHeader"}`}
         >
-          {content_item_cont.title_top_art}
+          artifacts
         </div>
       </div>
     </Link>
   );
 };
 
-export default HeaderLogo;
+export default Logo;

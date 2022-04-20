@@ -9,7 +9,7 @@ import BigSizeLoading from "../../assets/img/bigSizeLoading.png";
 import SmallSize from "../../assets/img/smallSize.png";
 import SmallSizeClose from "../../assets/img/smallSizeClose.png";
 import SmallSizeLoading from "../../assets/img/smallSizeLoading.png";
-import { ConnectWalletContent } from "../connectWallet/ConnectWallet";
+import { ConnectWalletContent } from "../../Home/Navbar/connectWallet/ConnectWallet";
 import useWindowDimensions from "../../utils/windowDimensions";
 
 import { db } from "../../Services/Firebase";
@@ -18,7 +18,7 @@ import "./contentWindow.css";
 import "animate.css";
 import News from "../news/News";
 
-const ContentWindow = (props) => {
+const ContentWindow = () => {
   const fetchBlogs = async (current) => {
     const response = await db.collection("documentContent").doc(current).get();
     setData(response.data());
@@ -33,11 +33,9 @@ const ContentWindow = (props) => {
     const path = location.pathname.split(`/${i18n.language}/`)[1];
     setSelected(path);
     fetchBlogs(path[0].toUpperCase() + path.slice(1));
-    // setData(resData)
   }, []);
 
   const renderContentWindowContent = (selected) => {
-    console.log(selected, "asd");
     switch (selected) {
       case "connectWallet":
         return <ConnectWalletContent />;

@@ -5,7 +5,7 @@ import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import i18n from "i18next";
 
-import Home from "./components/home/Home";
+import Home from "./home/Home";
 import ContentWindow from "./components/contentWindow/ContentWindow";
 import ArticlePage from "./components/news/ArticlePage";
 import { UserContext } from "./UserContext";

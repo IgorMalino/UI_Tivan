@@ -1,4 +1,4 @@
-#header {
+#logo {
     position: absolute;
     top: -65px;
     left: 50%;
@@ -16,15 +16,7 @@
     text-decoration: none;
 }
 
-#header strong {
-	font-size: 34px;
-}
-#header .subtitle {
-	opacity: 0.55;
-    margin-top: 9px;
-}
-
-.title {
+#logo .title {
     text-decoration: none;
     font-family: 'Blender Pro';
     font-weight: bold;
@@ -35,13 +27,20 @@
     color: #00CCFF;
 }
 
-#header:hover path {
+#logo .subtitle {
+	opacity: 0.55;
+    color:#00CCFF;
+    margin-top: 9px;
+    transition: color 0.5s ease;
+}
+
+#logo:hover path {
 	fill: white !important;
 }
-#header:hover .title, #header:hover .subtitle {
+#logo:hover .title, #logo:hover .subtitle {
     color: white !important;
 }
-#header path{
+#logo path{
 	fill: #00CCFF;
 	transition: 0.5s ease;
 }
@@ -51,13 +50,13 @@
     filter: drop-shadow(0px 0px 10px rgb(0 0 0 / 80%));
 }
 
-.subtitle {
+/* .subtitle {
     color:#00CCFF;
     transition: color 0.5s ease
-}
+} */
 
 @media only screen and (max-width: 768px) {
-    #header {
+    #logo {
         display: none;
     }
 }

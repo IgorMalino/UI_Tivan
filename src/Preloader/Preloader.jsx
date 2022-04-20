@@ -21,7 +21,7 @@ const Preloader = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
+        setTimeout(() => {
       setClassAnimation(true);
       setTimeout(() => {
         setAnimateTex(true);

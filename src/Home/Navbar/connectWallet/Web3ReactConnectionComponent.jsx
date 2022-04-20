@@ -1,4 +1,6 @@
+import React from "react";
 import { useWeb3React } from "@web3-react/core";
+
 import {
   injected,
   walletconnect,
@@ -6,7 +8,6 @@ import {
   walletlink,
   bsc,
 } from "../../Helpers/connectors";
-import React from "react";
 
 const Web3ReactConnectionComponent = () => {
   //connector, library, chainId, account, activate, deactivate
@@ -103,4 +104,5 @@ const Web3ReactConnectionComponent = () => {
     </div>
   );
 };
+
 export default Web3ReactConnectionComponent;
