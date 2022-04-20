@@ -5,11 +5,12 @@ import Navbar from "../navbar/Navbar";
 import InnerNav from "../InnerNav/InnerNav";
 import MinimapMenu from "../minimapMenu/MinimapMenu";
 import Braces from "../../braces/Braces";
-import "./main.css";
 
-const Main = () => {
+import "./home.css";
+
+const Home = () => {
   return (
-    <div className="main">
+    <div className="home">
       <HeaderLogo />
       <Navbar />
       <Braces />
@@ -19,4 +20,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;

@@ -5,7 +5,7 @@ import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import i18n from "i18next";
 
-import Main from "./components/main/Main";
+import Home from "./components/home/Home";
 import ContentWindow from "./components/contentWindow/ContentWindow";
 import ArticlePage from "./components/news/ArticlePage";
 import { UserContext } from "./UserContext";
@@ -39,16 +39,15 @@ function App() {
     <Web3ReactProvider getLibrary={getLibrary}>
       <UserContext.Provider value={{ anim, setAnim }}>
         <Routes>
-          <Route path={`/${i18n.language}`} element={<Main />} />
-          <Route
-            path={`/${i18n.language}/:contenName`}
-            element={<ContentWindow />}
-          />
-          <Route path={`/:contenName`} element={<ContentWindow />} />
           <Route
             path={`/${i18n.language}/news/:id`}
             element={<ArticlePage />}
           />
+          <Route
+            path={`/${i18n.language}/:contenName`}
+            element={<ContentWindow />}
+          />
+          <Route path={`/${i18n.language}`} element={<Home />} />
         </Routes>
       </UserContext.Provider>
     </Web3ReactProvider>
