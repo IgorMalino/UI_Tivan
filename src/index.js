@@ -1,22 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
+
+import App from "./App";
 import "./i18n";
+import Preloader from "./Preloader/Preloader";
+import reportWebVitals from "./reportWebVitals";
+
+import "./index.css";
 import "semantic-ui-css/semantic.min.css";
-import Preloader from "./utils/Preloader";
 
 ReactDOM.render(
-  // <React.StrictMode>
   <React.Suspense fallback="">
     <Preloader />
     <Router>
       <App />
     </Router>
   </React.Suspense>,
-  // </React.StrictMode>,
   document.getElementById("root")
 );
 
