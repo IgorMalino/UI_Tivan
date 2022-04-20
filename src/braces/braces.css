@@ -1,13 +1,5 @@
-.fade50 {
-    opacity: .5;
-}
-
 svg:not(:root) {
     overflow: hidden;
-}
-
-.fade75 {
-    opacity: .25;
 }
 
 .braces {
@@ -20,7 +12,6 @@ svg:not(:root) {
     min-width: 800px;
     height: auto;
     margin: 0;
-    /* padding: 5px; */
     text-align: center;
     transform: translate(-50%, -50%);
     pointer-events: none;
