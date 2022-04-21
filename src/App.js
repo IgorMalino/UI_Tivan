@@ -7,7 +7,7 @@ import i18n from "i18next";
 
 import Home from "./home/Home";
 import ContentWindow from "./components/contentWindow/ContentWindow";
-import ArticlePage from "./components/news/ArticlePage";
+import ArticlePage from "./News/ArticlePage";
 import { UserContext } from "./UserContext";
 
 function App() {

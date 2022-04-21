@@ -16,7 +16,8 @@ import { db } from "../../Services/Firebase";
 
 import "./contentWindow.css";
 import "animate.css";
-import News from "../news/News";
+
+import News from "../../News/News";
 
 const ContentWindow = () => {
   const fetchBlogs = async (current) => {
@@ -101,7 +102,6 @@ const ContentWindow = () => {
               {ReactHtmlParser(data[i18n.language])}
             </div>
           )}
-          {console.log(data?.en)}
         </div>
       </div>
     </>

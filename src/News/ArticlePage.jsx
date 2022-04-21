@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import i18n from "i18next";
 
-import useWindowDimensions from "../../utils/windowDimensions";
-import BigSize from "../../assets/img/bigSize.png";
-import BigSizeClose from "../../assets/img/bigSizeClose.png";
-import BigSizeLoading from "../../assets/img/bigSizeLoading.png";
-import SmallSize from "../../assets/img/smallSize.png";
-import SmallSizeClose from "../../assets/img/smallSizeClose.png";
-import SmallSizeLoading from "../../assets/img/smallSizeLoading.png";
+import useWindowDimensions from "../utils/windowDimensions";
+import BigSize from "../assets/img/bigSize.png";
+import BigSizeClose from "../assets/img/bigSizeClose.png";
+import BigSizeLoading from "../assets/img/bigSizeLoading.png";
+import SmallSize from "../assets/img/smallSize.png";
+import SmallSizeClose from "../assets/img/smallSizeClose.png";
+import SmallSizeLoading from "../assets/img/smallSizeLoading.png";
 
-import { db } from "../../Services/Firebase";
+import { db } from "../Services/Firebase";
 
 import "./news.css";
 
