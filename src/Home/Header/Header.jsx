@@ -6,8 +6,8 @@ import { faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 
 import { useTranslation } from "react-i18next";
 
-import ConnectWallet from "./connectWallet/ConnectWallet";
-import ChooseLanguage from "./chooseLanguage/ChooseLanguage";
+import ConnectWallet from "./СonnectWallet/ConnectWallet";
+import ChooseLanguage from "./СhooseLanguage/ChooseLanguage";
 import Language from "./Language/Language";
 
 import "./header.css";
