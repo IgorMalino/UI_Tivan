@@ -275,10 +275,8 @@ function ConnectWallet() {
     ].join("");
   };
 
-  console.log();
-
   return (
-    <React.Fragment>
+    <>
       {!account ? (
         <Button
           id="connect-button"
@@ -317,7 +315,7 @@ function ConnectWallet() {
           <UserWalletConnect handleClose={handleClose} />
         )
       ) : null}
-    </React.Fragment>
+    </>
   );
 }
 
