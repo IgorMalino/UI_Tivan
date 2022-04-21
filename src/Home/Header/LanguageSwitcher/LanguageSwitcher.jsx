@@ -2,76 +2,22 @@ import React, { useState } from "react";
 import i18n from "i18next";
 import Fade from "@mui/material/Fade";
 import Menu from "@mui/material/Menu";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import ReactCountryFlag from "react-country-flag";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import theme from "../theme";
+
 import "./styles.css";
 
-const theme = createTheme({
-  palette: {
-    type: "dark",
-    primary: {
-      main: "#FFFFFF",
-    },
-    secondary: {
-      main: "#f50057",
-    },
-    text: {
-      primary: "#00CCFF",
-      secondary: "#FFFFFF",
-      disabled: "#FFFFFF",
-    },
-  },
-  components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          top: 46,
-          background: "transparent",
-        },
-      },
-    },
-    MuiList: {
-      styleOverrides: {
-        root: {
-          background: "transparent",
-          borderTop: 1,
-          borderBottom: 1,
-          borderLeft: 0,
-          borderRight: 0,
-          borderStyle: "solid",
-        },
-      },
-    },
-    MuiLoadingButton: {
-      styleOverrides: {
-        root: {
-          "&.Mui-disabled": {
-            border: "1px solid #d32f2f",
-          },
-        },
-        loading: {
-          backgroundColor: "#d32f2f",
-        },
-        loadingIndicator: {
-          color: "#d32f2f",
-        },
-      },
-    },
-  },
-});
-
 const LanguageSwitcher = () => {
-  const [selected, setSelected] = useState(i18n.language);
-
   const navigate = useNavigate();
   const location = useLocation();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleClose = (e) => {
+  const close = () => {
     setAnchorEl(null);
   };
 
@@ -80,27 +26,20 @@ const LanguageSwitcher = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const onChange = (event) => {
-    i18n.changeLanguage(event.target.getAttribute("data"));
+  const changeLanguage = (language) => () => {
+    i18n.changeLanguage(language);
 
-    if (location.pathname.split(`/${i18n.language}`)[1]) {
-      const newPathname = [
-        "/",
-        i18n.language,
-        ...location.pathname.split(`/${i18n.language}`)[1],
-      ];
+    const pathname = location.pathname.split(`/${i18n.language}`)[1]
+      ? [
+          "/",
+          i18n.language,
+          ...location.pathname.split(`/${i18n.language}`)[1],
+        ].join("")
+      : `/${i18n.language}`;
 
-      navigate(newPathname.join(""));
+    navigate(pathname);
 
-      setSelected(i18n.language);
-    } else {
-      const newPathname = `/${i18n.language}`;
-
-      navigate(newPathname);
-      setSelected(i18n.language);
-    }
-
-    handleClose();
+    close();
   };
 
   return (
@@ -130,18 +69,18 @@ const LanguageSwitcher = () => {
           }}
           anchorEl={anchorEl}
           open={open}
-          onClose={handleClose}
+          onClose={close}
           TransitionComponent={Fade}
         >
-          <li onClick={(e) => onChange(e)} className="icocu">
-            <a data="en">
-              <ReactCountryFlag data="en" countryCode="US" />
+          <li onClick={changeLanguage("en")} className="icocu">
+            <a>
+              <ReactCountryFlag countryCode="US" />
               ENG
             </a>
           </li>
-          <li onClick={(e) => onChange(e)} className="icocu">
-            <a data="ru">
-              <ReactCountryFlag data="ru" countryCode="RU" />
+          <li onClick={changeLanguage("ru")} className="icocu">
+            <a>
+              <ReactCountryFlag countryCode="RU" />
               RUS
             </a>
           </li>

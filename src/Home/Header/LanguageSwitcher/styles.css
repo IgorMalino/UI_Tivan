@@ -1,33 +1,5 @@
+@import "../theme.css";
+
 #language {
   display: flex;
-}
-
-.social-icon {
-  position: relative;
-  padding-right: 10px;
-  font-family: "Blender Pro";
-  cursor: pointer;
-}
-
-#fontAwesomeIcon-telegram {
-  color: #00ccff;
-}
-
-.icocu:first-child {
-  margin-bottom: 10px;
-}
-
-.icocu a {
-  margin: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80px;
-  text-decoration: none;
-  color: #00ccff;
-  cursor: pointer;
-}
-
-.icocu a:hover {
-  color: white;
 }

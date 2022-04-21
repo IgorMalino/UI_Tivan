@@ -3,70 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTelegram } from "@fortawesome/free-brands-svg-icons";
 import Fade from "@mui/material/Fade";
 import Menu from "@mui/material/Menu";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import ReactCountryFlag from "react-country-flag";
 
-import "./styles.css";
+import theme from "../theme";
 
-const theme = createTheme({
-  palette: {
-    type: "dark",
-    primary: {
-      main: "#FFFFFF",
-    },
-    secondary: {
-      main: "#f50057",
-    },
-    text: {
-      primary: "#00CCFF",
-      secondary: "#FFFFFF",
-      disabled: "#FFFFFF",
-    },
-  },
-  components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          top: 46,
-          background: "transparent",
-        },
-      },
-    },
-    MuiList: {
-      styleOverrides: {
-        root: {
-          background: "transparent",
-          borderTop: 1,
-          borderBottom: 1,
-          borderLeft: 0,
-          borderRight: 0,
-          borderStyle: "solid",
-        },
-      },
-    },
-    MuiLoadingButton: {
-      styleOverrides: {
-        root: {
-          "&.Mui-disabled": {
-            border: "1px solid #d32f2f",
-          },
-        },
-        loading: {
-          backgroundColor: "#d32f2f",
-        },
-        loadingIndicator: {
-          color: "#d32f2f",
-        },
-      },
-    },
-  },
-});
+import "./styles.css";
 
 const Telegram = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleClose = (e) => {
+  const close = () => {
     setAnchorEl(null);
   };
 
@@ -99,26 +47,18 @@ const Telegram = () => {
           }}
           anchorEl={anchorEl}
           open={open}
-          onClose={handleClose}
+          onClose={close}
           TransitionComponent={Fade}
         >
           <li className="icocu">
-            <a
-              target="_blank"
-              href="http://t.me/TIVAN_ENG"
-              onClick={handleClose}
-            >
+            <a target="_blank" href="http://t.me/TIVAN_ENG" onClick={close}>
               <FontAwesomeIcon icon={faTelegram} />
               &nbsp;
               <ReactCountryFlag countryCode="US" /> ENG
             </a>
           </li>
           <li className="icocu">
-            <a
-              target="_blank"
-              href="http://t.me/TIVAN_RUS"
-              onClick={handleClose}
-            >
+            <a target="_blank" href="http://t.me/TIVAN_RUS" onClick={close}>
               <FontAwesomeIcon icon={faTelegram} />
               &nbsp;
               <ReactCountryFlag countryCode="RU" /> RUS
