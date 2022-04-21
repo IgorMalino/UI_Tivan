@@ -18,21 +18,7 @@ import windowDimensions from "../../../utils/windowDimensions";
 
 import watchImg from "./img/cs.png";
 
-import "./connectWallet.css";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-};
+import "./wallet.css";
 
 const styles = {
   account: {
@@ -254,7 +240,7 @@ export const UserWalletConnect = ({ handleClose }) => {
   );
 };
 
-function ConnectWallet() {
+function Wallet() {
   const [open, setOpen] = React.useState(false);
   const { account } = useWeb3React();
   const { width } = windowDimensions();
@@ -319,4 +305,4 @@ function ConnectWallet() {
   );
 }
 
-export default ConnectWallet;
+export default Wallet;

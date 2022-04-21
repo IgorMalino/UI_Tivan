@@ -6,9 +6,9 @@ import { faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 
 import { useTranslation } from "react-i18next";
 
-import ConnectWallet from "./СonnectWallet/ConnectWallet";
 import ChooseLanguage from "./СhooseLanguage/ChooseLanguage";
 import Language from "./Language/Language";
+import Wallet from "./Wallet/Wallet";
 
 import "./header.css";
 
@@ -26,7 +26,7 @@ const Header = () => {
       </div>
 
       <div className="right-side">
-        <ConnectWallet className="right-side-element" />
+        <Wallet className="right-side-element" />
         <a
           className="right-side-element"
           href="https://twitter.com/Tivan_art"
