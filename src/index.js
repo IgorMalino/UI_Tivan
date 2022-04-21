@@ -8,7 +8,6 @@ import Preloader from "./Preloader/Preloader";
 import reportWebVitals from "./reportWebVitals";
 
 import "./index.css";
-import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(
   <React.Suspense fallback="">

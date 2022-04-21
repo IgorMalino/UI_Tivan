@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import i18n from "i18next";
-import ReactHtmlParser from "react-html-parser";
 import { Link, useLocation } from "react-router-dom";
 
 import BigSize from "../../assets/img/bigSize.png";
@@ -98,9 +97,8 @@ const ContentWindow = () => {
               className={`${
                 selected === "about" && "contentWindow_content"
               } animate__animated animate__fadeInUp`}
-            >
-              {ReactHtmlParser(data[i18n.language])}
-            </div>
+              dangerouslySetInnerHTML={{ __html: data[i18n.language] }}
+            />
           )}
         </div>
       </div>
