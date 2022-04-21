@@ -9,7 +9,7 @@ import BigSizeLoading from "../../assets/img/bigSizeLoading.png";
 import SmallSize from "../../assets/img/smallSize.png";
 import SmallSizeClose from "../../assets/img/smallSizeClose.png";
 import SmallSizeLoading from "../../assets/img/smallSizeLoading.png";
-import { ConnectWalletContent } from "../../Home/Navbar/connectWallet/ConnectWallet";
+import { ConnectWalletContent } from "../../Home/Header/connectWallet/ConnectWallet";
 import useWindowDimensions from "../../utils/windowDimensions";
 
 import { db } from "../../Services/Firebase";

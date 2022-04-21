@@ -83,22 +83,24 @@ const ChooseLanguage = () => {
 
   const onChange = (event) => {
     i18n.changeLanguage(event.target.getAttribute("data"));
-    console.log(location.pathname, event.target.value);
+
     if (location.pathname.split(`/${i18n.language}`)[1]) {
       const newPathname = [
         "/",
         i18n.language,
         ...location.pathname.split(`/${i18n.language}`)[1],
       ];
-      console.log(newPathname, "navbar IF");
+
       navigate(newPathname.join(""));
+
       setSelected(i18n.language);
     } else {
       const newPathname = `/${i18n.language}`;
-      console.log(newPathname, "navbar else");
+
       navigate(newPathname);
       setSelected(i18n.language);
     }
+
     handleClose();
   };
 
@@ -114,12 +116,12 @@ const ChooseLanguage = () => {
         target="_blank"
         href="http://t.me/TIVAN_ENG"
       >
-        {console.log(i18n.language)}
         <ReactCountryFlag
           style={{ fontSize: "17px" }}
           countryCode={i18n.language === "en" ? "US" : "RU"}
         />
       </a>
+
       <ThemeProvider theme={theme}>
         <Menu
           style={{ marginTop: "7px" }}

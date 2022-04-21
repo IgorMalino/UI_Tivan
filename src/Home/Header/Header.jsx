@@ -10,13 +10,13 @@ import ConnectWallet from "./connectWallet/ConnectWallet";
 import ChooseLanguage from "./chooseLanguage/ChooseLanguage";
 import Language from "./Language/Language";
 
-import "./navbar.css";
+import "./header.css";
 
-const Navbar = () => {
+const Header = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="navbar">
+    <div className="header">
       <div className="left-side">
         <FontAwesomeIcon
           style={{ marginRight: "4px", height: "17.5px" }}
@@ -42,4 +42,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
