@@ -12,12 +12,6 @@ const Map = () => {
   const { t } = useTranslation();
 
   const [playing, toggle] = useAudio(audio);
-  console.log(playing);
-  // useEffect(() => {
-  //         setTimeout(()=> {
-  //                 !playing && toggle();
-  //         }, 17000)
-  //         }, [])
 
   return (
     <>
