@@ -6,8 +6,8 @@ import { faPencilRuler } from "@fortawesome/free-solid-svg-icons";
 
 import { useTranslation } from "react-i18next";
 
-import ChooseLanguage from "./СhooseLanguage/ChooseLanguage";
-import Language from "./Language/Language";
+import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
+import Telegram from "./Telegram/Telegram";
 import Wallet from "./Wallet/Wallet";
 
 import "./header.css";
@@ -35,8 +35,8 @@ const Header = () => {
         >
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <ChooseLanguage className="right-side-element" />
-        <Language />
+        <Telegram className="right-side-element" />
+        <LanguageSwitcher />
       </div>
     </div>
   );
