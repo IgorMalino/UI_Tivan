@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
 import Web3 from "web3";
 
-import configData from "../../../config.json";
+import configData from "../../../../config.json";
 
 function ERC20TTVTBalance() {
   //   const { data: assets, fetchERC20Balances } = useERC20Balances(props);

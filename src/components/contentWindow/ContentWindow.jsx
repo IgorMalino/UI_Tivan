@@ -8,7 +8,7 @@ import BigSizeLoading from "../../assets/img/bigSizeLoading.png";
 import SmallSize from "../../assets/img/smallSize.png";
 import SmallSizeClose from "../../assets/img/smallSizeClose.png";
 import SmallSizeLoading from "../../assets/img/smallSizeLoading.png";
-import { ConnectWalletContent } from "../../Home/Header/Wallet/Wallet";
+import WalletList from "../../Home/Header/Wallet/WalletList/WalletList";
 import useWindowDimensions from "../../utils/windowDimensions";
 
 import { db } from "../../Services/Firebase";
@@ -38,7 +38,7 @@ const ContentWindow = () => {
   const renderContentWindowContent = (selected) => {
     switch (selected) {
       case "connectWallet":
-        return <ConnectWalletContent />;
+        return <WalletList />;
         break;
       case "gallery":
         return "";

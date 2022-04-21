@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import { useWeb3React } from "@web3-react/core";
 
-import configData from "../../../config.json";
+import configData from "../../../../config.json";
 
 const ReferalLink = () => {
   const [ref_link, setRef_link] = useState();
