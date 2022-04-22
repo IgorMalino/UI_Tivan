@@ -31,8 +31,7 @@ const LanguageSwitcher = () => {
 
     const pathname = location.pathname.split(`/${i18n.language}`)[1]
       ? [
-          "/",
-          i18n.language,
+          `/${i18n.language}`,
           ...location.pathname.split(`/${i18n.language}`)[1],
         ].join("")
       : `/${i18n.language}`;
