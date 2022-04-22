@@ -1,75 +1,51 @@
 import Binance from "./img/Logo/Binance.png";
-import Coin98 from "./img/Logo/Coin98.png";
 import Coinbase from "./img/Logo/Coinbase.png";
-import Math from "./img/Logo/Math.svg";
 import Metamask from "./img/Logo/Metamask.png";
-import SafePal from "./img/Logo/SafePal.svg";
-import TokenPocket from "./img/Logo/TokenPocket.svg";
-import Trust from "./img/Logo/Trust.png";
 import WalletConnect from "./img/Logo/WalletConnect.svg";
 
-export const connectors1 = [
+const config = [
   {
+    options: {
+      supportedChainIds: [56, 97],
+    },
+    logo: Binance,
+    title: "Binance",
+    type: "binance",
+  },
+
+  {
+    options: {
+      url: "https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
+      appName: "demo-app",
+      supportedChainIds: [1, 4],
+    },
+    logo: Coinbase,
+    title: "Coinbase",
+    type: "coinbase",
+  },
+
+  {
+    options: {
+      supportedChainIds: [1, 3, 4, 5, 42, 56],
+    },
+    logo: Metamask,
     title: "Metamask",
-    icon: Metamask,
-    connectorId: "injected",
-    priority: 1,
+    type: "metamask",
+  },
+
+  {
+    options: {
+      rpc: {
+        1: "https://mainnet.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
+        4: "https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
+      },
+      qrcode: true,
+      pollingInterval: 15000,
+    },
+    logo: WalletConnect,
+    title: "WalletConnect",
+    type: "walletConnect",
   },
 ];
 
-export const connectors = [
-  {
-    title: "Metamask",
-    icon: Metamask,
-    connectorId: "injected",
-    priority: 1,
-  },
-  {
-    title: "WalletConnect",
-    icon: WalletConnect,
-    connectorId: "walletconnect",
-    priority: 2,
-  },
-  {
-    title: "Coinbase",
-    icon: Coinbase,
-    connectorId: "Coinbase",
-    priority: 2,
-  },
-  {
-    title: "Binance",
-    icon: Binance,
-    connectorId: "Binance",
-    priority: 2,
-  },
-  // {
-  //   title: "Trust Wallet",
-  //   icon: TrustWallet,
-  //   connectorId: "injected",
-  //   priority: 3,
-  // },
-  // {
-  //   title: "MathWallet",
-  //   icon: MathWallet,
-  //   connectorId: "injected",
-  //   priority: 999,
-  // },
-  // {
-  //   title: "TokenPocket",
-  //   icon: TokenPocket,
-  //   connectorId: "injected",
-  //   priority: 999,
-  // },
-  // {
-  //   title: "SafePal",
-  //   icon: SafePal,
-  //   connectorId: "injected",
-  //   priority: 999,
-  // },
-  // {
-  //   title: "Coin98",
-  //   icon: Coin98,
-  //   connectorId: "injected",
-  //   priority: 999,
-  // },
-];
+export default config;

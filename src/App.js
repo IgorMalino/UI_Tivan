@@ -12,12 +12,15 @@ import { UserContext } from "./UserContext";
 
 function App() {
   const [anim, setAnim] = useState(true);
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const getLibrary = (provider) => {
-    const library = new Web3Provider(provider, "any");
-    library.pollingInterval = 15000;
+    const library = new Web3Provider(provider);
+
+    library.pollingInterval = 12000;
+
     return library;
   };
 

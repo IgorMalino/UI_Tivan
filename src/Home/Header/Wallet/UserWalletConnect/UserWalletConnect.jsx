@@ -2,7 +2,6 @@ import React from "react";
 import Web3 from "web3";
 import { useWeb3React } from "@web3-react/core";
 
-import { getConnectFunctions } from "../../../../utils/getConnectFunctions";
 import smalSize from "../../../../assets/img/smallSize.png";
 import smalSizeLoading from "../../../../assets/img/smallSizeLoading.png";
 import smalSizeClose from "../../../../assets/img/smallSizeClose.png";
@@ -14,12 +13,6 @@ import "../wallet.css";
 
 const UserWalletConnect = ({ handleClose }) => {
   const web3reactContext = useWeb3React();
-  const {
-    connectBinanceWallet,
-    connectWalletConnectSimple,
-    connectCoinbaseSimple,
-    connectMetamaskSimple,
-  } = getConnectFunctions(web3reactContext);
 
   const getEllipsisTxt = (str, number) => {
     const newStr = str.split("");
@@ -28,19 +21,6 @@ const UserWalletConnect = ({ handleClose }) => {
       "...",
       ...newStr.slice(newStr.length - number),
     ].join("");
-  };
-
-  const getConnector = (name) => {
-    switch (name) {
-      case "Metamask":
-        return connectMetamaskSimple;
-      case "Coinbase":
-        return connectCoinbaseSimple;
-      case "WalletConnect":
-        return connectWalletConnectSimple;
-      case "Binance":
-        return connectBinanceWallet;
-    }
   };
 
   return (

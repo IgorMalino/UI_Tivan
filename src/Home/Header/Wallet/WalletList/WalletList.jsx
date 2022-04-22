@@ -2,31 +2,18 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useWeb3React } from "@web3-react/core";
 
-import { connectors } from "./config";
-import { getConnectFunctions } from "../../../../utils/getConnectFunctions";
 import smalSize from "../../../../assets/img/smallSize.png";
 import smalSizeLoading from "../../../../assets/img/smallSizeLoading.png";
 import smalSizeClose from "../../../../assets/img/smallSizeClose.png";
 
-import watchImg from "./img/cs.png";
+import hourglass from "./img/hourglass.png";
+
+import config from "./config";
+import createConnector from "./createConnector";
 
 import "../wallet.css";
 
 const styles = {
-  account: {
-    height: "42px",
-    padding: "0 15px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "fit-content",
-    borderRadius: "12px",
-    backgroundColor: "rgb(244, 244, 244)",
-    cursor: "pointer",
-  },
-  text: {
-    color: "#21BF96",
-  },
   connector: {
     alignItems: "center",
     display: "flex",
@@ -47,27 +34,17 @@ const styles = {
   },
 };
 
-const WalletList = ({ handleClose }) => {
-  const web3reactContext = useWeb3React();
-  const { t } = useTranslation();
-  const {
-    connectBinanceWallet,
-    connectWalletConnectSimple,
-    connectCoinbaseSimple,
-    connectMetamaskSimple,
-  } = getConnectFunctions(web3reactContext, handleClose);
+const WalletList = ({ close }) => {
+  const web3ReactContext = useWeb3React();
 
-  const getConnector = (name) => {
-    switch (name) {
-      case "Metamask":
-        return connectMetamaskSimple;
-      case "Coinbase":
-        return connectCoinbaseSimple;
-      case "WalletConnect":
-        return connectWalletConnectSimple;
-      case "Binance":
-        return connectBinanceWallet;
-    }
+  const { t } = useTranslation();
+
+  const connect = (type) => () => {
+    debugger;
+
+    const connector = createConnector(type);
+
+    web3ReactContext.activate(connector);
   };
 
   return (
@@ -80,24 +57,24 @@ const WalletList = ({ handleClose }) => {
         />
         <img
           className="ConnectWalletContent_img_close"
-          onClick={handleClose}
+          onClick={close}
           src={smalSizeClose}
         />
         <div className="ConnectWalletContent_content">
           <div>{t("Choose_wallet")}:</div>
+
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
-            {connectors.map(({ title, icon, connectorId }, key) => (
-              <div
-                onClick={getConnector(title)}
-                style={styles.connector}
-                key={key}
-              >
-                <img src={icon} alt={title} style={styles.icon} />
-                <p style={{ fontSize: "14px" }}>{title}</p>
-              </div>
-            ))}
+            {config.map(({ logo, title, type }) => {
+              return (
+                <a onClick={connect(type)} style={styles.connector} key={type}>
+                  <img src={logo} alt={title} style={styles.icon} />
+                  <p style={{ fontSize: "14px" }}>{title}</p>
+                </a>
+              );
+            })}
+
             <div style={styles.connector}>
-              <img src={watchImg} alt="TokenPocket" style={styles.icon} />
+              <img src={hourglass} alt="" style={styles.icon} />
               <p style={{ fontSize: "14px" }}>{t("More_wallets_coming")}</p>
             </div>
           </div>

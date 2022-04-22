@@ -68,23 +68,21 @@ function ERC20TTVTBalance() {
   //   }
 
   return (
-    <>
-      <div
-        style={{
-          fontSize: "42px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {data && data} TVT{" "}
-        <FontAwesomeIcon
-          onClick={() => getData()}
-          style={{ height: "45px", marginLeft: "5px", cursor: "pointer" }}
-          icon={faSync}
-        />
-      </div>
-    </>
+    <div
+      style={{
+        fontSize: "42px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {data && data} TVT{" "}
+      <FontAwesomeIcon
+        onClick={() => getData()}
+        style={{ height: "45px", marginLeft: "5px", cursor: "pointer" }}
+        icon={faSync}
+      />
+    </div>
   );
 }
 export default ERC20TTVTBalance;

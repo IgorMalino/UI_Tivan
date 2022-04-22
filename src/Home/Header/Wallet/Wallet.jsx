@@ -13,16 +13,19 @@ import WalletList from "./WalletList/WalletList";
 import "./wallet.css";
 
 function Wallet() {
-  const [open, setOpen] = React.useState(false);
+  const { t } = useTranslation();
+
+  const [isOpen, setIsOpen] = React.useState(false);
   const { account } = useWeb3React();
   const { width } = windowDimensions();
-  const handleOpen = () => {
-    setOpen(true);
+
+  const close = () => {
+    setIsOpen(false);
   };
-  const handleClose = () => {
-    setOpen(false);
+
+  const open = () => {
+    setIsOpen(true);
   };
-  const { t } = useTranslation();
 
   const getEllipsisTxt = (str, number) => {
     const newStr = str.split("");
@@ -33,14 +36,12 @@ function Wallet() {
     ].join("");
   };
 
+  console.log("account", account);
+
   return (
     <>
       {!account ? (
-        <Button
-          id="connect-button"
-          style={{ color: "#00CCFF" }}
-          onClick={handleOpen}
-        >
+        <Button id="connect-button" style={{ color: "#00CCFF" }} onClick={open}>
           <span>
             <div>
               <FontAwesomeIcon
@@ -52,7 +53,7 @@ function Wallet() {
           </span>
         </Button>
       ) : (
-        <a onClick={handleOpen} className="social-icon" href="#">
+        <a onClick={open} className="social-icon" href="#">
           {" "}
           <FontAwesomeIcon
             style={{ marginRight: "5px" }}
@@ -64,11 +65,11 @@ function Wallet() {
         </a>
       )}
 
-      {open ? (
-        !account ? (
-          <WalletList handleClose={handleClose} />
+      {isOpen ? (
+        account ? (
+          <UserWalletConnect close={close} />
         ) : (
-          <UserWalletConnect handleClose={handleClose} />
+          <WalletList close={close} />
         )
       ) : null}
     </>
