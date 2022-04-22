@@ -1,18 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-import { UserContext } from "../../UserContext";
 
 import "./logo.css";
 
 const Logo = () => {
-  const { anim, setAnim } = useContext(UserContext);
-
-  const [animatHeader, setAnimateHeader] = useState(anim);
+  const [isAnimated, setIsAnimated] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setAnimateHeader(setAnim(false));
+      setIsAnimated(false);
     }, 22000);
   }, []);
 
@@ -26,7 +22,7 @@ const Logo = () => {
             className="animate logosvg"
           >
             <g
-              className={`${animatHeader && "animation"} svgTop`}
+              className={`${isAnimated && "animation"} svgTop`}
               style={{ animationDelay: "21.3s" }}
             >
               <path
@@ -36,7 +32,7 @@ const Logo = () => {
             </g>
             <g
               style={{ animationDelay: "20.9s" }}
-              className={`${animatHeader && "animation"} svgLeft`}
+              className={`${isAnimated && "animation"} svgLeft`}
             >
               <path
                 className="animate"
@@ -45,7 +41,7 @@ const Logo = () => {
             </g>
             <g
               style={{ animationDelay: "20.6s" }}
-              className={`${animatHeader && "animation"} svgRight`}
+              className={`${isAnimated && "animation"} svgRight`}
             >
               <path
                 className="animate"
@@ -56,13 +52,13 @@ const Logo = () => {
         </div>
         <div
           style={{ animationDelay: "20.3s" }}
-          className={`title ${animatHeader && "animationHeader"}`}
+          className={`title ${isAnimated && "animationHeader"}`}
         >
           TIVAN
         </div>
         <div
           style={{ animationDelay: "20.2s" }}
-          className={`subtitle ${animatHeader && "animationHeader"}`}
+          className={`subtitle ${isAnimated && "animationHeader"}`}
         >
           artifacts
         </div>
