@@ -2,16 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useWeb3React } from "@web3-react/core";
 
-import smalSize from "../../../../assets/img/smallSize.png";
-import smalSizeLoading from "../../../../assets/img/smallSizeLoading.png";
-import smalSizeClose from "../../../../assets/img/smallSizeClose.png";
+import WalletWindowWrapper from "../WalletWindowWrapper/WalletWindowWrapper";
 
 import hourglass from "./img/hourglass.png";
 
 import config from "./config";
 import createConnector from "./createConnector";
-
-import "../wallet.css";
 
 const styles = {
   connector: {
@@ -32,9 +28,12 @@ const styles = {
     marginBottom: "8px",
     height: "30px",
   },
+  title: {
+    fontSize: "14px",
+  },
 };
 
-const WalletList = ({ close }) => {
+const WalletList = ({ onClose }) => {
   const { activate } = useWeb3React();
 
   const { t } = useTranslation();
@@ -46,39 +45,25 @@ const WalletList = ({ close }) => {
   };
 
   return (
-    <div className="ConnectWalletContent_wrapper">
-      <div className="ConnectWalletContent_modal">
-        <img className="ConnectWalletContent_img" src={smalSize} />
-        <img
-          className="ConnectWalletContent_img_loading"
-          src={smalSizeLoading}
-        />
-        <img
-          className="ConnectWalletContent_img_close"
-          onClick={close}
-          src={smalSizeClose}
-        />
-        <div className="ConnectWalletContent_content">
-          <div>{t("Choose_wallet")}:</div>
+    <WalletWindowWrapper onClose={onClose}>
+      <div>{t("Choose_wallet")}:</div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
-            {config.map(({ logo, title, type }) => {
-              return (
-                <a onClick={connect(type)} style={styles.connector} key={type}>
-                  <img src={logo} alt={title} style={styles.icon} />
-                  <p style={{ fontSize: "14px" }}>{title}</p>
-                </a>
-              );
-            })}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+        {config.map(({ logo, title, type }) => {
+          return (
+            <a onClick={connect(type)} style={styles.connector} key={type}>
+              <img src={logo} alt={title} style={styles.icon} />
+              <p style={styles.title}>{title}</p>
+            </a>
+          );
+        })}
 
-            <div style={styles.connector}>
-              <img src={hourglass} alt="" style={styles.icon} />
-              <p style={{ fontSize: "14px" }}>{t("More_wallets_coming")}</p>
-            </div>
-          </div>
+        <div style={styles.connector}>
+          <img src={hourglass} alt="" style={styles.icon} />
+          <p style={styles.title}>{t("More_wallets_coming")}</p>
         </div>
       </div>
-    </div>
+    </WalletWindowWrapper>
   );
 };
 

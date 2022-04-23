@@ -7,12 +7,12 @@ import { useWeb3React } from "@web3-react/core";
 
 import windowDimensions from "../../../utils/windowDimensions";
 
-import UserWalletConnect from "./UserWalletConnect/UserWalletConnect";
 import WalletList from "./WalletList/WalletList";
+import WalletUser from "./WalletUser/WalletUser";
 
 import getEllipsisText from "./getEllipsisText";
 
-import "./wallet.css";
+import "./styles.css";
 
 function Wallet() {
   const { t } = useTranslation();
@@ -21,18 +21,22 @@ function Wallet() {
   const { account } = useWeb3React();
   const { width } = windowDimensions();
 
-  const close = () => {
+  const handleClose = () => {
     setIsOpen(false);
   };
 
-  const open = () => {
+  const handleOpen = () => {
     setIsOpen(true);
   };
 
   return (
     <>
       {!account ? (
-        <Button id="connect-button" style={{ color: "#00CCFF" }} onClick={open}>
+        <Button
+          id="connect-button"
+          style={{ color: "#00CCFF" }}
+          onClick={handleOpen}
+        >
           <span>
             <div>
               <FontAwesomeIcon
@@ -44,7 +48,7 @@ function Wallet() {
           </span>
         </Button>
       ) : (
-        <a onClick={open} className="social-icon" href="#">
+        <a onClick={handleOpen} className="social-icon" href="#">
           {" "}
           <FontAwesomeIcon
             style={{ marginRight: "5px" }}
@@ -58,9 +62,9 @@ function Wallet() {
 
       {isOpen ? (
         account ? (
-          <UserWalletConnect close={close} />
+          <WalletUser onClose={handleClose} />
         ) : (
-          <WalletList close={close} />
+          <WalletList onClose={handleClose} />
         )
       ) : null}
     </>
