@@ -35,16 +35,14 @@ const styles = {
 };
 
 const WalletList = ({ close }) => {
-  const web3ReactContext = useWeb3React();
+  const { activate } = useWeb3React();
 
   const { t } = useTranslation();
 
   const connect = (type) => () => {
-    debugger;
-
     const connector = createConnector(type);
 
-    web3ReactContext.activate(connector);
+    activate(connector);
   };
 
   return (

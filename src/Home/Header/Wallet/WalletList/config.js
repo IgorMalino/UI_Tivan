@@ -23,16 +23,14 @@ const config = [
     title: "Coinbase",
     type: "coinbase",
   },
-
   {
     options: {
-      supportedChainIds: [1, 3, 4, 5, 42, 56],
+      supportedChainIds: [1, 3, 4, 5, 42, 56, 97],
     },
     logo: Metamask,
     title: "Metamask",
     type: "metamask",
   },
-
   {
     options: {
       rpc: {

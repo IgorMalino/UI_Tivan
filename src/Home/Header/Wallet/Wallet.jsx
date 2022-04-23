@@ -10,6 +10,8 @@ import windowDimensions from "../../../utils/windowDimensions";
 import UserWalletConnect from "./UserWalletConnect/UserWalletConnect";
 import WalletList from "./WalletList/WalletList";
 
+import getEllipsisText from "./getEllipsisText";
+
 import "./wallet.css";
 
 function Wallet() {
@@ -26,17 +28,6 @@ function Wallet() {
   const open = () => {
     setIsOpen(true);
   };
-
-  const getEllipsisTxt = (str, number) => {
-    const newStr = str.split("");
-    return [
-      ...newStr.slice(0, number),
-      "...",
-      ...newStr.slice(newStr.length - number),
-    ].join("");
-  };
-
-  console.log("account", account);
 
   return (
     <>
@@ -60,7 +51,7 @@ function Wallet() {
             icon={faAddressCard}
           />{" "}
           <span className="acc_long_adr">
-            {getEllipsisTxt(account, width < 500 ? 3 : 6)}
+            {getEllipsisText(account, width < 500 ? 3 : 6)}
           </span>{" "}
         </a>
       )}

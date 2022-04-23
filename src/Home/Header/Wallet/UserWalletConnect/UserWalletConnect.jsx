@@ -9,19 +9,12 @@ import smalSizeClose from "../../../../assets/img/smallSizeClose.png";
 import ERC20TTVTBalance from "./ERC20TTVTBalance";
 import ReferalLink from "./ReferalLink";
 
+import getEllipsisText from "../getEllipsisText";
+
 import "../wallet.css";
 
 const UserWalletConnect = ({ handleClose }) => {
-  const web3reactContext = useWeb3React();
-
-  const getEllipsisTxt = (str, number) => {
-    const newStr = str.split("");
-    return [
-      ...newStr.slice(0, number),
-      "...",
-      ...newStr.slice(newStr.length - number),
-    ].join("");
-  };
+  const { account, deactivate } = useWeb3React();
 
   return (
     <div className="ConnectWalletContent_wrapper">
@@ -39,20 +32,17 @@ const UserWalletConnect = ({ handleClose }) => {
         <div className="UserWalletConnect_content">
           <div id="f_account" className="">
             <h2 className="animate">ACCOUNT</h2>
-            <p>{getEllipsisTxt(web3reactContext.account, 6)}</p>
+
+            <p>{getEllipsisText(account, 6)}</p>
+
             <p className="bal_teg">
               <ERC20TTVTBalance />
             </p>
-            {/* <p className="bal_teg"><NativeBalance /></p> */}
-            <a
-              href="#"
-              onClick={(e) => {
-                web3reactContext.deactivate();
-                handleClose();
-              }}
-            >
+
+            <a href="#" onClick={deactivate}>
               Log out
             </a>
+
             <div style={{ marginTop: "10px", padding: "0 10px" }}>
               <a
                 href="#"
@@ -96,18 +86,19 @@ const UserWalletConnect = ({ handleClose }) => {
                 Add TVT token to Web3 Wallet
               </a>
             </div>
+
             <div
               style={{ marginTop: "10px", padding: "0 10px", fontSize: "14px" }}
             >
               <a
-                href="https://bscscan.com/address/0xf029ebed6b0ed51f50f47749d1c416098850fffe"
-                target="_blank"
+                href={`https://bscscan.com/address/${account}`}
                 rel="noreferrer"
+                target="_blank"
               >
-                {/* <SelectOutlined style={{ marginRight: "5px" }} /> */}
                 View on explorer
               </a>
             </div>
+
             <ReferalLink />
           </div>
         </div>
