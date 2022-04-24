@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./styles.css";
 
-const Balance = () => {
+const Balance = ({ account }) => {
   const refreshBalance = () => {};
 
   const amount = 0;

@@ -4,6 +4,7 @@ import { useWeb3React } from "@web3-react/core";
 
 import WalletWindowWrapper from "../WalletWindowWrapper/WalletWindowWrapper";
 
+import Address from "./Address/Address";
 import Balance from "./Balance/Balance";
 // import ReferalLink from "./ReferalLink";
 
@@ -18,9 +19,9 @@ const WalletUser = ({ onClose }) => {
     <WalletWindowWrapper className="wallet_user_content" onClose={onClose}>
       <h2 className="animate">ACCOUNT</h2>
 
-      <p>{getEllipsisText(account, 6)}</p>
+      <Address value={account} />
 
-      <Balance />
+      <Balance account={account} />
 
       <a href="#" onClick={deactivate}>
         Log out
