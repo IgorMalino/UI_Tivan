@@ -1,0 +1,12 @@
+.balance_amount {
+  align-items: "center";
+  display: "flex";
+  font-size: "42px";
+  justify-content: "center";
+}
+
+.balance_icon {
+  cursor: "pointer";
+  height: "45px";
+  margin-left: "5px";
+}

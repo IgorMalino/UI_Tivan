@@ -1,0 +1,20 @@
+.social-icon {
+  text-transform: capitalize;
+  color: #00ccff;
+  padding: 0px 0px;
+  padding-right: 10px;
+  font-family: "Blender Pro";
+  font-weight: 700;
+  font-size: 17px;
+  transition: color 0.5s ease, background-color 0.5s ease;
+  display: flex;
+}
+
+.social-icon:hover {
+  color: white;
+}
+
+.social-icon:before {
+  font-size: 18px;
+  margin: 0 6px 0 0;
+}

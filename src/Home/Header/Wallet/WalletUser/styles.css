@@ -1,0 +1,35 @@
+.wallet_user_content {
+  color: white;
+  text-align: center;
+}
+
+.wallet_user_content a {
+  text-decoration: none;
+  color: #00ccff;
+  display: block;
+  font-family: "Blender Pro";
+  font-size: 18px;
+}
+
+.wallet_user_content a:hover {
+  color: white;
+}
+.wallet_user_content h2 {
+  font-family: "Blender Pro";
+  text-decoration: none;
+  color: white;
+  display: block;
+  font-size: 25px;
+}
+
+.wallet_user_content svg {
+  color: #00ccff;
+}
+
+.wallet_user_content p {
+  text-decoration: none;
+  color: white;
+  display: block;
+  font-family: "Blender Pro";
+  font-size: 18px;
+}

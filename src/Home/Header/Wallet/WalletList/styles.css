@@ -1,0 +1,23 @@
+.wallet_list_connector {
+  align-items: "center";
+  display: "flex";
+  flex-direction: "column";
+  height: "auto";
+  justify-content: "center";
+  margin-left: "auto";
+  margin-right: "auto";
+  padding: "20px 5px";
+  cursor: "pointer";
+}
+
+.wallet_list_icon {
+  align-self: "center";
+  fill: "rgb(40, 13, 95)";
+  flex-shrink: "0";
+  margin-bottom: "8px";
+  height: "30px";
+}
+
+.wallet_list_title {
+  font-size: "14px";
+}
