@@ -44,9 +44,7 @@ function Wallet() {
             style={{ marginRight: "5px" }}
             icon={faAddressCard}
           />
-          <span className="acc_long_adr">
-            {getEllipsisText(account, width < 500 ? 3 : 6)}
-          </span>
+          {getEllipsisText(account, width < 500 ? 3 : 6)}
         </button>
       )}
 
