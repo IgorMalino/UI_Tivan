@@ -8,11 +8,8 @@ const TextToCopy = ({ className, value }) => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(value);
-    setIsCopied(true);
 
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 10000);
+    setIsCopied(true);
   };
 
   return (
