@@ -1,3 +1,23 @@
+#connect-button {
+  text-transform: capitalize;
+  color: #00ccff;
+  padding: 0px 3px;
+  padding-right: 10px;
+  font-family: "Blender Pro";
+  font-weight: 700;
+  font-size: 17px;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+#connect-button a {
+  text-decoration: none;
+  color: rgb(0, 204, 255);
+}
+
+#connect-button a:hover {
+  color: white;
+}
+
 .social-icon {
   text-transform: capitalize;
   color: #00ccff;
@@ -17,4 +37,14 @@
 .social-icon:before {
   font-size: 18px;
   margin: 0 6px 0 0;
+}
+
+@media only screen and (max-width: 500px) {
+  #connect-button {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .connect_text {
+    display: none;
+  }
 }

@@ -1,5 +1,8 @@
 export const ru = {
+  "Add TVT token to Web3 Wallet": "Add TVT token to Web3 Wallet",
+  "View on explorer": "View on explorer",
   About: "О Проекте",
+  Account: "Account",
   Arena: "АРЕНА",
   Bank: "БАНК",
   Choose_wallet: "ВЫБЕРИТЕ КОШЕЛЕК",
@@ -8,11 +11,12 @@ export const ru = {
   Gallery: "ГАЛЛЕРЕЯ",
   Game: "Игра",
   Labs: "ЛАБОРАТОРИИ",
+  Logout: "Выйти",
   Main_base: "БАЗА",
   Market: "МАРКЕТ",
   More_wallets_coming: "Скоро появятся новые кошельки",
   News: "НОВОСТИ",
-  Presale: "ПРОДАЖА",
   Presale_Text: "Конец препродажи: Купите TVT",
+  Presale: "ПРОДАЖА",
   Wiki: "ВИКИ",
 };

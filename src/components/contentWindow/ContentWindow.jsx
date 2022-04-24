@@ -39,33 +39,10 @@ const ContentWindow = () => {
     switch (selected) {
       case "connectWallet":
         return <WalletList />;
-        break;
-      case "gallery":
-        return "";
-        break;
-      case "arena":
-        return "";
-        break;
-      case "bank":
-        return "";
-        break;
-      case "market":
-        return "";
-        break;
-      case "base":
-        return "";
-        break;
-      case "labs":
-        return "";
-        break;
-      case "wiki":
-        return "";
-        break;
       case "news":
         return <News />;
-        break;
       default:
-        console.log("Sorry, we are out of " + selected + ".");
+        return null;
     }
   };
 

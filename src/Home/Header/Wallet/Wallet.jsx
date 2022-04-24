@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlug, faAddressCard } from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
@@ -17,7 +17,7 @@ import "./styles.css";
 function Wallet() {
   const { t } = useTranslation();
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { account } = useWeb3React();
   const { width } = windowDimensions();
 
@@ -32,20 +32,12 @@ function Wallet() {
   return (
     <>
       {!account ? (
-        <Button
-          id="connect-button"
-          style={{ color: "#00CCFF" }}
-          onClick={handleOpen}
-        >
-          <span>
-            <div>
-              <FontAwesomeIcon
-                style={{ marginRight: "5px", height: "16.5px" }}
-                icon={faPlug}
-              />
-              <span className="connect_text">{t("Connect")}</span>
-            </div>
-          </span>
+        <Button id="connect-button" onClick={handleOpen}>
+          <FontAwesomeIcon
+            style={{ marginRight: "5px", height: "16.5px" }}
+            icon={faPlug}
+          />
+          <span className="connect_text">{t("Connect")}</span>
         </Button>
       ) : (
         <a onClick={handleOpen} className="social-icon" href="#">
