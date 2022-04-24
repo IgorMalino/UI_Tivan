@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlug, faAddressCard } from "@fortawesome/free-solid-svg-icons";
-import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
 import { useWeb3React } from "@web3-react/core";
 
@@ -32,24 +31,23 @@ function Wallet() {
   return (
     <>
       {!account ? (
-        <Button id="connect-button" onClick={handleOpen}>
+        <button id="connect-button" onClick={handleOpen}>
           <FontAwesomeIcon
             style={{ marginRight: "5px", height: "16.5px" }}
             icon={faPlug}
           />
           <span className="connect_text">{t("Connect")}</span>
-        </Button>
+        </button>
       ) : (
-        <a onClick={handleOpen} className="social-icon" href="#">
-          {" "}
+        <button className="social-icon" onClick={handleOpen}>
           <FontAwesomeIcon
             style={{ marginRight: "5px" }}
             icon={faAddressCard}
-          />{" "}
+          />
           <span className="acc_long_adr">
             {getEllipsisText(account, width < 500 ? 3 : 6)}
-          </span>{" "}
-        </a>
+          </span>
+        </button>
       )}
 
       {isOpen ? (
