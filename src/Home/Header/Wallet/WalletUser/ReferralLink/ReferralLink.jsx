@@ -30,7 +30,7 @@ const ReferralLink = ({ account }) => {
   return (
     <div>
       You Referral link:
-      {data.needMoreAmount > 0 && false ? (
+      {data.needMoreAmount > 0 ? (
         <>
           <p>To get a referral link you need to buy {data.needAmount} TVT.</p>
           <p>
