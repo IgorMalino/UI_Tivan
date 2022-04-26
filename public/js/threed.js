@@ -237,7 +237,6 @@ function initExperience() {
 }
 
 function playIntro() {
-
   isGlobeRotated = !0;
   isGlobeEventsEnabled = !0;
 
@@ -1510,7 +1509,6 @@ var starsObject1,
   starsCreated = !1;
 
 function createStars(e) {
-  console.log(e, "asdasd");
   for (
     starsObject1 = new THREE.Group(),
       starsObject1.name = "starsObject1",

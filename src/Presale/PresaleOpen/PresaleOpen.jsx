@@ -60,8 +60,6 @@ const PresaleOpen = () => {
   };
 
   const handleChange = ({ target }) => {
-    const values = {};
-
     values[target.name] = target.value;
 
     if (target.name === "contract") {
@@ -92,7 +90,12 @@ const PresaleOpen = () => {
   return (
     <ThemeProvider theme={theme}>
       <TVTAvailable /> | <TVTSold />
-      <Select name="contract" value={""} label="Token" onChange={handleChange}>
+      <Select
+        name="contract"
+        value={values.contract}
+        label="Token"
+        onChange={handleChange}
+      >
         {tokens.map(({ w_address }) => (
           <MenuItem key={w_address} value={w_address}>
             {getTokenByAddress(w_address)}
@@ -119,7 +122,7 @@ const PresaleOpen = () => {
 
           <TextField
             focused
-            label={values.amount}
+            label={values.token}
             name="amount"
             onChange={handleChange}
             value={values.amount}
@@ -133,7 +136,6 @@ const PresaleOpen = () => {
           </div>
 
           <TextField
-            disabled
             label="TVT"
             name="tvt"
             onChange={handleChange}
