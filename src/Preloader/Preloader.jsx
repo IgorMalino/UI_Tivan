@@ -20,6 +20,7 @@ const Preloader = () => {
     setQuote(quote);
   }, []);
 
+  // TODO clearTimeout
   useEffect(() => {
     setTimeout(() => {
       setClassAnimation(true);

@@ -8,15 +8,16 @@ import BigSizeLoading from "../../assets/img/bigSizeLoading.png";
 import SmallSize from "../../assets/img/smallSize.png";
 import SmallSizeClose from "../../assets/img/smallSizeClose.png";
 import SmallSizeLoading from "../../assets/img/smallSizeLoading.png";
-import WalletList from "../../Home/Header/Wallet/WalletList/WalletList";
+
+import News from "../../News/News";
+import Presale from "../../Presale/Presale";
+import { db } from "../../Services/Firebase";
 import useWindowDimensions from "../../utils/windowDimensions";
 
-import { db } from "../../Services/Firebase";
+import WalletList from "../WalletList/WalletList";
 
 import "./contentWindow.css";
 import "animate.css";
-
-import News from "../../News/News";
 
 const ContentWindow = () => {
   const fetchBlogs = async (current) => {
@@ -26,7 +27,7 @@ const ContentWindow = () => {
 
   const [selected, setSelected] = useState("");
   const [data, setData] = useState();
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const location = useLocation();
 
   useEffect(() => {
@@ -41,6 +42,8 @@ const ContentWindow = () => {
         return <WalletList />;
       case "news":
         return <News />;
+      case "presale":
+        return <Presale />;
       default:
         return null;
     }

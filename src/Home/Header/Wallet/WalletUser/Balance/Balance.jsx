@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import contracts from "../../contracts";
+import contracts from "../../../../../contracts";
 
 import "./styles.css";
 
@@ -15,7 +15,7 @@ const Balance = ({ account }) => {
     setAmount(amount);
   };
 
-  useEffect(refreshBalance);
+  useEffect(refreshBalance, []);
 
   return (
     <p className="balance_amount">

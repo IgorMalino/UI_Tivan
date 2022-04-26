@@ -418,6 +418,7 @@ const config = {
         type: "function",
       },
     ],
+    name: "BUSD",
   },
   presale: {
     address: process.env.REACT_APP_CONTRACT_PRESALE,
@@ -1626,6 +1627,7 @@ const config = {
         type: "function",
       },
     ],
+    name: "USDT",
   },
 };
 
@@ -1637,5 +1639,21 @@ const contracts = {
   tvt: new web3.eth.Contract(config.tvt.abi, config.tvt.address),
   usdt: new web3.eth.Contract(config.usdt.abi, config.usdt.address),
 };
+
+const getTokenByAddress = (address) => {
+  for (const contract in config) {
+    if (config[contract].address === address) {
+      return config[contract].name;
+    }
+  }
+};
+
+const getContractByAddress = (address) => {
+  const token = getTokenByAddress(address);
+
+  return contracts[token.toLowerCase()];
+};
+
+export { getContractByAddress, getTokenByAddress };
 
 export default contracts;

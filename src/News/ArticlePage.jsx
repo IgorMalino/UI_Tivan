@@ -17,7 +17,7 @@ import "./news.css";
 export default function ArticlePage() {
   const location = useLocation();
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const id =
     location.pathname.split("/")[location.pathname.split("/").length - 1];
 

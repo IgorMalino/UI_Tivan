@@ -4,11 +4,10 @@ import { faPlug, faAddressCard } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { useWeb3React } from "@web3-react/core";
 
+import WalletList from "../../../components/WalletList/WalletList";
 import windowDimensions from "../../../utils/windowDimensions";
 
-import WalletList from "./WalletList/WalletList";
 import WalletUser from "./WalletUser/WalletUser";
-
 import getEllipsisText from "./getEllipsisText";
 
 import "./styles.css";

@@ -12,7 +12,6 @@ const config = [
     title: "Binance",
     type: "binance",
   },
-
   {
     options: {
       url: "https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",

@@ -1,8 +1,8 @@
 import React from "react";
 
-import smalSize from "../../../../assets/img/smallSize.png";
-import smalSizeLoading from "../../../../assets/img/smallSizeLoading.png";
-import smalSizeClose from "../../../../assets/img/smallSizeClose.png";
+import smalSize from "../../assets/img/smallSize.png";
+import smalSizeLoading from "../../assets/img/smallSizeLoading.png";
+import smalSizeClose from "../../assets/img/smallSizeClose.png";
 
 import "./styles.css";
 

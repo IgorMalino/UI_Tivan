@@ -3,12 +3,11 @@ import { useTranslation } from "react-i18next";
 import { useWeb3React } from "@web3-react/core";
 
 import TextToCopy from "../../../../components/TextToCopy/TextToCopy";
-
-import WalletWindowWrapper from "../WalletWindowWrapper/WalletWindowWrapper";
+import WalletWindowWrapper from "../../../../components/WalletWindowWrapper/WalletWindowWrapper";
 
 import AddToken from "./AddToken/AddToken";
 import Balance from "./Balance/Balance";
-import ReferalLink from "./ReferalLink";
+import ReferralLink from "./ReferralLink/ReferralLink";
 
 import "./styles.css";
 
@@ -36,7 +35,7 @@ const WalletUser = ({ onClose }) => {
         {t("View on explorer")}
       </a>
 
-      <ReferalLink account={account} />
+      <ReferralLink account={account} />
     </WalletWindowWrapper>
   );
 };
