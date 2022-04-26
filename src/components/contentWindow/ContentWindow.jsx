@@ -16,8 +16,8 @@ import useWindowDimensions from "../../utils/windowDimensions";
 
 import WalletList from "../WalletList/WalletList";
 
-import "./contentWindow.css";
 import "animate.css";
+import "./styles.css";
 
 const ContentWindow = () => {
   const fetchBlogs = async (current) => {
@@ -50,39 +50,37 @@ const ContentWindow = () => {
   };
 
   return (
-    <>
-      <div className="mainContent">
-        {width > 800 ? (
-          <>
-            <img className="bigSizeImg" src={BigSize} />
-            <Link to={`/${i18n.language}`}>
-              <img className="bigSizeImgClose" src={BigSizeClose} />
-            </Link>
-            <img className="bigSizeImgLoading" src={BigSizeLoading} />
-          </>
-        ) : (
-          <>
-            <img className="smallSizeImg" src={SmallSize} />
-            <Link to={`/${i18n.language}`}>
-              <img className="smallSizeImgClose" src={SmallSizeClose} />
-            </Link>
-            <img className="smallSizeImgLoading" src={SmallSizeLoading} />
-          </>
-        )}
+    <div className="mainContent">
+      {width > 800 ? (
+        <>
+          <img className="bigSizeImg" src={BigSize} />
+          <Link to={`/${i18n.language}`}>
+            <img className="bigSizeImgClose" src={BigSizeClose} />
+          </Link>
+          <img className="bigSizeImgLoading" src={BigSizeLoading} />
+        </>
+      ) : (
+        <>
+          <img className="smallSizeImg" src={SmallSize} />
+          <Link to={`/${i18n.language}`}>
+            <img className="smallSizeImgClose" src={SmallSizeClose} />
+          </Link>
+          <img className="smallSizeImgLoading" src={SmallSizeLoading} />
+        </>
+      )}
 
-        <div style={{ width: width < 800 && "70%" }} className="content">
-          {selected && renderContentWindowContent(selected)}
-          {data && (
-            <div
-              className={`${
-                selected === "about" && "contentWindow_content"
-              } animate__animated animate__fadeInUp`}
-              dangerouslySetInnerHTML={{ __html: data[i18n.language] }}
-            />
-          )}
-        </div>
+      <div style={{ width: width < 800 && "70%" }} className="content">
+        {selected && renderContentWindowContent(selected)}
+        {data && (
+          <div
+            className={`${
+              selected === "about" && "contentWindow_content"
+            } animate__animated animate__fadeInUp`}
+            dangerouslySetInnerHTML={{ __html: data[i18n.language] }}
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

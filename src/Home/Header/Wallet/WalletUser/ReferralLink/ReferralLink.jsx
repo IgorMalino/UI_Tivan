@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import i18n from "i18next";
 import Web3 from "web3";
 
 import TextToCopy from "../../../../../components/TextToCopy/TextToCopy";
@@ -29,7 +30,7 @@ const ReferralLink = ({ account }) => {
   return (
     <div>
       You Referral link:
-      {data.needMoreAmount > 0 ? (
+      {data.needMoreAmount > 0 && false ? (
         <>
           <p>To get a referral link you need to buy {data.needAmount} TVT.</p>
           <p>
@@ -37,7 +38,9 @@ const ReferralLink = ({ account }) => {
           </p>
         </>
       ) : (
-        <TextToCopy value={`https://tivan.art/ref/${account}`} />
+        <TextToCopy
+          value={`${window.location.origin}/${i18n.language}/presale/ref/${account}`}
+        />
       )}
     </div>
   );

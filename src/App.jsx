@@ -17,7 +17,7 @@ function App() {
 
   return (
     <React.Suspense fallback="">
-      <Preloader />
+      {/* <Preloader /> */}
       <Web3ReactProvider getLibrary={getLibrary}>
         <BrowserRouter>
           <Router />

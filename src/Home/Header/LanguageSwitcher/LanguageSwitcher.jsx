@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import i18n from "i18next";
 import Fade from "@mui/material/Fade";
 import Menu from "@mui/material/Menu";
 import { ThemeProvider } from "@mui/material/styles";
 import ReactCountryFlag from "react-country-flag";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import theme from "../theme";
 
@@ -12,9 +12,8 @@ import "./styles.css";
 
 const LanguageSwitcher = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const close = () => {
@@ -29,14 +28,7 @@ const LanguageSwitcher = () => {
   const changeLanguage = (language) => () => {
     i18n.changeLanguage(language);
 
-    const pathname = location.pathname.split(`/${i18n.language}`)[1]
-      ? [
-          `/${i18n.language}`,
-          ...location.pathname.split(`/${i18n.language}`)[1],
-        ].join("")
-      : `/${i18n.language}`;
-
-    navigate(pathname);
+    navigate(`/${language}`);
 
     close();
   };

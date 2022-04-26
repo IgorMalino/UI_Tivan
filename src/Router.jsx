@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import i18n from "i18next";
 
 import Home from "./Home/Home";
-import ContentWindow from "./components/contentWindow/ContentWindow";
+import ContentWindow from "./components/ContentWindow/ContentWindow";
 import ArticlePage from "./News/ArticlePage";
 
 function Router() {
@@ -12,14 +12,9 @@ function Router() {
   const location = useLocation();
 
   useEffect(() => {
-    const pathname = location.pathname.split(`/${i18n.language}`)[1]
-      ? [
-          `/${i18n.language}`,
-          ...location.pathname.split(`/${i18n.language}`)[1],
-        ].join("")
-      : `/${i18n.language}`;
-
-    navigate(pathname);
+    if (location.pathname.indexOf(`/${i18n.language}`) !== 0) {
+      navigate(`/${i18n.language}`);
+    }
   }, []);
 
   return (
